@@ -1,0 +1,89 @@
+From 39f4f77b47eb30754271a15e2d9803751026ae7f Mon Sep 17 00:00:00 2001
+From: Pierre-Antoine Rouby <pa.rouby@gmail.com>
+Date: Fri, 20 Oct 2017 10:37:55 +0200
+Subject: [PATCH] HACKING: add build instructions
+
+---
+ HACKING | 69 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 69 insertions(+)
+
+diff --git a/HACKING b/HACKING
+index de19eb8..662ddb9 100644
+--- a/HACKING
++++ b/HACKING
+@@ -56,3 +56,72 @@ window.
+ 
+ This allows consistency and helps to quickly know which widget
+ represents what.
++
++
++Compilation and installation Procedure
++======================================
++
++You can install this package either manually (by command line) or 
++automatically (with the gnome IDE: Gnome-Builder).
++
++Manual installation:
++
++  Get the official git repository:
++    $ git clone https://git.gnome.org/browse/gnome-games
++  
++  Gnome-Games use autotools for compilation.
++
++  Install dependencies:
++    Gnome-Games needed the following dependencies. Install this before 
++    building application.
++    - gio-2.0
++    - glib-2.0
++    - grilo-0.3
++    - gtk+-3.0
++    - librsvg-2.0
++    - libsoup-2.4
++    - libxml-2.0
++    - retro-gtk-0.12
++    - sqlite3
++    - tracker-sparql-2.0
++
++  Note concerning retro-gtk : 
++    In the Gnome Games master branch, the retro-gtk version is 
++    identical to the retro-gtk master branch version. 
++    (https://bugzilla.gnome.org/show_bug.cgi?id=788692)
++    The version is downgraded for release.
++
++    You should list tagged version with : 
++      $ git tag
++    And select it with :
++      $ git checkout <branch>
++    
++    
++  Go in sources directories:
++  Generate the files with:
++    $ ./autogen.sh
++
++  Prepare to compilation:
++    $ ./configure
++  
++  Build the application:
++    $ make
++
++  Install the application:
++    $ make install
++  
++
++Install with Gnome-Builder:
++
++  In Gnome Builder, go to "Clone...", then specify the 
++  official git repository of the project 
++
++  It will download automatically the needed dependencies 
++  (These can be huge depending your setup, about 700MB).
++
++  Then build the project with the Build button.
++
++  You can then export the project as flatpak with:
++    Flatpak ==> Export as Bundle, located on the upper right 
++    corner of the IDE.
++
+-- 
+2.11.0
+
