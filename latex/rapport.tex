@@ -76,50 +76,83 @@ majorité du travail est fournie par les contributeurs professionnels,
 en premier lieu ceux travaillant pour Red Hat.
 % PA: TODO add screen shot ?
 
-\section{Les outils collaboratif du projet GNOME}
+\section{Les outils collaboratif du projet GNOME} 
+% TODO PA: Cette partie a besion d'une relecture ;)
 \subsection{Bugzilla}
+\label{bugzilla}
 % from: https://fr.wikipedia.org/wiki/Bugzilla
 Bugzilla est une solution de gestion de bug, distribuer sous tri-licence 
 MPL/GNU GPL/GNU LGPL, elle est developper et utilisé à l'origine par Mozilla.
-% PA: TODO add screen shot ?
+GNOME a mis en place un \href{https://bugzilla.gnome.org}{bugzilla} pour 
+la gestion des bug dans les differents porjet 
+(figure~\ref{figure_bugzilla} page~\pageref{figure_bugzilla}).
+\newline
+% from: https://bugzilla.gnome.org/page.cgi?id=points.html
+Buzilla integre aussi une fonctionnalité de "score" (figure~\ref{figure_bugzilla_score} 
+page~\pageref{figure_bugzilla_score}), le but a l'origine et d'avoir une idée 
+aproximative de l'activité d'une personne  sur le bugzilla, et donc 
+des personnes qui sont le plus experimenté pour aidée les autres 
+utilisateurs. Mais se dispositif s'est revelé peut éfficace. Le
+score est donc plus une fonctionnalite rigolote qu'un vrai outils.
+A noté qu'il existe quand même un classement de la semaine 
+\href{https://bugzilla.gnome.org/page.cgi?id=weekly-bug-summary.html}{ici}.
+% PA: Bonjour, j'ai utilisé le mot "rigolote" en 2017, vais-je finir en enfer ?
+% PA: Nan en vrai j'ai pas trouvé mieux, si quelqu'un trouve mieux TODO
 
 \subsection{Wiki}
-GNOME dispose d'un wiki (https://wiki.gnome.org/) ou l'on peut retrouver 
-les documentations sur les differents projets, mais aussi un grand nombre 
-d'informations.
+\label{wiki}
+GNOME dispose d'un \href{https://wiki.gnome.org/}{wiki} ou l'on peut retrouver 
+les documentations sur les differents projets (figure~\ref{figure_wiki} page~\pageref{figure_wiki}).
 
-\subsection{Git} % TODO PA: Besion d'une relecture ;)
+\subsection{Git}
+\label{git}
+\label{cgit}
 Le projet GNOME dispose de plusieurs interface Git. L'interface 
-principal est baser sur la solution "cgit", on peut y retrouver la
-plupare des projets GNOME (https://git.gnome.org/). Pour créer un bug
-il faut passer par Bugzilla.
-% PA: TODO add screen shot ?
+principal est baser sur le logiciel libre "cgit" (figure~\ref{figure_cgit} 
+page~\pageref{figure_cgit}), on peut y retrouver la plupare des projets GNOME 
+(\href{https://git.gnome.org/}{ici}). Pour créer un bug il faut passer par Bugzilla (section~\ref{bugzilla}).
 
-GNOME a aussi mit en place un GitLab (https://gitlab.gnome.org/GNOME) 
-ou l'on peut trouver de nombre projet. L'interface est plus moderne
+\label{gitlab}
+GNOME a aussi mit en place un \href{https://gitlab.gnome.org/GNOME}{GitLab} 
+ou l'on peut trouver de nombre projet. L'interface est plus moderne 
 et a la fason github nous pouvont créer de "PoolRequest" et la création 
-de bug est simplifier car nous pouvons le créer sur la meme interface.
-% PA: TODO add screen shot ?
+de bug est simplifier car nous pouvons le créer sur la même interface 
+(figure~\ref{figure_gitlab} page~\pageref{figure_gitlab}).
 
-Il existe aussi un mirroir des repertoire git de GNOME sur GitHub 
-(https://github.com/GNOME), 
-% PA: TODO add screen shot ?
+\label{github}
+Il existe aussi un mirroir des repertoires git des projets 
+\href{https://github.com/GNOME}{GNOME sur GitHub}.
+% PA: TODO add screenshot ?
 
-\subsection{IRC} % TODO
+\subsection{IRC}
+% PA: TODO Si quel qu'un a un peut utilisé l'irc de GNOME je veut bien qu'il écrive un truc
 
+\subsection{Newcomers}
+% PA: TODO ...
 
+\newpage
+\section{GNOME-Music}
 % TODO GNOME-Music
 
 \newpage
-
 \section{GNOME Games}
 GNOME Games est une application permettant la gestion d'une
 bibliothèque vidéoludique. Elle est capable de s'interfacer avec de
 nombreux émulateurs.
-Au debut du projet Games étais disponible sur le cgit de GNOME, mais 
-depuis peut il a étais migret sur le gitLab du projet GNOME.
+Au debut du projet Games étais disponible sur le git (section~\ref{cgit}) de GNOME, mais 
+depuis peut il a étais migret sur le gitlab (section~\ref{gitlab}) du projet GNOME.
 
 \subsection{Architecture du projet}
+\subsubsection{Les projets assosié}
+Le projet s'appuis sur plusieur autre projet:
+\begin{itemize}
+\item retro-gtk : Développé pas le mainteneur de Games et utilisant les bibliotheques libretro,
+retro-gtk permet a Games de lancer les jeux retro (des jeux fait pour une ancienne console de jeux)
+\item libmanette : Libmannette et aussi développé pas le mainteneur de Games. Cette bibliotheque permet
+la gestion des manettes.
+% TODO Verifier les info pour libmanette et retro-gtk 
+\end{itemize}
+
 % PA: On garde sa ?
 % TODO Sondage
 %          Oui | Non
@@ -128,7 +161,8 @@ depuis peut il a étais migret sur le gitLab du projet GNOME.
 % PA:          | X
 %----------------------
 % result:   0  | 1
-
+\subsubsection{Les sources}
+Structure des sources du projet:
 \begin{itemize}
 \item data : contient toutes les données graphiques de l'application.
 \item flatpak : contient tous les fichiers nécessaires à l'exécution de Flatpack.
@@ -239,7 +273,41 @@ lesquelles\footnote{Comme OS, nous avons utilisé Debian Sid}:
 % Gautier : système de statuts -> aucune explication
 % Gautier : lecture de différents bug reports, et réécriture plus simple dans un fichier partagé pour effectuer un premier tri
 
-\chapter{Vrac}
+% Annexe:
+\appendix
+\chapter{GNOME en images}
 
+\begin{figure}[p]
+  % from: https://bugzilla.gnome.org
+  \caption{\label{figure_bugzilla} Le bugzilla du projet GNOME}
+  \includegraphics[width=15cm]{images/bugzilla_gnome_org.png}
+\end{figure}
+
+\begin{figure}[p]
+  % from: https://bugzilla.gnome.org
+  \caption{\label{figure_bugzilla_score} Score sur bugzilla}
+  \includegraphics[width=5cm]{images/score.png}
+\end{figure}
+
+\begin{figure}[p]
+  % from: https://wiki.gnome.org
+  \caption{\label{figure_wiki} Le wiki du projet GNOME}
+  \includegraphics[width=15cm]{images/wiki_gnome_org.png}
+\end{figure}
+
+\begin{figure}[p]
+  % from: https://git.gnome.org
+  \caption{\label{figure_cgit} Interface git du projet GNOME}
+  \includegraphics[width=15cm]{images/git_gnome_org.png}
+\end{figure}
+
+\begin{figure}[p]
+  % from: https://gitlab.gnome.org
+  \caption{\label{figure_gitlab} Le gitlab du projet GNOME}
+  \includegraphics[width=15cm]{images/gitlab_gnome_org.png}
+\end{figure}
+
+\chapter{Patchs} 
+% PA: Utile ? 
 
 \end{document}
