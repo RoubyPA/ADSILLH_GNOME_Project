@@ -20,7 +20,7 @@
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 
 \title{Projet Licence ADSILLH 2017/2018\\Rapport}
-\author{Gautier DELACOUR\\Pierre Antoine ROUBY\\David TABARIE}
+\author{Gautier DELACOUR\\Pierre-Antoine ROUBY\\David TABARIE} % PA: TODO add GNOME-GAMES
 
 \begin{document}
 \maketitle
@@ -74,13 +74,60 @@ GNOME est développé par The GNOME Project dont les participants sont
 bénévoles ou rémunérés par des entreprises externes au projet. La
 majorité du travail est fournie par les contributeurs professionnels,
 en premier lieu ceux travaillant pour Red Hat.
+% PA: TODO add screen shot ?
+
+\section{Les outils collaboratif du projet GNOME}
+\subsection{Bugzilla}
+% from: https://fr.wikipedia.org/wiki/Bugzilla
+Bugzilla est une solution de gestion de bug, distribuer sous tri-licence 
+MPL/GNU GPL/GNU LGPL, elle est developper et utilisé à l'origine par Mozilla.
+% PA: TODO add screen shot ?
+
+\subsection{Wiki}
+GNOME dispose d'un wiki (https://wiki.gnome.org/) ou l'on peut retrouver 
+les documentations sur les differents projets, mais aussi un grand nombre 
+d'informations.
+
+\subsection{Git} % TODO PA: Besion d'une relecture ;)
+Le projet GNOME dispose de plusieurs interface Git. L'interface 
+principal est baser sur la solution "cgit", on peut y retrouver la
+plupare des projets GNOME (https://git.gnome.org/). Pour créer un bug
+il faut passer par Bugzilla.
+% PA: TODO add screen shot ?
+
+GNOME a aussi mit en place un GitLab (https://gitlab.gnome.org/GNOME) 
+ou l'on peut trouver de nombre projet. L'interface est plus moderne
+et a la fason github nous pouvont créer de "PoolRequest" et la création 
+de bug est simplifier car nous pouvons le créer sur la meme interface.
+% PA: TODO add screen shot ?
+
+Il existe aussi un mirroir des repertoire git de GNOME sur GitHub 
+(https://github.com/GNOME), 
+% PA: TODO add screen shot ?
+
+\subsection{IRC} % TODO
+
+
+% TODO GNOME-Music
+
+\newpage
 
 \section{GNOME Games}
 GNOME Games est une application permettant la gestion d'une
 bibliothèque vidéoludique. Elle est capable de s'interfacer avec de
 nombreux émulateurs.
+Au debut du projet Games étais disponible sur le cgit de GNOME, mais 
+depuis peut il a étais migret sur le gitLab du projet GNOME.
 
 \subsection{Architecture du projet}
+% PA: On garde sa ?
+% TODO Sondage
+%          Oui | Non
+% David:       |
+% Gautier:     |
+% PA:          | X
+%----------------------
+% result:   0  | 1
 
 \begin{itemize}
 \item data : contient toutes les données graphiques de l'application.
