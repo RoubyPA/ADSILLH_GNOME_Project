@@ -273,6 +273,42 @@ lesquelles\footnote{Comme OS, nous avons utilisé Debian Sid}:
 % Gautier : système de statuts -> aucune explication
 % Gautier : lecture de différents bug reports, et réécriture plus simple dans un fichier partagé pour effectuer un premier tri
 
+\subsection{Patch}
+% TODO PA: Cette partie a besion d'une relecture ;)
+\subsubsection{Mise à jour du fichier HACKING}
+Le premier patch (\href{http://bugzilla.gnome.org/show_bug.cgi?id=788692}{ici}) 
+que nous avons envoyer, est en reponse a un bug repport, il ajouter une 
+aide pour la compilation du projet. \newline
+Il n'y avais aucune aide ou information dans la documentation sur la compilation
+du projet. Etant nouveaux dans le projet GNOME nous n'avion pas connaisance de 
+GNOME-Builder qui permet assez simplement de construire le projet. Mais
+même avec cette outils la compilation c'est revéler ardu. En effet 
+le fonctionement de Builder a tendence a changer entre les version et certain
+action comme un 'git pull' peuvent posser problème.
+Nous avons donc modifier le fichier HACKING du projet pour y ajouter des 
+instruction de compilation. Le projet utilise pour le moment le système 
+'autotools' pour sa compilation, mais il est prevu pour la version 2.30, 
+qu'il passe sous un system avec le logiciel 'meson' pour la configuration. 
+\newline
+Nous avons donc nous même recontré de nombreux problème de compilation 
+il nous a donc semblé important de donnée des indications pour que les 
+prochaines personne qui voudrais contribuer ne sois pas frenné par un 
+probleme comme celui-ci.
+Il y a eu de nombre ajustement demandé par le mainteneur et le patch n'a 
+pas encore étais aprouvé. \newline
+
+\subsubsection{Mise à jour du fichier README.md}
+Le second patch (\href{http://bugzilla.gnome.org/show_bug.cgi?id=790454}{ici}) 
+que nous avons envoyer, est une mise a jour de la documentation de retro-gtk, 
+en effet retro-gtk et passais d'un système de compilation 'autotools' a un
+système avec le logiciel 'meson' et le compilateur 'ninja'.
+Nous avons donc mis a jour le fichier README.md en respectant la syntax
+'Marckdown', utilisé par github et gitlab par exemple.
+Le patch n'a pas encore étais aprouvé. \newline
+
+\subsubsection{Retoure a la collection avec les touches Alt+Left}
+% TODO PA: David ?
+
 % Annexe:
 \appendix
 \chapter{GNOME en images}
