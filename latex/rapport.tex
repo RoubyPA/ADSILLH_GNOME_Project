@@ -32,7 +32,6 @@ Ce document présente les différents travaux effectués dans le cadre du projet
 
 \tableofcontents
 
-% David: Suggestion: mettre des "\part" en lieu et place des chapters, ça nous permettrai d'avoir les titres sur une page entière. (?)
 \chapter{Introduction}
 
 \section{La Licence ADSILLH}
@@ -81,20 +80,20 @@ en premier lieu ceux travaillant pour Red Hat.
 \subsection{Bugzilla}
 \label{bugzilla}
 % from: https://fr.wikipedia.org/wiki/Bugzilla
-Bugzilla est une solution de gestion de bug, distribuer sous tri-licence 
-MPL/GNU GPL/GNU LGPL, elle est developper et utilisé à l'origine par Mozilla.
+Bugzilla est une solution de gestion de bug, distribuée sous tri-licence 
+MPL/GNU GPL/GNU LGPL, elle est developpée et utilisée à l'origine par Mozilla.
 GNOME a mis en place un \href{https://bugzilla.gnome.org}{bugzilla} pour 
-la gestion des bug dans les differents porjet 
+la gestion des bugs dans les différents projets.
 (figure~\ref{figure_bugzilla} page~\pageref{figure_bugzilla}).
 \newline
 % from: https://bugzilla.gnome.org/page.cgi?id=points.html
-Buzilla integre aussi une fonctionnalité de "score" (figure~\ref{figure_bugzilla_score} 
-page~\pageref{figure_bugzilla_score}), le but a l'origine et d'avoir une idée 
+Bugzilla intègre aussi une fonctionnalité de "score" (figure~\ref{figure_bugzilla_score} 
+page~\pageref{figure_bugzilla_score}), dont le but est a l'origine d'avoir une idée 
 aproximative de l'activité d'une personne  sur le bugzilla, et donc 
 des personnes qui sont le plus experimenté pour aidée les autres 
-utilisateurs. Mais se dispositif s'est revelé peut éfficace. Le
+utilisateurs. Mais ce dispositif s'est revelé peu efficace. Le
 score est donc plus une fonctionnalite rigolote qu'un vrai outils.
-A noté qu'il existe quand même un classement de la semaine 
+A noter qu'il existe quand même un classement de la semaine 
 \href{https://bugzilla.gnome.org/page.cgi?id=weekly-bug-summary.html}{ici}.
 % PA: Bonjour, j'ai utilisé le mot "rigolote" en 2017, vais-je finir en enfer ?
 % PA: Nan en vrai j'ai pas trouvé mieux, si quelqu'un trouve mieux TODO
@@ -102,21 +101,22 @@ A noté qu'il existe quand même un classement de la semaine
 \subsection{Wiki}
 \label{wiki}
 GNOME dispose d'un \href{https://wiki.gnome.org/}{wiki} ou l'on peut retrouver 
-les documentations sur les differents projets (figure~\ref{figure_wiki} page~\pageref{figure_wiki}).
+les documentations sur les différents projets (figure~\ref{figure_wiki} page~\pageref{figure_wiki}).
 
 \subsection{Git}
 \label{git}
 \label{cgit}
-Le projet GNOME dispose de plusieurs interface Git. L'interface 
-principal est baser sur le logiciel libre "cgit" (figure~\ref{figure_cgit} 
+Le projet GNOME dispose de plusieurs interfaces Git. L'interface 
+principale est basée sur le logiciel libre "cgit" (figure~\ref{figure_cgit} 
 page~\pageref{figure_cgit}), on peut y retrouver la plupare des projets GNOME 
 (\href{https://git.gnome.org/}{ici}). Pour créer un bug il faut passer par Bugzilla (section~\ref{bugzilla}).
 
 \label{gitlab}
 GNOME a aussi mit en place un \href{https://gitlab.gnome.org/GNOME}{GitLab} 
-ou l'on peut trouver de nombre projet. L'interface est plus moderne 
-et a la fason github nous pouvont créer de "PoolRequest" et la création 
-de bug est simplifier car nous pouvons le créer sur la même interface 
+ou l'on peut trouver de nombreux projet. L'interface est plus moderne 
+et à la façon github nous pouvons créer des "PoolRequest" et la création 
+de bug est simplifiée car nous pouvons le créer sur la même interface
+% David: Dernière phrase pas claire du tout, lapocompris
 (figure~\ref{figure_gitlab} page~\pageref{figure_gitlab}).
 
 \label{github}
@@ -125,7 +125,7 @@ Il existe aussi un mirroir des repertoires git des projets
 % PA: TODO add screenshot ?
 
 \subsection{IRC}
-% PA: TODO Si quel qu'un a un peut utilisé l'irc de GNOME je veut bien qu'il écrive un truc
+% PA: TODO Si quel qu'un a un peut utiliser l'irc de GNOME je veux bien qu'il écrive un truc
 
 \subsection{Newcomers}
 % PA: TODO ...
@@ -144,19 +144,20 @@ depuis peut il a étais migret sur le gitlab (section~\ref{gitlab}) du projet GN
 
 \subsection{Architecture du projet}
 \subsubsection{Les projets assosié}
-Le projet s'appuis sur plusieur autre projet:
+Le projet s'appuie sur plusieur autre projets:
 \begin{itemize}
 \item retro-gtk : Développé pas le mainteneur de Games et utilisant les bibliotheques libretro,
-retro-gtk permet a Games de lancer les jeux retro (des jeux fait pour une ancienne console de jeux)
+retro-gtk permet à Games de lancer les jeux retro
 \item libmanette : Libmannette et aussi développé pas le mainteneur de Games. Cette bibliotheque permet
 la gestion des manettes.
 % TODO Verifier les info pour libmanette et retro-gtk 
 \end{itemize}
 
 % PA: On garde sa ?
+% David: What is it ?
 % TODO Sondage
 %          Oui | Non
-% David:       |
+% David:     x |
 % Gautier:     |
 % PA:          | X
 %----------------------
@@ -257,7 +258,7 @@ cela étant en grande partie du à l'utilisation de librairies encore en
 état de développement actif, ainsi qu'au système de configuration
 ``Meson'' qui est un remplacement de ``./configure''.
 
-Ainsi il a été nécessaire de compiler certaines librairies, parmis
+Ainsi il a été nécessaire de compiler certaines librairies, parmi
 lesquelles\footnote{Comme OS, nous avons utilisé Debian Sid}:
 \begin{itemize}
 \item retro-gtk
