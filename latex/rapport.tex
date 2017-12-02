@@ -58,7 +58,8 @@ et en économie des logiciels libres.
 
 \section{Le projet}
 Le but du projet est avant tout de nous accoutumer au développement
-collaboratif, et de nous apprendre à intéragir avec une communauté.
+collaboratif, et de nous apprendre à intéragir avec une communauté
+du logiciel libre.
 
 \chapter{Le projet GNOME}
 % from: https://fr.wikipedia.org/wiki/GNOME
@@ -74,81 +75,98 @@ bénévoles ou rémunérés par des entreprises externes au projet. La
 majorité du travail est fournie par les contributeurs professionnels,
 en premier lieu ceux travaillant pour Red Hat.
 
-\section{Les outils collaboratif du projet GNOME} 
+\section{Les outils collaboratifs} 
 % TODO PA: Cette partie a besion d'une relecture ;)
 \subsection{Bugzilla}
 \label{bugzilla}
 % from: https://fr.wikipedia.org/wiki/Bugzilla
-Bugzilla est une solution de gestion de bug, distribuée sous tri-licence 
-MPL/GNU GPL/GNU LGPL, elle est developpée et utilisée à l'origine par Mozilla.
+Bugzilla est une solution de gestion de bug, distribuée sous
+% form: https://fr.wikipedia.org/wiki/Double_licence
+tri-licence\footnote{Tri-licence: Le concept de licence multiple
+  est de proposer un travail non pas sous une licence unique, mais
+  en offrant un choix restreint de licence, pour permettre une plus
+  grande flexibilité. (source:
+  \href{https://fr.wikipedia.org/wiki/Licence_multiple}{Wikipedia})}
+MPL\footnote{MPL: Mozilla Public License (source:
+  \href{https://www.mozilla.org/en-US/MPL/}{Mozilla})}
+/ GNU GPL\footnote{GNU GPL: GNU General Public License (source:
+  \href{https://www.gnu.org/licenses/gpl.html}{Gnu})}
+/ GNU LGPL\footnote{GNU LGPL: GNU Lesser General Public License (source:
+  \href{https://www.gnu.org/licenses/lgpl.html}{Gnu})}
+, elle est developpée et utilisée à l'origine par Mozilla.
 GNOME a mis en place un \href{https://bugzilla.gnome.org}{bugzilla} pour 
 la gestion des bugs dans les différents projets.
-(figure~\ref{figure_bugzilla} page~\pageref{figure_bugzilla}).
+%% (figure~\ref{figure_bugzilla} page~\pageref{figure_bugzilla})
 \newline
 % from: https://bugzilla.gnome.org/page.cgi?id=points.html
-Bugzilla intègre aussi une fonctionnalité de "score" (figure~\ref{figure_bugzilla_score} 
-page~\pageref{figure_bugzilla_score}), dont le but est a l'origine d'avoir une idée 
+Bugzilla intègre aussi une fonctionnalité de "score"
+%% (figure~\ref{figure_bugzilla_score} page~\pageref{figure_bugzilla_score})
+, dont le but est a l'origine d'avoir une idée 
 aproximative de l'activité d'une personne  sur le bugzilla, et donc 
 des personnes qui sont le plus experimenté pour aidée les autres 
 utilisateurs. Mais ce dispositif s'est revelé peu efficace. Le
-score est donc plus une fonctionnalite rigolote qu'un vrai outils.
-A noter qu'il existe quand même un classement de la semaine 
+score est donc plus une fonctionnalite un peut fun qu'un vrai outils.
+A noter qu'il existe quand même un classement de la semaine, disponible 
 \href{https://bugzilla.gnome.org/page.cgi?id=weekly-bug-summary.html}{ici}.
-% PA: Bonjour, j'ai utilisé le mot "rigolote" en 2017, vais-je finir en enfer ?
-% PA: Nan en vrai j'ai pas trouvé mieux, si quelqu'un trouve mieux TODO
 
 \subsection{Wiki}
 \label{wiki}
 GNOME dispose d'un \href{https://wiki.gnome.org/}{wiki} ou l'on peut retrouver 
-les documentations sur les différents projets (figure~\ref{figure_wiki} page~\pageref{figure_wiki}).
+les documentations sur les différents projets.
+%% (figure~\ref{figure_wiki} page~\pageref{figure_wiki}).
 
 \subsection{Git}
 \label{git}
+
 \label{cgit}
 Le projet GNOME dispose de plusieurs interfaces Git. L'interface 
-principale est basée sur le logiciel libre "cgit" (figure~\ref{figure_cgit} 
-page~\pageref{figure_cgit}), on peut y retrouver la plupare des projets GNOME 
-(\href{https://git.gnome.org/}{ici}). Pour créer un bug il faut passer par Bugzilla (section~\ref{bugzilla}).
+principale est basée sur le logiciel libre "cgit"
+%% (figure~\ref{figure_cgit} page~\pageref{figure_cgit})
+, on peut y retrouver la plupare des projets GNOME 
+(\href{https://git.gnome.org/}{ici}). Pour créer un bug il faut passer par Bugzilla
+(section~\ref{bugzilla}).
 
 \label{gitlab}
 GNOME a aussi mit en place un \href{https://gitlab.gnome.org/GNOME}{GitLab} 
-ou l'on peut trouver de nombreux projet. L'interface est plus moderne 
-et à la façon github nous pouvons créer des "PoolRequest" et la création 
-de bug est simplifiée car nous pouvons le créer sur la même interface
+ou l'on peut trouver de nombreux projet. L'interface est plus moderne,
+par example nous pouvons créer des "Pull Requests" comme sur github
+et le report de bug est sur l'interface gitlab, donc pas besoin de passer
+par le Bugzilla. Il est aussi possible de parcourire le code via l'interface
+web de gitlab.
 % David: Dernière phrase pas claire du tout, lapocompris
-(figure~\ref{figure_gitlab} page~\pageref{figure_gitlab}).
+% PA: Better ?
+%% (figure~\ref{figure_gitlab} page~\pageref{figure_gitlab}).
 
 \label{github}
 Il existe aussi un mirroir des repertoires git des projets 
 \href{https://github.com/GNOME}{GNOME sur GitHub}.
-% PA: TODO add screenshot ?
 
 \subsection{IRC}
 % PA: TODO Si quel qu'un a un peut utiliser l'irc de GNOME je veux bien qu'il écrive un truc
 
 \subsection{Newcomers}
-% PA: TODO ...
+% PA: TODO /!\ Partie importante !
 
 \newpage
 \section{GNOME-Music}
-% TODO GNOME-Music
+%% TODO GNOME-Music %%
 
 \newpage
 \section{GNOME Games}
 GNOME Games est une application permettant la gestion d'une
 bibliothèque vidéoludique. Elle est capable de s'interfacer avec de
 nombreux émulateurs.
-Au debut du projet Games étais disponible sur le git (section~\ref{cgit}) de GNOME, mais 
-depuis peut il a étais migret sur le gitlab (section~\ref{gitlab}) du projet GNOME.
+Au debut du projet Games étais disponible sur le git de GNOME, mais 
+depuis peut il a étais migret sur le gitlab du projet GNOME.
 
 \subsection{Architecture du projet}
 \subsubsection{Les projets assosié}
 Le projet s'appuie sur plusieur autre projets:
 \begin{itemize}
 \item retro-gtk : Développé pas le mainteneur de Games et utilisant les bibliotheques libretro,
-retro-gtk permet à Games de lancer les jeux retro
-\item libmanette : Libmannette et aussi développé pas le mainteneur de Games. Cette bibliotheque permet
-la gestion des manettes.
+retro-gtk permet à Games de lancer les jeux retro.
+\item libmanette : Libmannette et aussi développé pas le mainteneur de Games. Cette bibliotheque
+permet la gestion des manettes.
 % TODO Verifier les info pour libmanette et retro-gtk 
 \end{itemize}
 
@@ -258,7 +276,7 @@ cela étant en grande partie du à l'utilisation de librairies encore en
 ``Meson'' qui est un remplacement de ``./configure''.
 
 Ainsi il a été nécessaire de compiler certaines librairies, parmi
-lesquelles\footnote{Comme OS, nous avons utilisé Debian Sid}:
+lesquelles\footnote{Nous avons utilisé Debian Sid comme OS de dévellopement et de test}:
 \begin{itemize}
 \item retro-gtk
 \item libmanette
@@ -299,8 +317,8 @@ pas encore étais aprouvé. \newline
 
 \subsubsection{Mise à jour du fichier README.md}
 Le second patch (\href{http://bugzilla.gnome.org/show_bug.cgi?id=790454}{ici}) 
-que nous avons envoyer, est une mise a jour de la documentation de retro-gtk, 
-en effet retro-gtk et passais d'un système de compilation 'autotools' a un
+que nous avons envoyer, est une mise a jour de la documentation de retro-gtk.
+En effet retro-gtk et passais d'un système de compilation 'autotools' a un
 système avec le logiciel 'meson' et le compilateur 'ninja'.
 Nous avons donc mis a jour le fichier README.md en respectant la syntax
 'Marckdown', utilisé par github et gitlab par exemple.
