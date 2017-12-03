@@ -287,12 +287,45 @@ lesquelles\footnote{Nous avons utilisé Debian Sid comme OS de dévellopement et
 % + problème configuration : on ne peut pas configurer les touches du clavier dans les jeux
 % + code pas commenté : possibilité de le commenter pour qu'il soit plus clair et plus accessible
 
-\subsection{Bug reports}
+\subsection{Les bug reports}
 % Gautier : système de statuts -> aucune explication
 % Gautier : lecture de différents bug reports, et réécriture plus simple dans un fichier partagé pour effectuer un premier tri
+\subsubsection{Bug pulseaudio}
+Un bug avec pulseaudio a étais declaré pour Games, en effet le programme crashé
+quand le server pulseaudio est éteint et qu'on tente de lancer un jeux. Un
+message d'erreur est retrouner dans le terminal si le programme est lancer a
+partir d'un terminal.
+\begin{verbatim}
+Assertion 'p' failed at pulse/simple.c:273, function pa_simple_write(). 
+Aborting.
+\end{verbatim}
+Il a donc fallu reproduire le bug, pour cela il a fallu personnaliser notre
+configuration de pulseaudio pour qui ne se relance pas automatiquement.
+\begin{verbatim}
+/etc/pulse/client.conf:
+   autospawn = no
+\end{verbatim}
+Nous avons aussi utiliser un commande pour simuler le crash du server pulseaudio.
+\begin{verbatim}
+$ pulseaudio --kill
+\end{verbatim}
+A partir de là nous avons tracer le bug dans le code source. Le bug vener d'une
+fonction de la bibliotheque pusleaudio qui resevais une structure ``null'' en
+entré et passé par un assert qui met donc fin au programme avec le message
+évoqué présédement. Nous avons donc commencer à réflechire a une solution.
+La solution la plus simple étais de contourné la fonction qui provoque le crash
+avec un test de la valeur de la structure et un ``return'' prématuré dans la fonction
+appellente si la valeur est ``null'' pour bypassé le crash. \newline
+Nous avons aussi pen!cer a afficher un message a l'utilisateur et luis demandant
+si il voulais lancer quand même le jeux mais sans le son. \newline
+La premiere solution nous a parut trop simple et pas suffisament fiable, et la
+second un trop compliquer a mettre en oeuvre sur un projet que l'on découvrais juste.
+Nous avons donc désider de poster sur le rapport de bug notre analise du problème.
+\newline
+Finalement le mainteneur a opter pour la première solution et à corriger le bug.
 
-\subsection{Patch}
-% TODO PA: Cette partie a besion d'une relecture ;)
+\subsection{Nos patchs}
+% TODO PA: Cette partie a besion d'une relecture
 \subsubsection{Mise à jour du fichier HACKING}
 Le premier patch (\href{http://bugzilla.gnome.org/show_bug.cgi?id=788692}{ici}) 
 que nous avons envoyés, est en reponse à un bug report, il ajoute une 
@@ -304,12 +337,10 @@ même avec cet outil la compilation s'est revélée ardue. En effet
 le fonctionement de Builder a tendence à changer entre les versions et certaines
 actions comme un 'git pull' peuvent poser problème.
 Nous avons donc modifié le fichier HACKING du projet pour y ajouter des 
-instruction de compilation. Le projet utilise pour le moment le système 
-'autotools' pour sa compilation, mais il est prevu pour la version 2.30, 
-qu'il passe sous un system avec le logiciel 'meson' pour la
-configuration.
-%last sentence unclear
-\newline
+instruction de compilation. \newline
+Le projet utilise pour le moment le système 'autotools' pour sa configuration et
+sa compilation, mais pour la version 2.30 il set prevue qu'il passe à un system
+avec le logiciel 'meson' pour la configuration. \newline
 Nous avons donc nous même recontrés de nombreux problèmes de compilation,
 il nous a donc semblé important de donner des indications pour que les 
 prochaines personne qui voudrais contribuer ne sois pas freinées par un 
