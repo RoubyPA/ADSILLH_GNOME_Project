@@ -148,19 +148,19 @@ Il existe aussi un mirroir des repertoires git des projets
 % PA: TODO /!\ Partie importante !
 
 \newpage
-\section{GNOME-Music}
+\chapter{GNOME-Music}
 %% TODO GNOME-Music %%
 
 \newpage
-\section{GNOME Games}
+\chapter{GNOME Games}
 GNOME Games est une application permettant la gestion d'une
 bibliothèque vidéoludique. Elle est capable de s'interfacer avec de
 nombreux émulateurs.
 Au debut du projet Games étais disponible sur le git de GNOME, mais 
 depuis peut il a étais migret sur le gitlab du projet GNOME.
 
-\subsection{Architecture du projet}
-\subsubsection{Les projets assosié}
+\section{Architecture du projet}
+\subsection{Les projets assosié}
 Le projet s'appuie sur plusieur autre projets:
 \begin{itemize}
 \item retro-gtk : Développé pas le mainteneur de Games et utilisant les bibliotheques libretro,
@@ -179,7 +179,7 @@ permet la gestion des manettes.
 % PA:          | X
 %----------------------
 % result:   0  | 1
-\subsubsection{Les sources}
+\subsection{Les sources}
 Structure des sources du projet:
 \begin{itemize}
 \item data : contient toutes les données graphiques de l'application.
@@ -209,10 +209,10 @@ Structure des sources du projet:
 \item tools
 \end{itemize}
 
-\subsubsection{Hierarchy}
+\subsection{Hierarchy}
 
 
-\subsection{Le langage Vala}
+\section{Le langage Vala}
 % from: https://fr.wikipedia.org/wiki/Vala_(langage)
 Vala est un langage de programmation compilé, dont l'objectif est de
 fournir les bénéfices des langages de programmation modernes (comme la
@@ -230,7 +230,7 @@ bibliothèques C au moyen d'interfaces définies dans les fichiers
 Vapi. Des fichiers Vapi sont fournis avec Vala pour une grande partie
 de la plateforme GNOME, ainsi que pour d'autres bibliothèques.
 
-\subsection{Le format Flatpak}
+\section{Le format Flatpak}
 % from: https://fr.wikipedia.org/wiki/Flatpak
 Flatpak, nommé xdg-app jusqu’en mai 2016, est un système de
 virtualisation d’application pour les distributions GNU/Linux de
@@ -268,8 +268,8 @@ jour de dépendances ou de bibliothèques, puisque cette mise à jour ne
 le concernera pas. Il est dès lors assez simple de faire cohabiter
 plusieurs versions d'un même logiciel.
 
-\subsection{Découverte du logiciel}
-\subsubsection{Compilation}
+\section{Découverte du logiciel}
+\subsection{Compilation}
 Nous avons rencontrés de nombreux problèmes relatifs à la compilation,
 cela étant en grande partie du à l'utilisation de librairies encore en
 état de développement actif, ainsi qu'au système de configuration
@@ -289,11 +289,11 @@ lesquelles\footnote{Nous avons utilisé Debian Sid comme OS de dévellopement et
 % + code pas commenté : possibilité de le commenter pour qu'il soit plus clair et
 %   plus accessible
 
-\subsection{Les bug reports}
+\section{Les bug reports}
 % Gautier : système de statuts -> aucune explication
 % Gautier : lecture de différents bug reports, et réécriture plus simple dans un
 %           fichier partagé pour effectuer un premier tri
-\subsubsection{Bug pulseaudio}
+\subsection{Bug pulseaudio}
 Un bug avec pulseaudio a étais declaré pour Games, en effet le programme crashé
 quand le server pulseaudio est éteint et qu'on tente de lancer un jeux. Un
 message d'erreur est retrouner dans le terminal si le programme est lancer a
@@ -327,9 +327,9 @@ Nous avons donc désider de poster sur le rapport de bug notre analise du probl�
 \newline
 Finalement le mainteneur a opter pour la première solution et à corriger le bug.
 
-\subsection{Nos patchs}
+\section{Nos patchs}
 % TODO PA: Cette partie a besion d'une relecture
-\subsubsection{Mise à jour du fichier HACKING}
+\subsection{Mise à jour du fichier HACKING}
 Le premier patch que nous avons envoyés, est en reponse à un bug report
 (\href{http://bugzilla.gnome.org/show_bug.cgi?id=788692}{ici}), il ajoute une
 aide pour la compilation du projet. \newline
@@ -351,7 +351,7 @@ problème comme celui-ci.
 Il y a eu de nombreux ajustements demandés par le mainteneur et le patch n'a 
 pas encore étais aprouvé. \newline
 
-\subsubsection{Mise à jour du fichier README.md}
+\subsection{Mise à jour du fichier README.md}
 Le second patch (\href{http://bugzilla.gnome.org/show_bug.cgi?id=790454}{ici}) 
 que nous avons envoyés, est une mise à jour de la documentation de retro-gtk.
 En effet retro-gtk est passé d'un système de compilation 'autotools' à un
@@ -360,7 +360,7 @@ Nous avons donc mis à jour le fichier README.md en respectant la syntaxe
 'Marckdown', utilisé par github et gitlab par exemple.
 Le patch n'a pas encore été aprouvé. \newline
 
-\subsubsection{Retour à la collection avec les touches Alt+Left}
+\subsection{Retour à la collection avec les touches Alt+Left}
 
 % Annexe:
 \appendix
