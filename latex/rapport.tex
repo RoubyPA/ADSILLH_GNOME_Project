@@ -111,7 +111,7 @@ A noter qu'il existe quand même un classement de la semaine, disponible
 
 \subsection{Wiki}
 \label{wiki}
-GNOME dispose d'un \href{https://wiki.gnome.org/}{wiki} ou l'on peut retrouver 
+GNOME dispose d'un \href{https://wiki.gnome.org/}{wiki} où l'on peut retrouver 
 les documentations sur les différents projets.
 %% (figure~\ref{figure_wiki} page~\pageref{figure_wiki}).
 
@@ -127,14 +127,12 @@ principale est basée sur le logiciel libre "cgit"
 (section~\ref{bugzilla}).
 
 \label{gitlab}
-GNOME a aussi mit en place un \href{https://gitlab.gnome.org/GNOME}{GitLab} 
+GNOME a aussi mis en place un \href{https://gitlab.gnome.org/GNOME}{GitLab} 
 ou l'on peut trouver de nombreux projet. L'interface est plus moderne,
-par example nous pouvons créer des "Pull Requests" comme sur github
+par exemple nous pouvons créer des "Pull Requests" comme sur github
 et le report de bug est sur l'interface gitlab, donc pas besoin de passer
 par le Bugzilla. Il est aussi possible de parcourire le code via l'interface
 web de gitlab.
-% David: Dernière phrase pas claire du tout, lapocompris
-% PA: Better ?
 %% (figure~\ref{figure_gitlab} page~\pageref{figure_gitlab}).
 
 \label{github}
@@ -143,7 +141,7 @@ Il existe aussi un mirroir des repertoires git des projets
 
 \subsection{IRC}
 Le projet GNOME dispose aussi d'un chat irc avec de nombreux channel, dont voici quelque
-examples :
+exemples :
 \begin{itemize}
 \item \#gnome-hacker : Pour les dicutions sur le développement de GNOME
 \item \#newcomers : Fait pour les nouveaux contributeur au projet
@@ -157,6 +155,7 @@ examples :
 \newpage
 \chapter{GNOME-Music}
 %% TODO GNOME-Music %%
+% David: Fuck them !
 
 \newpage
 \chapter{GNOME Games}
@@ -164,7 +163,7 @@ GNOME Games est une application permettant la gestion d'une
 bibliothèque vidéoludique. Elle est capable de s'interfacer avec de
 nombreux émulateurs.
 Au debut du projet Games étais disponible sur le git de GNOME, mais 
-depuis peut il a étais migret sur le gitlab du projet GNOME.
+depuis peut il a été migré sur le gitlab du projet GNOME.
 
 \section{Architecture du projet}
 \subsection{Les projets assosié}
@@ -181,7 +180,7 @@ permet la gestion des manettes.
 % David: What is it ?
 % TODO Sondage
 %          Oui | Non
-% David:     x |
+% David:     x | x
 % Gautier:     |
 % PA:          | X
 %----------------------
@@ -215,9 +214,6 @@ Structure des sources du projet:
 \end{itemize}
 \item tools
 \end{itemize}
-
-\subsection{Hierarchy}
-
 
 \section{Le langage Vala}
 % from: https://fr.wikipedia.org/wiki/Vala_(langage)
@@ -301,27 +297,29 @@ lesquelles\footnote{Nous avons utilisé Debian Sid comme OS de dévellopement et
 % Gautier : lecture de différents bug reports, et réécriture plus simple dans un
 %           fichier partagé pour effectuer un premier tri
 \subsection{Bug pulseaudio}
-Un bug avec pulseaudio a étais declaré pour Games, en effet le programme crashé
-quand le server pulseaudio est éteint et qu'on tente de lancer un jeux. Un
-message d'erreur est retrouner dans le terminal si le programme est lancer a
-partir d'un terminal.
+Un bug avec pulseaudio était declaré pour Games, en effet le programme crashait
+quand le server pulseaudio était éteint et que l'on tentait de lancer
+un jeu.
+
+Le terminal retournait le message d'erreur suivant:
 \begin{verbatim}
 Assertion 'p' failed at pulse/simple.c:273, function pa_simple_write(). 
 Aborting.
 \end{verbatim}
-Il a donc fallu reproduire le bug, pour cela il a fallu personnaliser notre
-configuration de pulseaudio pour qui ne se relance pas automatiquement.
+Il a donc fallu reproduire le bug, pour cela nous avons personnalisés notre
+configuration pulseaudio pour qu'il ne se relance pas automatiquement.
 \begin{verbatim}
 /etc/pulse/client.conf:
    autospawn = no
 \end{verbatim}
-Nous avons aussi utiliser un commande pour simuler le crash du server pulseaudio.
+Nous avons aussi utilisés une commande pour simuler le crash du server pulseaudio.
 \begin{verbatim}
 $ pulseaudio --kill
 \end{verbatim}
-A partir de là nous avons tracer le bug dans le code source. Le bug vener d'une
-fonction de la bibliotheque pusleaudio qui resevais une structure ``null'' en
-entré et passé par un assert qui met donc fin au programme avec le message
+% David: correction pas finie
+A partir de là nous avons tracé le bug dans le code source. Le bug venait d'une
+fonction de la bibliotheque pusleaudio qui reservais une structure ``null'' en
+entrée et passait par un assert qui met donc fin au programme avec le message
 évoqué présédement. Nous avons donc commencer à réflechire a une solution.
 La solution la plus simple étais de contourné la fonction qui provoque le crash
 avec un test de la valeur de la structure et un ``return'' prématuré dans la fonction
@@ -332,7 +330,8 @@ La premiere solution nous a parut trop simple et pas suffisament fiable, et la
 second un trop compliquer a mettre en oeuvre sur un projet que l'on découvrais juste.
 Nous avons donc désider de poster sur le rapport de bug notre analise du problème.
 \newline
-Finalement le mainteneur a opter pour la première solution et à corriger le bug.
+Finalement le mainteneur a opter pour la première solution et à
+corriger le bug.
 
 \section{Nos patchs}
 % TODO PA: Cette partie a besion d'une relecture
