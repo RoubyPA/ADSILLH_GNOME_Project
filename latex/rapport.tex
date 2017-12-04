@@ -26,7 +26,7 @@
 \maketitle
 
 \begin{abstract}
-Ce document présente les différents contributions effectués dans le cadre du projet sous licence libre de la licence ADSILLH.
+Ce document présente les différentes contributions effectuées dans le cadre du projet sous licence libre de la licence ADSILLH.
 
 \end{abstract}
 
@@ -40,11 +40,12 @@ L'objectif est de former des techniciens en informatique de haut
 niveau en administration des systèmes d'information, polyvalents et
 aptes à effectuer l'intégration de composants logiciels libres
 appartenant à de nombreux domaines fonctionnels:
-
-systèmes d'exploitation
-bases de données
-serveurs web
-téléphonie logicielle
+\begin{itemize}
+\item systèmes d'exploitation
+\item bases de données
+\item serveurs web
+\item téléphonie logicielle
+\end{itemize}
 
 alliant ainsi de solides compétences d'administration à des capacités
 de développement, en partant des couches les plus basses jusqu'aux
@@ -63,8 +64,9 @@ du logiciel libre.
 
 \chapter{Le projet GNOME}
 % from: https://fr.wikipedia.org/wiki/GNOME
+% Gautier : j'ai enlevé le terme ``environnement de bureau livre convivial'', ce n'est pas un terme objectif
 GNOME, acronyme de GNU Network Object Model Environment, est un
-environnement de bureau libre convivial dont l'objectif est de rendre
+environnement de bureau libre  dont l'objectif est de rendre
 accessible l'utilisation du système d'exploitation GNU au plus grand
 nombre ; cette interface est actuellement populaire sur les systèmes
 GNU/Linux et fonctionne également sur la plupart des systèmes de type
@@ -80,7 +82,7 @@ en premier lieu ceux travaillant pour Red Hat.
 \subsection{Bugzilla}
 \label{bugzilla}
 % from: https://fr.wikipedia.org/wiki/Bugzilla
-Bugzilla est une solution de gestion de bug, distribuée sous
+Bugzilla est une solution de gestion de bugs, distribuée sous
 % form: https://fr.wikipedia.org/wiki/Double_licence
 tri-licence\footnote{Tri-licence: Le concept de licence multiple
   est de proposer un travail non pas sous une licence unique, mais
@@ -99,11 +101,13 @@ la gestion des bugs dans les différents projets.
 %% (figure~\ref{figure_bugzilla} page~\pageref{figure_bugzilla})
 \newline
 % from: https://bugzilla.gnome.org/page.cgi?id=points.html
+
+%% Gautier : je pense qu'on devrait enlever cette partie, elle m'a l'air superflue
 Bugzilla intègre aussi une fonctionnalité de "score"
 %% (figure~\ref{figure_bugzilla_score} page~\pageref{figure_bugzilla_score})
 , dont le but est a l'origine d'avoir une idée 
 aproximative de l'activité d'une personne  sur le bugzilla, et donc 
-des personnes qui sont le plus experimenté pour aidée les autres 
+des personnes qui sont le plus experimentées pour aider les autres 
 utilisateurs. Mais ce dispositif s'est revelé peu efficace. Le
 score est donc plus une fonctionnalite un peut fun qu'un vrai outils.
 A noter qu'il existe quand même un classement de la semaine, disponible 
@@ -122,16 +126,16 @@ les documentations sur les différents projets.
 Le projet GNOME dispose de plusieurs interfaces Git. L'interface 
 principale est basée sur le logiciel libre "cgit"
 %% (figure~\ref{figure_cgit} page~\pageref{figure_cgit})
-, on peut y retrouver la plupare des projets GNOME 
+, on peut y retrouver la plupart des projets GNOME 
 (\href{https://git.gnome.org/}{ici}). Pour créer un bug il faut passer par Bugzilla
 (section~\ref{bugzilla}).
 
 \label{gitlab}
 GNOME a aussi mis en place un \href{https://gitlab.gnome.org/GNOME}{GitLab} 
-ou l'on peut trouver de nombreux projet. L'interface est plus moderne,
+ou l'on peut trouver de nombreux projets. L'interface est plus moderne,
 par exemple nous pouvons créer des "Pull Requests" comme sur github
 et le report de bug est sur l'interface gitlab, donc pas besoin de passer
-par le Bugzilla. Il est aussi possible de parcourire le code via l'interface
+par le Bugzilla. Il est aussi possible de parcourir le code via l'interface
 web de gitlab.
 %% (figure~\ref{figure_gitlab} page~\pageref{figure_gitlab}).
 
@@ -143,10 +147,10 @@ Il existe aussi un mirroir des repertoires git des projets
 Le projet GNOME dispose aussi d'un chat irc (\href{irc.gnome.org}{irc.gnome.org})
 avec de nombreux channel, dont voici quelque examples :
 \begin{itemize}
-\item \#gnome-hacker : Pour les dicutions sur le développement de GNOME
-\item \#newcomers : Fait pour les nouveaux contributeur au projet
-\item \#gnome-games : Pour les discutions autour du projet GNOME-Games
-\item \#vala : Spésifique pour le language vala
+\item \#gnome-hacker : Pour les dicussions sur le développement de GNOME ;
+\item \#newcomers : Pour les nouveaux contributeurs au projet ;
+\item \#gnome-games : Pour les discutions autour du projet GNOME-Games ;
+\item \#vala : Spécifique pour le language vala.
 \end{itemize}
 
 \subsection{Newcomers}
@@ -162,16 +166,16 @@ avec de nombreux channel, dont voici quelque examples :
 GNOME Games est une application permettant la gestion d'une
 bibliothèque vidéoludique. Elle est capable de s'interfacer avec de
 nombreux émulateurs.
-Au debut du projet Games étais disponible sur le git de GNOME, mais 
-depuis peut il a été migré sur le gitlab du projet GNOME.
+Au debut du projet, Games était disponible sur le git de GNOME, mais 
+depuis peu il a été migré sur le gitlab du projet GNOME.
 
 \section{Architecture du projet}
-\subsection{Les projets assosié}
+\subsection{Les projets associés}
 Le projet s'appuie sur plusieur autre projets:
 \begin{itemize}
-\item retro-gtk : Développé pas le mainteneur de Games et utilisant les bibliotheques libretro,
+\item retro-gtk : Développé pas le mainteneur de Games et utilisant les bibliothèques libretro,
 retro-gtk permet à Games de lancer les jeux retro.
-\item libmanette : Libmannette et aussi développé pas le mainteneur de Games. Cette bibliotheque
+\item libmanette : Libmannette est aussi développé par le mainteneur de Games. Cette bibliothèque
 permet la gestion des manettes.
 % TODO Verifier les info pour libmanette et retro-gtk 
 \end{itemize}
@@ -181,7 +185,7 @@ permet la gestion des manettes.
 % TODO Sondage
 %          Oui | Non
 % David:     x | x
-% Gautier:     |
+% Gautier:     | X
 % PA:          | X
 %----------------------
 % result:   0  | 1
@@ -274,7 +278,7 @@ plusieurs versions d'un même logiciel.
 \section{Découverte du logiciel}
 \subsection{Compilation}
 Nous avons rencontrés de nombreux problèmes relatifs à la compilation,
-cela étant en grande partie du à l'utilisation de librairies encore en
+cela étant en grande partie dû à l'utilisation de bibliothèques encore en
 état de développement actif, ainsi qu'au système de configuration
 ``Meson'' qui est un remplacement de ``./configure''.
 
@@ -318,44 +322,44 @@ $ pulseaudio --kill
 \end{verbatim}
 % David: correction pas finie
 A partir de là nous avons tracé le bug dans le code source. Le bug venait d'une
-fonction de la bibliotheque pusleaudio qui reservais une structure ``null'' en
+fonction de la bibliothèque pusleaudio qui reservait une structure ``null'' en
 entrée et passait par un assert qui met donc fin au programme avec le message
-évoqué présédement. Nous avons donc commencer à réflechire a une solution.
-La solution la plus simple étais de contourné la fonction qui provoque le crash
+évoqué précédemment. Nous avons donc commencé à réflechir à une solution.
+La solution la plus simple était de contourner la fonction qui provoque le crash
 avec un test de la valeur de la structure et un ``return'' prématuré dans la fonction
-appellente si la valeur est ``null'' pour bypassé le crash. \newline
-Nous avons aussi pen!cer a afficher un message a l'utilisateur et luis demandant
-si il voulais lancer quand même le jeux mais sans le son. \newline
-La premiere solution nous a parut trop simple et pas suffisament fiable, et la
-second un trop compliquer a mettre en oeuvre sur un projet que l'on découvrais juste.
-Nous avons donc désider de poster sur le rapport de bug notre analise du problème.
+appelante si la valeur est ``null'' pour bypasser le crash. \newline
+Nous avons aussi pensé à afficher un message à l'utilisateur et lui demander
+s'il voulait lancer quand même le jeu mais sans le son. \newline
+La première solution nous a paru trop simple et pas suffisament fiable, et la
+seconde un peu trop compliqué à mettre en oeuvre sur un projet que l'on découvrait juste.
+Nous avons donc décidé de poster sur le rapport de bug notre analyse du problème.
 \newline
-Finalement le mainteneur a opter pour la première solution et à
-corriger le bug.
+Finalement le mainteneur a opté pour la première solution et a
+corrigé le bug.
 
 \section{Nos patchs}
 % TODO PA: Cette partie a besion d'une relecture
 \subsection{Mise à jour du fichier HACKING}
-Le premier patch que nous avons envoyés, est en reponse à un bug report
+Le premier patch que nous avons envoyé est en réponse à un bug report
 (\href{http://bugzilla.gnome.org/show_bug.cgi?id=788692}{ici}), il ajoute une
 aide pour la compilation du projet. \newline
 Il n'y avait aucune aide ou information dans la documentation sur la compilation
 du projet. Étant nouveaux dans le projet GNOME nous n'avions pas connaissance de 
 GNOME-Builder qui permet assez simplement de construire le projet. Mais
 même avec cet outil la compilation s'est revélée ardue. En effet 
-le fonctionement de Builder a tendence à changer entre les versions et certaines
+le fonctionement de Builder a tendance à changer entre les versions et certaines
 actions comme un ``git pull'' peuvent poser problème.
 Nous avons donc modifié le fichier HACKING du projet pour y ajouter des 
 instruction de compilation. \newline
 Le projet utilise pour le moment le système ``autotools'' pour sa configuration et 
-sa compilation, mais pour la version 2.30 il set prevue qu'il passe à un system
+sa compilation, mais pour la version 2.30 il est prevu qu'il passe à un système
 avec le logiciel ``meson'' pour la configuration. \newline
-Nous avons donc nous même recontrés de nombreux problèmes de compilation,
+Nous avons donc nous-même rencontrés de nombreux problèmes de compilation,
 il nous a donc semblé important de donner des indications pour que les 
-prochaines personne qui voudrais contribuer ne sois pas freinées par un 
+prochaines personne qui voudraient contribuer ne soient pas freinées par un 
 problème comme celui-ci.
 Il y a eu de nombreux ajustements demandés par le mainteneur et le patch n'a 
-pas encore étais aprouvé. \newline
+pas encore été aprouvé. \newline
 
 \subsection{Mise à jour du fichier README.md}
 Le second patch (\href{http://bugzilla.gnome.org/show_bug.cgi?id=790454}{ici}) 
@@ -370,7 +374,7 @@ Le patch n'a pas encore été aprouvé. \newline
 Le but de ce patch est de lier un évent à une combinaison de touches
 (en l'occurence Alt+Left).
 
-La modification a consisté à modifier un fichier, celui se trouvait
+La modification a consisté à modifier un fichier, celui-ci se trouvait
 dans le répertoire /src/ui et se nommait application-window.vala .
 
 Une fonction permettant de retourner à la collection existait déjà:
@@ -388,31 +392,31 @@ Une fonction qui liait l'appui de certaines touches à des événements
 était aussi déjà présente:
 
 \begin{minted}[breaklines]{vala}
-  private bool handle_display_key_event (Gdk.EventKey event) {
-    if (ui_state != UiState.DISPLAY)
+  private bool handle\_display\_key\_event (Gdk.EventKey event) {
+    if (ui\_state != UiState.DISPLAY)
     return false;
 
-    var default_modifiers = Gtk.accelerator_get_default_mod_mask ();
+    var default\_modifiers = Gtk.accelerator\_get\_default\_mod\_mask ();
 
     if ((event.keyval == Gdk.Key.f || event.keyval == Gdk.Key.F) &&
-    (event.state & default_modifiers) == Gdk.ModifierType.CONTROL_MASK &&
-    display_header_bar.can_fullscreen) {
-      is_fullscreen = !is_fullscreen;
-      settings.set_boolean ("fullscreen", is_fullscreen);
+    (event.state & default\_modifiers) == Gdk.ModifierType.CONTROL\_MASK &&
+    display\_header\_bar.can\_fullscreen) {
+      is\_fullscreen = !is\_fullscreen;
+      settings.set\_boolean ("fullscreen", is\_fullscreen);
 
       return true;
     }
 
-    if (event.keyval == Gdk.Key.F11 && display_header_bar.can_fullscreen) {
-      is_fullscreen = !is_fullscreen;
-      settings.set_boolean ("fullscreen", is_fullscreen);
+    if (event.keyval == Gdk.Key.F11 && display\_header\_bar.can\_fullscreen) {
+      is\_fullscreen = !is\_fullscreen;
+      settings.set\_boolean ("fullscreen", is\_fullscreen);
 
       return true;
     }
 
-    if (event.keyval == Gdk.Key.Escape && display_header_bar.can_fullscreen) {
-      is_fullscreen = false;
-      settings.set_boolean ("fullscreen", false);
+    if (event.keyval == Gdk.Key.Escape && display\_header\_bar.can\_fullscreen) {
+      is\_fullscreen = false;
+      settings.set\_boolean ("fullscreen", false);
 
       return true;
     }
@@ -430,7 +434,7 @@ Voici le code correspondant à notre patch:
 
 \begin{minted}[breaklines]{vala}
   if (event.keyval == Gdk.Key.Left){			
-    on_display_back ();
+    on\_display_back ();
     
     return true;
   }
@@ -446,9 +450,9 @@ la vérification de la pression sur la touche Alt:
 
 \begin{minted}[breaklines]{vala}
   if (((event.state & default_modifiers) == Gdk.ModifierType.MOD1_MASK) &&
-  (((get_direction () == Gtk.TextDirection.LTR) && event.keyval == Gdk.Key.Left) ||
-  ((get_direction () == Gtk.TextDirection.RTL) && event.keyval == Gdk.Key.Right))) {
-    on_display_back ();
+  (((get\_direction () == Gtk.TextDirection.LTR) && event.keyval == Gdk.Key.Left) ||
+  ((get\_direction () == Gtk.TextDirection.RTL) && event.keyval == Gdk.Key.Right))) {
+    on\_display_back ();
 
     return true;
   }
