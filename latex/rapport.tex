@@ -302,20 +302,19 @@ quand le server pulseaudio était éteint et que l'on tentait de lancer
 un jeu.
 
 Le terminal retournait le message d'erreur suivant:
-\begin{verbatim}
-Assertion 'p' failed at pulse/simple.c:273, function pa_simple_write(). 
-Aborting.
-\end{verbatim}
+\begin{minted}[breaklines]{console}
+Assertion 'p' failed at pulse/simple.c:273, function pa_simple_write(). Aborting.
+\end{minted}
 Il a donc fallu reproduire le bug, pour cela nous avons personnalisés notre
 configuration pulseaudio pour qu'il ne se relance pas automatiquement.
-\begin{verbatim}
+\begin{minted}[breaklines]{console}
 /etc/pulse/client.conf:
    autospawn = no
-\end{verbatim}
+\end{minted}
 Nous avons aussi utilisés une commande pour simuler le crash du server pulseaudio.
-\begin{verbatim}
+\begin{minted}[breaklines]{console}
 $ pulseaudio --kill
-\end{verbatim}
+\end{minted}
 % David: correction pas finie
 A partir de là nous avons tracé le bug dans le code source. Le bug venait d'une
 fonction de la bibliotheque pusleaudio qui reservais une structure ``null'' en
