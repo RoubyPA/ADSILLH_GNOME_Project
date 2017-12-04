@@ -367,6 +367,95 @@ Nous avons donc mis à jour le fichier README.md en respectant la syntaxe
 Le patch n'a pas encore été aprouvé. \newline
 
 \subsection{Retour à la collection avec les touches Alt+Left}
+Le but de ce patch est de lier un évent à une combinaison de touches
+(en l'occurence Alt+Left).
+
+La modification a consisté à modifier un fichier, celui se trouvait
+dans le répertoire /src/ui et se nommait application-window.vala .
+
+Une fonction permettant de retourner à la collection existait déjà:
+
+\begin{minted}[breaklines]{vala}
+private void on_display_back () {
+  if (quit_game ())
+  ui_state = UiState.COLLECTION;
+
+  uninhibit (Gtk.ApplicationInhibitFlags.IDLE | Gtk.ApplicationInhibitFlags.LOGOUT);
+}
+\end{minted}
+
+Une fonction qui liait l'appui de certaines touches à des événements
+était aussi déjà présente:
+
+\begin{minted}[breaklines]{vala}
+  private bool handle_display_key_event (Gdk.EventKey event) {
+    if (ui_state != UiState.DISPLAY)
+    return false;
+
+    var default_modifiers = Gtk.accelerator_get_default_mod_mask ();
+
+    if ((event.keyval == Gdk.Key.f || event.keyval == Gdk.Key.F) &&
+    (event.state & default_modifiers) == Gdk.ModifierType.CONTROL_MASK &&
+    display_header_bar.can_fullscreen) {
+      is_fullscreen = !is_fullscreen;
+      settings.set_boolean ("fullscreen", is_fullscreen);
+
+      return true;
+    }
+
+    if (event.keyval == Gdk.Key.F11 && display_header_bar.can_fullscreen) {
+      is_fullscreen = !is_fullscreen;
+      settings.set_boolean ("fullscreen", is_fullscreen);
+
+      return true;
+    }
+
+    if (event.keyval == Gdk.Key.Escape && display_header_bar.can_fullscreen) {
+      is_fullscreen = false;
+      settings.set_boolean ("fullscreen", false);
+
+      return true;
+    }
+    
+    return false;
+  }
+\end{minted}
+
+C'est en prenant cet extrait pour exemple que nous avons ajouté une
+condition dédiée à Alt+Left, il nous a été necessaire de chercher dans
+la documentation du langage Vala pour trouver la X (modifier key ?)
+correspondante.
+
+Voici le code correspondant à notre patch:
+
+\begin{minted}[breaklines]{vala}
+  if (event.keyval == Gdk.Key.Left){			
+    on_display_back ();
+    
+    return true;
+  }
+\end{minted}
+
+Puis en effectuant des tests, nous nous sommes rendus compte que la
+condition validant l'appui sur la touche Alt n'était pas necessaire;
+pourtant, le déclenchement de l'évent necessitait toujours un appui
+physique sur Alt.
+
+Par la suite, le mainteneur à décidé de réécrire le patch pour ajouter
+la vérification de la pression sur la touche Alt:
+
+\begin{minted}[breaklines]{vala}
+  if (((event.state & default_modifiers) == Gdk.ModifierType.MOD1_MASK) &&
+  (((get_direction () == Gtk.TextDirection.LTR) && event.keyval == Gdk.Key.Left) ||
+  ((get_direction () == Gtk.TextDirection.RTL) && event.keyval == Gdk.Key.Right))) {
+    on_display_back ();
+
+    return true;
+  }
+\end{minted}
+
+
+
 
 % Annexe:
 \appendix
