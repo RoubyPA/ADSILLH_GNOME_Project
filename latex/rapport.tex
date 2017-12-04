@@ -100,17 +100,17 @@ MPL\footnote{MPL: Mozilla Public License (source:
 GNOME a mis en place un \href{https://bugzilla.gnome.org}{bugzilla} pour 
 la gestion des bugs dans les différents projets.
 %% (figure~\ref{figure_bugzilla} page~\pageref{figure_bugzilla})
-\newline
-% from: https://bugzilla.gnome.org/page.cgi?id=points.html
-Bugzilla intègre aussi une fonctionnalité de "score"
-%% (figure~\ref{figure_bugzilla_score} page~\pageref{figure_bugzilla_score})
-, dont le but est a l'origine d'avoir une idée 
-aproximative de l'activité d'une personne  sur le bugzilla, et donc 
-des personnes qui sont le plus experimenté pour aidée les autres 
-utilisateurs. Mais ce dispositif s'est revelé peu efficace. Le
-score est donc plus une fonctionnalite un peut fun qu'un vrai outils.
-A noter qu'il existe quand même un classement de la semaine, disponible 
-\href{https://bugzilla.gnome.org/page.cgi?id=weekly-bug-summary.html}{ici}.
+%% \newline
+%% % from: https://bugzilla.gnome.org/page.cgi?id=points.html
+%% Bugzilla intègre aussi une fonctionnalité de "score"
+%% %% (figure~\ref{figure_bugzilla_score} page~\pageref{figure_bugzilla_score})
+%% , dont le but est a l'origine d'avoir une idée 
+%% aproximative de l'activité d'une personne  sur le bugzilla, et donc 
+%% des personnes qui sont le plus experimenté pour aidée les autres 
+%% utilisateurs. Mais ce dispositif s'est revelé peu efficace. Le
+%% score est donc plus une fonctionnalite un peut fun qu'un vrai outils.
+%% A noter qu'il existe quand même un classement de la semaine, disponible 
+%% \href{https://bugzilla.gnome.org/page.cgi?id=weekly-bug-summary.html}{ici}.
 
 \subsection{Wiki}
 \label{wiki}
@@ -151,6 +151,10 @@ avec de nombreux channel, dont voici quelque examples :
 \item \#gnome-games : Pour les discutions autour du projet GNOME-Games
 \item \#vala : Spésifique pour le language vala
 \end{itemize}
+
+\subsection{Mailing lists}
+Des mailing lists sont aussi à notre disposition pour se tenir informer.
+% PA: TODO Useful ?
 
 \subsection{Newcomers}
 Le projet GNOME met à disposition sur son site un guide pour les nouveaux
@@ -207,44 +211,44 @@ permet la gestion des manettes.
 % TODO Verifier les info pour libmanette et retro-gtk 
 \end{itemize}
 
-% PA: On garde sa ?
-% David: What is it ?
-% TODO Sondage
-%          Oui | Non
-% David:     x | x
-% Gautier:     |
-% PA:          | X
-%----------------------
-% result:   0  | 1
-\subsection{Les sources}
-Structure des sources du projet:
-\begin{itemize}
-\item data : contient toutes les données graphiques de l'application.
-\item flatpak : contient tous les fichiers nécessaires à l'exécution de Flatpack.
-\item plugins
-\begin{itemize}
-\item desktop : contient les fichiers s'occupant de la gestion du bureau.
-\item dreamcast, game-cube, playstation... :  contient les fichiers gérant l'émulation des différentes consoles.
-\end{itemize}
-\item po
-\item src
-\begin{itemize}
-\item command
-\item core
-\item database
-\item dummy
-\item event
-\item gameinfo
-\item gamepad
-\item generic
-\item grilo
-\item retro
-\item tracker
-\item ui : contient les fichiers qui gèrent l'interface graphique.
-\item utils
-\end{itemize}
-\item tools
-\end{itemize}
+%% % PA: On garde sa ?
+%% % David: What is it ?
+%% % TODO Sondage
+%% %          Oui | Non
+%% % David:     x | x
+%% % Gautier:     |
+%% % PA:          | X
+%% %----------------------
+%% % result:   0  | 1
+%% \subsection{Les sources}
+%% Structure des sources du projet:
+%% \begin{itemize}
+%% \item data : contient toutes les données graphiques de l'application.
+%% \item flatpak : contient tous les fichiers nécessaires à l'exécution de Flatpack.
+%% \item plugins
+%% \begin{itemize}
+%% \item desktop : contient les fichiers s'occupant de la gestion du bureau.
+%% \item dreamcast, game-cube, playstation... :  contient les fichiers gérant l'émulation des différentes consoles.
+%% \end{itemize}
+%% \item po
+%% \item src
+%% \begin{itemize}
+%% \item command
+%% \item core
+%% \item database
+%% \item dummy
+%% \item event
+%% \item gameinfo
+%% \item gamepad
+%% \item generic
+%% \item grilo
+%% \item retro
+%% \item tracker
+%% \item ui : contient les fichiers qui gèrent l'interface graphique.
+%% \item utils
+%% \end{itemize}
+%% \item tools
+%% \end{itemize}
 
 \section{Le langage Vala}
 % from: https://fr.wikipedia.org/wiki/Vala_(langage)
@@ -333,20 +337,19 @@ quand le server pulseaudio était éteint et que l'on tentait de lancer
 un jeu.
 
 Le terminal retournait le message d'erreur suivant:
-\begin{verbatim}
-Assertion 'p' failed at pulse/simple.c:273, function pa_simple_write(). 
-Aborting.
-\end{verbatim}
+\begin{minted}[breaklines]{console}
+Assertion 'p' failed at pulse/simple.c:273, function pa_simple_write(). Aborting.
+\end{minted}
 Il a donc fallu reproduire le bug, pour cela nous avons personnalisés notre
 configuration pulseaudio pour qu'il ne se relance pas automatiquement.
-\begin{verbatim}
+\begin{minted}[breaklines]{console}
 /etc/pulse/client.conf:
    autospawn = no
-\end{verbatim}
+\end{minted}
 Nous avons aussi utilisés une commande pour simuler le crash du server pulseaudio.
-\begin{verbatim}
+\begin{minted}[breaklines]{console}
 $ pulseaudio --kill
-\end{verbatim}
+\end{minted}
 % David: correction pas finie
 A partir de là nous avons tracé le bug dans le code source. Le bug venait d'une
 fonction de la bibliotheque pusleaudio qui reservais une structure ``null'' en
@@ -363,6 +366,7 @@ Nous avons donc désider de poster sur le rapport de bug notre analise du probl�
 \newline
 Finalement le mainteneur a opter pour la première solution et à
 corriger le bug.
+% PA: add part of code, and cmd to find bug in sources
 
 \section{Nos patchs}
 % TODO PA: Cette partie a besion d'une relecture
