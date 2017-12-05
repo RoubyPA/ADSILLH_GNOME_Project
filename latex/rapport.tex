@@ -515,9 +515,9 @@ dans le répertoire /src/ui et se nommait application-window.vala .
 Une fonction permettant de retourner à la collection existait déjà:
 
 \begin{minted}[breaklines]{vala}
-private void on\_display\_back () {
-  if (quit\_game ())
-  ui\_state = UiState.COLLECTION;
+private void on_display_back () {
+  if (quit_game ())
+  ui_state = UiState.COLLECTION;
 
   uninhibit (Gtk.ApplicationInhibitFlags.IDLE | Gtk.ApplicationInhibitFlags.LOGOUT);
 }
@@ -527,31 +527,31 @@ Une fonction qui liait l'appui de certaines touches à des événements
 était aussi déjà présente:
 
 \begin{minted}[breaklines]{vala}
-  private bool handle\_display\_key\_event (Gdk.EventKey event) {
-    if (ui\_state != UiState.DISPLAY)
+  private bool handle_display_key_event (Gdk.EventKey event) {
+    if (ui_state != UiState.DISPLAY)
     return false;
 
-    var default\_modifiers = Gtk.accelerator\_get\_default\_mod\_mask ();
+    var default_modifiers = Gtk.accelerator_get_default_mod_mask ();
 
     if ((event.keyval == Gdk.Key.f || event.keyval == Gdk.Key.F) &&
-    (event.state & default\_modifiers) == Gdk.ModifierType.CONTROL\_MASK &&
-    display\_header\_bar.can\_fullscreen) {
-      is\_fullscreen = !is\_fullscreen;
-      settings.set\_boolean ("fullscreen", is\_fullscreen);
+    (event.state & default_modifiers) == Gdk.ModifierType.CONTROL_MASK &&
+    display_header_bar.can_fullscreen) {
+      is_fullscreen = !is_fullscreen;
+      settings.set_boolean ("fullscreen", is_fullscreen);
 
       return true;
     }
 
-    if (event.keyval == Gdk.Key.F11 && display\_header\_bar.can\_fullscreen) {
-      is\_fullscreen = !is\_fullscreen;
-      settings.set\_boolean ("fullscreen", is\_fullscreen);
+    if (event.keyval == Gdk.Key.F11 && display_header_bar.can_fullscreen) {
+      is_fullscreen = !is_fullscreen;
+      settings.set_boolean ("fullscreen", is_fullscreen);
 
       return true;
     }
 
-    if (event.keyval == Gdk.Key.Escape && display\_header\_bar.can\_fullscreen) {
-      is\_fullscreen = false;
-      settings.set\_boolean ("fullscreen", false);
+    if (event.keyval == Gdk.Key.Escape && display_header_bar.can_fullscreen) {
+      is_fullscreen = false;
+      settings.set_boolean ("fullscreen", false);
 
       return true;
     }
@@ -569,7 +569,7 @@ Voici le code correspondant à notre patch:
 
 \begin{minted}[breaklines]{vala}
   if (event.keyval == Gdk.Key.Left){			
-    on\_display\_back ();
+    on_display_back ();
     
     return true;
   }
@@ -584,20 +584,17 @@ Par la suite, le mainteneur à décidé de réécrire le patch pour ajouter
 la vérification de la pression sur la touche Alt:
 
 \begin{minted}[breaklines]{vala}
-  if (((event.state & default\_modifiers) == Gdk.ModifierType.MOD1\_MASK) &&
-  (((get\_direction () == Gtk.TextDirection.LTR) && event.keyval == Gdk.Key.Left) ||
-  ((get\_direction () == Gtk.TextDirection.RTL) && event.keyval == Gdk.Key.Right))) {
-    on\_display_back ();
+  if (((event.state & default_modifiers) == Gdk.ModifierType.MOD1_MASK) &&
+  (((get_direction () == Gtk.TextDirection.LTR) && event.keyval == Gdk.Key.Left) ||
+  ((get_direction () == Gtk.TextDirection.RTL) && event.keyval == Gdk.Key.Right))) {
+    on_display_back ();
 
     return true;
   }
 \end{minted}
 
-
-
-
-% Annexe:
-\appendix
+%% % Annexe:
+%% \appendix
 %% \chapter{GNOME en images}
 
 %% \begin{figure}[p]
@@ -630,7 +627,7 @@ la vérification de la pression sur la touche Alt:
 %%   \includegraphics[width=15cm]{images/gitlab_gnome_org.png}
 %% \end{figure}
 
-\chapter{Patchs} 
-% PA: Utile ? 
+%% \chapter{Patchs} 
+%% % PA: Utile ? 
 
 \end{document}
