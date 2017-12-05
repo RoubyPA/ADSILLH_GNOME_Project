@@ -35,7 +35,7 @@
 Ce document présente les différentes contributions effectuées dans le cadre du projet sous licence libre de la licence ADSILLH.
 
 Le but est avant tout de nous accoutumer au développement
-collaboratif, et de nous apprendre à intéragir avec une communauté
+collaboratif, et de nous apprendre à interagir avec une communauté
 du logiciel libre.
 \end{abstract}
 
@@ -106,7 +106,7 @@ MPL\footnote{MPL: Mozilla Public License (source:
   \href{https://www.gnu.org/licenses/gpl.html}{Gnu})}
 / GNU LGPL\footnote{GNU LGPL: GNU Lesser General Public License (source:
   \href{https://www.gnu.org/licenses/lgpl.html}{Gnu})}
-, elle est developpée et utilisée à l'origine par Mozilla.
+, elle est développée et utilisée à l'origine par Mozilla.
 GNOME a mis en place un \href{https://bugzilla.gnome.org}{bugzilla} pour 
 la gestion des bugs dans les différents projets.
 %% (figure~\ref{figure_bugzilla} page~\pageref{figure_bugzilla})
@@ -150,17 +150,17 @@ web de gitlab.
 %% (figure~\ref{figure_gitlab} page~\pageref{figure_gitlab}).
 
 \label{github}
-Il existe aussi un mirroir des repertoires git des projets 
+Il existe aussi un miroir des répertoires git des projets 
 \href{https://github.com/GNOME}{GNOME sur GitHub}.
 
 \subsection{IRC}
 Le projet GNOME dispose aussi d'un chat irc (\href{irc.gnome.org}{irc.gnome.org})
-avec de nombreux channel, dont voici quelque examples :
+avec de nombreux salons, dont voici quelque exemples :
 \begin{itemize}
-\item \#gnome-hacker : Pour les dicussions sur le développement de GNOME ;
-\item \#newcomers : Pour les nouveaux contributeurs au projet ;
-\item \#gnome-games : Pour les discutions autour du projet GNOME-Games ;
-\item \#vala : Spécifique pour le language vala.
+\item \#gnome-hacker : Pour les discutions sur le développement de GNOME
+\item \#newcomers : Fait pour les nouveaux contributeur au projet
+\item \#gnome-games : Pour les discutions autour du projet GNOME-Games
+\item \#vala : Spécifique pour le langage vala
 \end{itemize}
 
 \subsection{Mailing lists}
@@ -171,7 +171,7 @@ Des mailing lists sont aussi à notre disposition pour se tenir informer.
 Le projet GNOME met à disposition sur son site un guide pour les nouveaux
 arrivants souhaitant contribuer au projet.Cette section nous propose
 tout d'abord le chat irc dédié aux nouveaux contributeurs, ainsi que la
-mailling list qui leur ai réservée
+mailing list qui leur ai réservée
 (\href{https://mail.gnome.org/mailman/listinfo/newscomers-list}).
 Quelques conseils sont aussi donnés: patience,respect des autres et prise
 d'initiatives sont des qualités nécessaires au bon fonctionnement du projet.
@@ -179,10 +179,10 @@ d'initiatives sont des qualités nécessaires au bon fonctionnement du projet.
 Il est ensuite présenté Flatpack qui permet d'installer GNOME Builder.
 C'est un environnement de développement intégré qui permet de travailler
 sur les applications GNOME. Il permet de télécharger les sources d'un
-projet et de pouvoir travailler dessus et de le contruire grâce à une
+projet et de pouvoir travailler dessus et de le construire grâce à une
 interface graphique simplifiée. Il permet en effet d'éditer des fichiers
 ou de compiler le projet avec un seul bouton, de gérer les dépendances
-et met à disposition un debogueur.
+et met à disposition un débogueur
 
 On nous présente ensuite la documentation disponible sur
 \href{https://developper.gnome.org/search} ainsi que sur la page du
@@ -192,7 +192,7 @@ nouveaux arrivants de se familiariser à la fois avec le code et
 avec la manière de corriger un bug grâce à des bugs pas trop
 complexe.
 
-Le guide aiguille ensuite le nouvel arrivant sur la facon de corriger
+Le guide aiguille ensuite le nouvel arrivant sur la façon de corriger
 un bug en comprenant ce qu'il se passe et en changeant le code de
 façon à le corriger. Enfin le guide nous montre comment créer un
 patch depuis le commit et le poster sur le bug report sur bugzilla.
@@ -210,7 +210,7 @@ Les sources du projet sont disponibles sur github :
 \section{Architecture du projet}
 % TODO 
 
-\section{Le language Python}
+\section{Le langage Python}
 % https://fr.wikipedia.org/wiki/Python_(langage)
 Le projet est écrit dans le langage Python. C'est un langage de
 programmation objet, multi-paradigme et multiplateformes. Il favorise la
@@ -262,9 +262,9 @@ dépendances sont gérées automatiquement. Cependant là aussi nous
 avons rencontré des problèmes tout d'abord car les téléchargements
 réalisés par GNOME Builder était trop gros pour nos VM puis nous 
 nous avons rencontré un bug lors de l’exécution de l'application.
-En effet lors de l'éxéctuion de celle-ci depuis le builder l'application
+En effet lors de l'exécution de celle-ci depuis le builder l'application
 ne s'affichait pas correctement, il n'y avait pas les boutons en haut
-et le répertoire de musique n'etait pas trouvé. Cela nous a mené à 
+et le répertoire de musique n’était pas trouvé. Cela nous a mené à 
 faire notre premier rapport de bug(Voir ci-après).
 
 \subsection{Compilation 2eme Partie}
@@ -283,17 +283,17 @@ lui-même.
 GNOME Games est une application permettant la gestion d'une
 bibliothèque vidéoludique. Elle est capable de s'interfacer avec de
 nombreux émulateurs.
-<<<<<<< HEAD
-Au debut du projet, Games était disponible sur le git de GNOME, mais 
-depuis peu il a été migré sur le gitlab du projet GNOME.
 
-\section{Architecture du projet}
-\subsection{Les projets associés}
-Le projet s'appuie sur plusieur autre projets:
+Au début du projet Games étais disponible sur le git de GNOME, mais 
+depuis peut il a migré sur Gitlab.
+
+\section{Les projets associé}
+Le projet s'appuie sur plusieurs autre projets:
 \begin{itemize}
 \item retro-gtk : Développé pas le mainteneur de Games et utilisant les bibliothèques libretro,
 retro-gtk permet à Games de lancer les jeux retro.
-\item libmanette : Libmannette est aussi développé par le mainteneur de Games. Cette bibliothèque
+\item libmanette : Libmannette et aussi développé pas le mainteneur de Games. Cette bibliothèque
+>>>>>>> david
 permet la gestion des manettes.
 % TODO Verifier les info pour libmanette et retro-gtk 
 \end{itemize}
@@ -341,7 +341,7 @@ format Flatpak, comme MonoDevelop, GNOME Shell, Pitivi ou LibreOffice.
 
 Les applications Flatpak se téléchargent sous forme d'un fichier qui
 peut s’exécuter directement sur le système, de façon indépendante de
-la distribution linux précise utilisée, sous réserve que le logiciel
+la distribution Linux précise utilisée, sous réserve que le logiciel
 Flatpak ait été préalablement installé sur cette distribution.
 
 Pour permettre au « bac à sable » de fonctionner malgré son isolement
@@ -363,7 +363,7 @@ cela étant en grande partie dû à l'utilisation de bibliothèques encore en
 ``Meson'' qui est un remplacement de ``./configure''.
 
 Ainsi il a été nécessaire de compiler certaines librairies, parmi
-lesquelles\footnote{Nous avons utilisé Debian Sid comme OS de dévellopement et de test}:
+lesquelles\footnote{Nous avons utilisé Debian Sid comme OS de développement et de test}:
 \begin{itemize}
 \item retro-gtk
 \item libmanette
@@ -381,28 +381,28 @@ Cependant nous n'avons pas réussi à l'utiliser sur la branche master,
 car il ne pouvait pas trouver les bonnes librairies.
 
 Lors de l'utilisation de Games, nous avons rencontrés quelques
-problèmes, certais jeux étaient chargés avec de mauvaises jaquettes,
+problèmes, certains jeux étaient chargés avec de mauvaises jaquettes,
 et il était impossible de paramétrer les touches du clavier.
 
 \section{Les bug reports}
 % Gautier : système de statuts -> aucune explication
 % Gautier : lecture de différents bug reports, et réécriture plus simple dans un
 %           fichier partagé pour effectuer un premier tri
-\subsection{Bug pulseaudio}
-Un bug avec pulseaudio était declaré pour Games, en effet le programme crashait
-quand le server pulseaudio était éteint et que l'on tentait de lancer
+\subsection{Bug PulseAudio}
+Un bug avec PulseAudio était déclaré pour Games, en effet le programme crashait
+quand le serveur PulseAudio était éteint et que l'on tentait de lancer
 un jeu.
 
 Il a donc fallu reproduire le bug, pour cela nous avons personnalisés notre
-configuration pulseaudio pour qu'il ne se relance pas automatiquement.
+configuration PulseAudio pour qu'il ne se relance pas automatiquement.
 \begin{minted}[breaklines]{console}
 /etc/pulse/client.conf:
    autospawn = no
 \end{minted}
 
-Nous avons aussi utilisés une commande pour simuler le crash du server pulseaudio.
+Nous avons aussi utilisés une commande pour simuler le crash du serveur PulseAudio.
 \begin{minted}[breaklines]{console}
-  $ pulseaudio --kill
+  $ PulseAudio --kill
 \end{minted}
 
 Le terminal retournait le message d'erreur suivant:
@@ -410,25 +410,25 @@ Le terminal retournait le message d'erreur suivant:
 Assertion 'p' failed at pulse/simple.c:273, function pa_simple_write(). Aborting.
 \end{minted}
 
-En vérifiant dans les sources de pulseaudio on retrouve bien l'``assert'' qui provoque
-l'arret prematuré du programme.
+En vérifiant dans les sources de PulseAudio on retrouve bien l'``assert'' qui provoque
+l’arrêt prématuré du programme.
 \begin{minted}[breaklines]{c}
   pa_assert(p);
 \end{minted}
 
 A partir de là nous avons tracé le bug dans le code source de gnome-games et retro-gtk.
-Pour cela nous avons commancer par utilisé la commande ``git grep'' pour retrouver
-la (ou les) fonction(s) suceptible d'appeler ``pa\_simple\_write ()''.
+Pour cela nous avons commencer par utilisé la commande ``git grep'' pour retrouver
+la (ou les) fonction(s) susceptible d'appeler ``pa\_simple\_write ()''.
 \begin{minted}[breaklines]{console}
 $ git grep ``pa_simple_write''
 \end{minted}
 
-Aucune fonction n'a étais trouvé dans les sources de Games, par contre il y a bien
+Aucune fonction n'a été trouvée dans les sources de Games, par contre il y a bien
 une fonction qui fait apelle a ``pa\_simple\_write'' dans retro-gtk.
-Nous avons donc put determiné que la fonction
+Nous avons donc pu determiner que la fonction
 ``retro\_pa\_player\_on\_audio\_output'' (définie dans le fichier
-``retro\_pa\_player.c'' du projet ``retro-gtk'') appel la fonction de pulseaudio
-``pa\_simple\_write'' qui provique le crach.
+``retro\_pa\_player.c'' du projet ``retro-gtk'') appelle la fonction de PulseAudio
+``pa\_simple\_write'' qui provoque le crach.
 \begin{minted}[breaklines]{c}
   if (self->simple == NULL || sample_rate != self->sample_rate)
     retro_pa_player_prepare_for_sample_rate (self, sample_rate);
@@ -436,22 +436,23 @@ Nous avons donc put determiné que la fonction
   pa_simple_write (self->simple, data, sizeof (gint16) * lenght, NULL);
 \end{minted}
 
-Apres quelque test et une veriffication dans les sources nous somme avenue à montré
+% David: là par contre je me perd
+Après quelques test et une vérification dans les sources nous  avons compris
 que la fonction ``retro\_pa\_player\_prepare\_for\_sample\_rate'' retourne ``self''
-équale à ``NULL'' si pulseaudio n'est pas disponible.
+équale à ``NULL'' si PulseAudio n'est pas disponible.
 
-La solution la plus simple étais de contourné la fonction ``pa\_simple\_write''
+La solution la plus simple était de contourner la fonction ``pa\_simple\_write''
 avec un test de la valeur de la structure et un ``return'' prématuré dans la fonction
 appellente si la valeur est ``NULL''. Nous avons aussi pencer a afficher un message a
 l'utilisateur et luis demandant si il voulais lancer quand même le jeux mais sans le son.
 
 La premiere solution nous a parut trop simple et pas suffisament fiable, et la
 second un trop compliquer à mettre en oeuvre sur un projet que l'on découvrais juste.
-Nous avons donc désider de poster sur le rapport de bug notre analise du problème, et
-d'attendre une désision du mainteneur.
+Nous avons donc décidés de poster sur le rapport de bug notre analyse du problème, et
+d'attendre une décision du mainteneur.
 
-Finalement le mainteneur a opter pour la première solution et à ajouter un test, comme
-si desous:
+Finalement le mainteneur a opté pour la première solution et a ajouté un test, comme
+ci-desous:
 \begin{minted}[breaklines]{c}
   if (self->simple == NULL || sample\_rate != self->sample\_rate)
     retro\_pa\_player\_prepare\_for\_sample\_rate (self, sample\_rate);
@@ -472,15 +473,15 @@ aide pour la compilation du projet. \newline
 Il n'y avait aucune aide ou information dans la documentation sur la compilation
 du projet. Étant nouveaux dans le projet GNOME nous n'avions pas connaissance de 
 GNOME-Builder qui permet assez simplement de construire le projet. Mais
-même avec cet outil la compilation s'est revélée ardue. En effet 
-le fonctionement de Builder a tendance à changer entre les versions et certaines
+même avec cet outil la compilation s'est révélée ardue. En effet 
+le fonctionnement de Builder a tendance à changer entre les versions et certaines
 actions comme un ``git pull'' peuvent poser problème.
 Nous avons donc modifié le fichier HACKING du projet pour y ajouter des 
 instruction de compilation. \newline
 Le projet utilise pour le moment le système ``autotools'' pour sa configuration et 
-sa compilation, mais pour la version 2.30 il est prevu qu'il passe à un système
+sa compilation, mais pour la version 2.30 il est prévue qu'il passe à un système
 avec le logiciel ``meson'' pour la configuration. \newline
-Nous avons donc nous-même rencontrés de nombreux problèmes de compilation,
+Nous avons donc nous même rencontrés de nombreux problèmes de compilation,
 il nous a donc semblé important de donner des indications pour que les 
 prochaines personne qui voudraient contribuer ne soient pas freinées par un 
 problème comme celui-ci.
@@ -494,11 +495,11 @@ En effet retro-gtk est passé d'un système de compilation 'autotools' à un
 système avec le logiciel 'meson' et le compilateur 'ninja'.
 Nous avons donc mis à jour le fichier README.md en respectant la syntaxe
 'Marckdown', utilisé par github et gitlab par exemple.
-Le patch n'a pas encore été aprouvé. \newline
+Le patch n'a pas encore été approuvé \newline
 
 \subsection{Retour à la collection avec les touches Alt+Left}
 Le but de ce patch est de lier un évent à une combinaison de touches
-(en l'occurence Alt+Left).
+(en l’occurrence Alt+Left).
 
 La modification a consisté à modifier un fichier, celui-ci se trouvait
 dans le répertoire /src/ui et se nommait application-window.vala .
@@ -552,7 +553,7 @@ Une fonction qui liait l'appui de certaines touches à des événements
 \end{minted}
 
 C'est en prenant cet extrait pour exemple que nous avons ajouté une
-condition dédiée à Alt+Left, il nous a été necessaire de chercher dans
+condition dédiée à Alt+Left, il nous a été nécessaire de chercher dans
 la documentation du langage Vala pour trouver la X (modifier key ?)
 correspondante.
 
@@ -567,8 +568,8 @@ Voici le code correspondant à notre patch:
 \end{minted}
 
 Puis en effectuant des tests, nous nous sommes rendus compte que la
-condition validant l'appui sur la touche Alt n'était pas necessaire;
-pourtant, le déclenchement de l'évent necessitait toujours un appui
+condition validant l'appui sur la touche Alt n'était pas nécessaire;
+pourtant, le déclenchement de l'évent nécessitait toujours un appui
 physique sur Alt.
 
 Par la suite, le mainteneur à décidé de réécrire le patch pour ajouter
