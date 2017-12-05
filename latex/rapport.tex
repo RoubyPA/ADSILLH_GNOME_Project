@@ -172,7 +172,7 @@ Le projet GNOME met à disposition sur son site un guide pour les nouveaux
 arrivants souhaitant contribuer au projet.Cette section nous propose
 tout d'abord le chat irc dédié aux nouveaux contributeurs, ainsi que la
 mailling list qui leur ai réservée
-(\href{https://mail.gnome.org/mailman/listinfo/newscomers-list}).
+(\href{https://mail.gnome.org/mailman/listinfo/newscomers-list}{ici}).
 Quelques conseils sont aussi donnés: patience,respect des autres et prise
 d'initiatives sont des qualités nécessaires au bon fonctionnement du projet.
 
@@ -283,7 +283,7 @@ lui-même.
 GNOME Games est une application permettant la gestion d'une
 bibliothèque vidéoludique. Elle est capable de s'interfacer avec de
 nombreux émulateurs.
-<<<<<<< HEAD
+
 Au debut du projet, Games était disponible sur le git de GNOME, mais 
 depuis peu il a été migré sur le gitlab du projet GNOME.
 
@@ -297,7 +297,6 @@ retro-gtk permet à Games de lancer les jeux retro.
 permet la gestion des manettes.
 % TODO Verifier les info pour libmanette et retro-gtk 
 \end{itemize}
-
 
 \section{Le langage Vala}
 % from: https://fr.wikipedia.org/wiki/Vala_(langage)
@@ -438,9 +437,9 @@ Nous avons donc put determiné que la fonction
   pa_simple_write (self->simple, data, sizeof (gint16) * lenght, NULL);
 \end{minted}
 
-Apres quelque test et une veriffication dans les sources nous somme avenue à montré
-que la fonction ``retro\_pa\_player\_prepare\_for\_sample\_rate'' retourne ``self''
-équale à ``NULL'' si pulseaudio n'est pas disponible.
+Apres quelque test et une vérification dans les sources nous somme avenue à montré
+que la fonction ``retro\_pa\_player\_prepare\_for\_sample\_rate'' position ``self''
+à ``NULL'' si pulseaudio n'est pas disponible.
 
 La solution la plus simple étais de contourné la fonction ``pa\_simple\_write''
 avec un test de la valeur de la structure et un ``return'' prématuré dans la fonction
@@ -455,15 +454,14 @@ d'attendre une désision du mainteneur.
 Finalement le mainteneur a opter pour la première solution et à ajouter un test, comme
 si desous:
 \begin{minted}[breaklines]{c}
-  if (self->simple == NULL || sample\_rate != self->sample\_rate)
-    retro\_pa\_player\_prepare\_for\_sample\_rate (self, sample\_rate);
+  if (self->simple == NULL || sample_rate != self->sample_rate)
+    retro_pa_player_prepare_for_sample_rate (self, sample_rate);
 
   if (self->simple == NULL)
     return;
 
-  pa\_simple\_write (self->simple, data, sizeof (gint16) * lenght, NULL);
+  pa_simple_write (self->simple, data, sizeof (gint16) * lenght, NULL);
 \end{minted}
-% PA: add part of code, and cmd to find bug in sources
 
 \section{Nos patchs}
 % TODO PA: Cette partie a besion d'une relecture
