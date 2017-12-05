@@ -32,8 +32,7 @@
 \maketitle
 
 \begin{abstract}
-Ce document présente les différents contributions effectués dans le
-cadre du projet sous licence libre de la licence ADSILLH.
+Ce document présente les différentes contributions effectuées dans le cadre du projet sous licence libre de la licence ADSILLH.
 
 Le but est avant tout de nous accoutumer au développement
 collaboratif, et de nous apprendre à intéragir avec une communauté
@@ -42,11 +41,43 @@ du logiciel libre.
 
 \tableofcontents
 
+
+\chapter{Introduction}
+
+\section{La Licence ADSILLH}
+% from: http://dept-info.labri.fr/ENSEIGNEMENT/adsillh/contenu.html
+L'objectif est de former des techniciens en informatique de haut
+niveau en administration des systèmes d'information, polyvalents et
+aptes à effectuer l'intégration de composants logiciels libres
+appartenant à de nombreux domaines fonctionnels:
+\begin{itemize}
+\item systèmes d'exploitation
+\item bases de données
+\item serveurs web
+\item téléphonie logicielle
+\end{itemize}
+
+alliant ainsi de solides compétences d'administration à des capacités
+de développement, en partant des couches les plus basses jusqu'aux
+plus hautes, et l'aptitude à intégrer ces développements au sein des
+communautés libres. Ce profil est explicitement recherché par les
+entreprises et fait l'unicité de la formation. Il est couramment
+appelé « DevOps Engineer ».
+
+La formation apporte également des aspects organisationnels en droit
+et en économie des logiciels libres.
+
+\section{Le projet}
+Le but du projet est avant tout de nous accoutumer au développement
+collaboratif, et de nous apprendre à intéragir avec une communauté
+du logiciel libre.
+
 \chapter{Le projet GNOME}
 \section{Présentation}
 % from: https://fr.wikipedia.org/wiki/GNOME
+% Gautier : j'ai enlevé le terme ``environnement de bureau livre convivial'', ce n'est pas un terme objectif
 GNOME, acronyme de GNU Network Object Model Environment, est un
-environnement de bureau libre convivial dont l'objectif est de rendre
+environnement de bureau libre  dont l'objectif est de rendre
 accessible l'utilisation du système d'exploitation GNU au plus grand
 nombre ; cette interface est actuellement populaire sur les systèmes
 GNU/Linux et fonctionne également sur la plupart des systèmes de type
@@ -62,7 +93,7 @@ en premier lieu ceux travaillant pour Red Hat.
 \subsection{Bugzilla}
 \label{bugzilla}
 % from: https://fr.wikipedia.org/wiki/Bugzilla
-Bugzilla est une solution de gestion de bug, distribuée sous
+Bugzilla est une solution de gestion de bugs, distribuée sous
 % form: https://fr.wikipedia.org/wiki/Double_licence
 tri-licence\footnote{Tri-licence: Le concept de licence multiple
   est de proposer un travail non pas sous une licence unique, mais
@@ -79,6 +110,7 @@ MPL\footnote{MPL: Mozilla Public License (source:
 GNOME a mis en place un \href{https://bugzilla.gnome.org}{bugzilla} pour 
 la gestion des bugs dans les différents projets.
 %% (figure~\ref{figure_bugzilla} page~\pageref{figure_bugzilla})
+
 %% \newline
 %% % from: https://bugzilla.gnome.org/page.cgi?id=points.html
 %% Bugzilla intègre aussi une fonctionnalité de "score"
@@ -104,16 +136,16 @@ les documentations sur les différents projets.
 Le projet GNOME dispose de plusieurs interfaces Git. L'interface 
 principale est basée sur le logiciel libre "cgit"
 %% (figure~\ref{figure_cgit} page~\pageref{figure_cgit})
-, on peut y retrouver la plupare des projets GNOME 
+, on peut y retrouver la plupart des projets GNOME 
 (\href{https://git.gnome.org/}{ici}). Pour créer un bug il faut passer par Bugzilla
 (section~\ref{bugzilla}).
 
 \label{gitlab}
 GNOME a aussi mis en place un \href{https://gitlab.gnome.org/GNOME}{GitLab} 
-ou l'on peut trouver de nombreux projet. L'interface est plus moderne,
+ou l'on peut trouver de nombreux projets. L'interface est plus moderne,
 par exemple nous pouvons créer des "Pull Requests" comme sur github
 et le report de bug est sur l'interface gitlab, donc pas besoin de passer
-par le Bugzilla. Il est aussi possible de parcourire le code via l'interface
+par le Bugzilla. Il est aussi possible de parcourir le code via l'interface
 web de gitlab.
 %% (figure~\ref{figure_gitlab} page~\pageref{figure_gitlab}).
 
@@ -125,10 +157,10 @@ Il existe aussi un mirroir des repertoires git des projets
 Le projet GNOME dispose aussi d'un chat irc (\href{irc.gnome.org}{irc.gnome.org})
 avec de nombreux channel, dont voici quelque examples :
 \begin{itemize}
-\item \#gnome-hacker : Pour les dicutions sur le développement de GNOME
-\item \#newcomers : Fait pour les nouveaux contributeur au projet
-\item \#gnome-games : Pour les discutions autour du projet GNOME-Games
-\item \#vala : Spésifique pour le language vala
+\item \#gnome-hacker : Pour les dicussions sur le développement de GNOME ;
+\item \#newcomers : Pour les nouveaux contributeurs au projet ;
+\item \#gnome-games : Pour les discutions autour du projet GNOME-Games ;
+\item \#vala : Spécifique pour le language vala.
 \end{itemize}
 
 \subsection{Mailing lists}
@@ -251,18 +283,21 @@ lui-même.
 GNOME Games est une application permettant la gestion d'une
 bibliothèque vidéoludique. Elle est capable de s'interfacer avec de
 nombreux émulateurs.
-Au debut du projet Games étais disponible sur le git de GNOME, mais 
-depuis peut il a migré sur Gitlab.
+<<<<<<< HEAD
+Au debut du projet, Games était disponible sur le git de GNOME, mais 
+depuis peu il a été migré sur le gitlab du projet GNOME.
 
-\section{Les projets assosié}
+\section{Architecture du projet}
+\subsection{Les projets associés}
 Le projet s'appuie sur plusieur autre projets:
 \begin{itemize}
-\item retro-gtk : Développé pas le mainteneur de Games et utilisant les bibliotheques libretro,
+\item retro-gtk : Développé pas le mainteneur de Games et utilisant les bibliothèques libretro,
 retro-gtk permet à Games de lancer les jeux retro.
-\item libmanette : Libmannette et aussi développé pas le mainteneur de Games. Cette bibliotheque
+\item libmanette : Libmannette est aussi développé par le mainteneur de Games. Cette bibliothèque
 permet la gestion des manettes.
 % TODO Verifier les info pour libmanette et retro-gtk 
 \end{itemize}
+
 
 \section{Le langage Vala}
 % from: https://fr.wikipedia.org/wiki/Vala_(langage)
@@ -323,7 +358,7 @@ plusieurs versions d'un même logiciel.
 \section{Découverte du logiciel}
 \subsection{Compilation}
 Nous avons rencontrés de nombreux problèmes relatifs à la compilation,
-cela étant en grande partie du à l'utilisation de librairies encore en
+cela étant en grande partie dû à l'utilisation de bibliothèques encore en
 état de développement actif, ainsi qu'au système de configuration
 ``Meson'' qui est un remplacement de ``./configure''.
 
@@ -418,39 +453,39 @@ d'attendre une désision du mainteneur.
 Finalement le mainteneur a opter pour la première solution et à ajouter un test, comme
 si desous:
 \begin{minted}[breaklines]{c}
-  if (self->simple == NULL || sample_rate != self->sample_rate)
-    retro_pa_player_prepare_for_sample_rate (self, sample_rate);
+  if (self->simple == NULL || sample\_rate != self->sample\_rate)
+    retro\_pa\_player\_prepare\_for\_sample\_rate (self, sample\_rate);
 
   if (self->simple == NULL)
     return;
 
-  pa_simple_write (self->simple, data, sizeof (gint16) * lenght, NULL);
+  pa\_simple\_write (self->simple, data, sizeof (gint16) * lenght, NULL);
 \end{minted}
 % PA: add part of code, and cmd to find bug in sources
 
 \section{Nos patchs}
 % TODO PA: Cette partie a besion d'une relecture
 \subsection{Mise à jour du fichier HACKING}
-Le premier patch que nous avons envoyés, est en reponse à un bug report
+Le premier patch que nous avons envoyé est en réponse à un bug report
 (\href{http://bugzilla.gnome.org/show_bug.cgi?id=788692}{ici}), il ajoute une
 aide pour la compilation du projet. \newline
 Il n'y avait aucune aide ou information dans la documentation sur la compilation
 du projet. Étant nouveaux dans le projet GNOME nous n'avions pas connaissance de 
 GNOME-Builder qui permet assez simplement de construire le projet. Mais
 même avec cet outil la compilation s'est revélée ardue. En effet 
-le fonctionement de Builder a tendence à changer entre les versions et certaines
+le fonctionement de Builder a tendance à changer entre les versions et certaines
 actions comme un ``git pull'' peuvent poser problème.
 Nous avons donc modifié le fichier HACKING du projet pour y ajouter des 
 instruction de compilation. \newline
 Le projet utilise pour le moment le système ``autotools'' pour sa configuration et 
-sa compilation, mais pour la version 2.30 il set prevue qu'il passe à un system
+sa compilation, mais pour la version 2.30 il est prevu qu'il passe à un système
 avec le logiciel ``meson'' pour la configuration. \newline
-Nous avons donc nous même recontrés de nombreux problèmes de compilation,
+Nous avons donc nous-même rencontrés de nombreux problèmes de compilation,
 il nous a donc semblé important de donner des indications pour que les 
-prochaines personne qui voudrais contribuer ne sois pas freinées par un 
+prochaines personne qui voudraient contribuer ne soient pas freinées par un 
 problème comme celui-ci.
 Il y a eu de nombreux ajustements demandés par le mainteneur et le patch n'a 
-pas encore étais aprouvé. \newline
+pas encore été aprouvé. \newline
 
 \subsection{Mise à jour du fichier README.md}
 Le second patch (\href{http://bugzilla.gnome.org/show_bug.cgi?id=790454}{ici}) 
@@ -465,15 +500,15 @@ Le patch n'a pas encore été aprouvé. \newline
 Le but de ce patch est de lier un évent à une combinaison de touches
 (en l'occurence Alt+Left).
 
-La modification a consisté à modifier un fichier, celui se trouvait
+La modification a consisté à modifier un fichier, celui-ci se trouvait
 dans le répertoire /src/ui et se nommait application-window.vala .
 
 Une fonction permettant de retourner à la collection existait déjà:
 
 \begin{minted}[breaklines]{vala}
-private void on_display_back () {
-  if (quit_game ())
-  ui_state = UiState.COLLECTION;
+private void on\_display\_back () {
+  if (quit\_game ())
+  ui\_state = UiState.COLLECTION;
 
   uninhibit (Gtk.ApplicationInhibitFlags.IDLE | Gtk.ApplicationInhibitFlags.LOGOUT);
 }
@@ -483,31 +518,31 @@ Une fonction qui liait l'appui de certaines touches à des événements
 était aussi déjà présente:
 
 \begin{minted}[breaklines]{vala}
-  private bool handle_display_key_event (Gdk.EventKey event) {
-    if (ui_state != UiState.DISPLAY)
+  private bool handle\_display\_key\_event (Gdk.EventKey event) {
+    if (ui\_state != UiState.DISPLAY)
     return false;
 
-    var default_modifiers = Gtk.accelerator_get_default_mod_mask ();
+    var default\_modifiers = Gtk.accelerator\_get\_default\_mod\_mask ();
 
     if ((event.keyval == Gdk.Key.f || event.keyval == Gdk.Key.F) &&
-    (event.state & default_modifiers) == Gdk.ModifierType.CONTROL_MASK &&
-    display_header_bar.can_fullscreen) {
-      is_fullscreen = !is_fullscreen;
-      settings.set_boolean ("fullscreen", is_fullscreen);
+    (event.state & default\_modifiers) == Gdk.ModifierType.CONTROL\_MASK &&
+    display\_header\_bar.can\_fullscreen) {
+      is\_fullscreen = !is\_fullscreen;
+      settings.set\_boolean ("fullscreen", is\_fullscreen);
 
       return true;
     }
 
-    if (event.keyval == Gdk.Key.F11 && display_header_bar.can_fullscreen) {
-      is_fullscreen = !is_fullscreen;
-      settings.set_boolean ("fullscreen", is_fullscreen);
+    if (event.keyval == Gdk.Key.F11 && display\_header\_bar.can\_fullscreen) {
+      is\_fullscreen = !is\_fullscreen;
+      settings.set\_boolean ("fullscreen", is\_fullscreen);
 
       return true;
     }
 
-    if (event.keyval == Gdk.Key.Escape && display_header_bar.can_fullscreen) {
-      is_fullscreen = false;
-      settings.set_boolean ("fullscreen", false);
+    if (event.keyval == Gdk.Key.Escape && display\_header\_bar.can\_fullscreen) {
+      is\_fullscreen = false;
+      settings.set\_boolean ("fullscreen", false);
 
       return true;
     }
@@ -525,7 +560,7 @@ Voici le code correspondant à notre patch:
 
 \begin{minted}[breaklines]{vala}
   if (event.keyval == Gdk.Key.Left){			
-    on_display_back ();
+    on\_display\_back ();
     
     return true;
   }
@@ -540,10 +575,10 @@ Par la suite, le mainteneur à décidé de réécrire le patch pour ajouter
 la vérification de la pression sur la touche Alt:
 
 \begin{minted}[breaklines]{vala}
-  if (((event.state & default_modifiers) == Gdk.ModifierType.MOD1_MASK) &&
-  (((get_direction () == Gtk.TextDirection.LTR) && event.keyval == Gdk.Key.Left) ||
-  ((get_direction () == Gtk.TextDirection.RTL) && event.keyval == Gdk.Key.Right))) {
-    on_display_back ();
+  if (((event.state & default\_modifiers) == Gdk.ModifierType.MOD1\_MASK) &&
+  (((get\_direction () == Gtk.TextDirection.LTR) && event.keyval == Gdk.Key.Left) ||
+  ((get\_direction () == Gtk.TextDirection.RTL) && event.keyval == Gdk.Key.Right))) {
+    on\_display_back ();
 
     return true;
   }
