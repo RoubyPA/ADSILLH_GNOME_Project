@@ -22,7 +22,11 @@
 \usemintedstyle{tango}
 
 \title{Projet Licence ADSILLH 2017/2018\\Rapport}
-\author{Gautier DELACOUR\\Pierre-Antoine ROUBY\\David TABARIE} % PA: TODO add GNOME-Music
+\author{Groupe Games:\\ Pierre Antoine Rouby,\\ Gautier Delacour,\\
+  \vspace{0.8cm}
+  David Tabarie,\\ Groupe Music:\\ Kevine Carsoule,\\ Adrien Darfeuille}
+
+\date{Année 2017/2018}
 
 \begin{document}
 \maketitle
@@ -31,42 +35,15 @@
 Ce document présente les différents contributions effectués dans le
 cadre du projet sous licence libre de la licence ADSILLH.
 
+Le but est avant tout de nous accoutumer au développement
+collaboratif, et de nous apprendre à intéragir avec une communauté
+du logiciel libre.
 \end{abstract}
 
 \tableofcontents
 
-\chapter{Introduction}
-
-\section{La Licence ADSILLH}
-% from: http://dept-info.labri.fr/ENSEIGNEMENT/adsillh/contenu.html
-L'objectif est de former des techniciens en informatique de haut
-niveau en administration des systèmes d'information, polyvalents et
-aptes à effectuer l'intégration de composants logiciels libres
-appartenant à de nombreux domaines fonctionnels:
-
-\begin{itemize}
-\item systèmes d'exploitation
-\item bases de données
-\item serveurs web
-\item téléphonie logicielle
-\end{itemize}
-
-alliant ainsi de solides compétences d'administration à des capacités
-de développement, en partant des couches les plus basses jusqu'aux
-plus hautes, et l'aptitude à intégrer ces développements au sein des
-communautés libres. Ce profil est explicitement recherché par les
-entreprises et fait l'unicité de la formation. Il est couramment
-appelé « DevOps Engineer ».
-
-La formation apporte également des aspects organisationnels en droit
-et en économie des logiciels libres.
-
-\section{Le projet}
-Le but du projet est avant tout de nous accoutumer au développement
-collaboratif, et de nous apprendre à intéragir avec une communauté
-du logiciel libre.
-
 \chapter{Le projet GNOME}
+\section{Présentation}
 % from: https://fr.wikipedia.org/wiki/GNOME
 GNOME, acronyme de GNU Network Object Model Environment, est un
 environnement de bureau libre convivial dont l'objectif est de rendre
@@ -200,10 +177,9 @@ GNOME Games est une application permettant la gestion d'une
 bibliothèque vidéoludique. Elle est capable de s'interfacer avec de
 nombreux émulateurs.
 Au debut du projet Games étais disponible sur le git de GNOME, mais 
-depuis peut il a été migré sur le gitlab du projet GNOME.
+depuis peut il a migré sur Gitlab.
 
-\section{Architecture du projet}
-\subsection{Les projets assosié}
+\section{Les projets assosié}
 Le projet s'appuie sur plusieur autre projets:
 \begin{itemize}
 \item retro-gtk : Développé pas le mainteneur de Games et utilisant les bibliotheques libretro,
@@ -212,45 +188,6 @@ retro-gtk permet à Games de lancer les jeux retro.
 permet la gestion des manettes.
 % TODO Verifier les info pour libmanette et retro-gtk 
 \end{itemize}
-
-%% % PA: On garde sa ?
-%% % David: What is it ?
-%% % TODO Sondage
-%% %          Oui | Non
-%% % David:     x | x
-%% % Gautier:     |
-%% % PA:          | X
-%% %----------------------
-%% % result:   0  | 1
-%% \subsection{Les sources}
-%% Structure des sources du projet:
-%% \begin{itemize}
-%% \item data : contient toutes les données graphiques de l'application.
-%% \item flatpak : contient tous les fichiers nécessaires à l'exécution de Flatpack.
-%% \item plugins
-%% \begin{itemize}
-%% \item desktop : contient les fichiers s'occupant de la gestion du bureau.
-%% \item dreamcast, game-cube, playstation... :  contient les fichiers gérant l'émulation des différentes consoles.
-%% \end{itemize}
-%% \item po
-%% \item src
-%% \begin{itemize}
-%% \item command
-%% \item core
-%% \item database
-%% \item dummy
-%% \item event
-%% \item gameinfo
-%% \item gamepad
-%% \item generic
-%% \item grilo
-%% \item retro
-%% \item tracker
-%% \item ui : contient les fichiers qui gèrent l'interface graphique.
-%% \item utils
-%% \end{itemize}
-%% \item tools
-%% \end{itemize}
 
 \section{Le langage Vala}
 % from: https://fr.wikipedia.org/wiki/Vala_(langage)
@@ -322,12 +259,20 @@ lesquelles\footnote{Nous avons utilisé Debian Sid comme OS de dévellopement et
 \item libmanette
 \end{itemize}
 
-% Gautier : installation compliquée -> versionnage + aucun fichier d'installation
-% + problème d'affichage : les jeux sont chargés avec de mauvaises images
-% + problème configuration : on ne peut pas configurer les touches du clavier
-%   dans les jeux
-% + code pas commenté : possibilité de le commenter pour qu'il soit plus clair et
-%   plus accessible
+De plus, aucun fichier ne documentait la procédure d'installation,
+cela nous à particulièrement posé problème car nous ne nous
+connaissions pas le système de build 'Meson'.
+
+Nous avons aussi tenté d'utiliser l'IDE Gnome-Builder, qui possède une
+fonctionnalité permettant de télécharger automatiquement les
+dépendances.
+
+Cependant nous n'avons pas réussi à l'utiliser sur la branche master,
+car il ne pouvait pas trouver les bonnes librairies.
+
+Lors de l'utilisation de Games, nous avons rencontrés quelques
+problèmes, certais jeux étaient chargés avec de mauvaises jaquettes,
+et il était impossible de paramétrer les touches du clavier.
 
 \section{Les bug reports}
 % Gautier : système de statuts -> aucune explication
@@ -347,7 +292,7 @@ configuration pulseaudio pour qu'il ne se relance pas automatiquement.
 
 Nous avons aussi utilisés une commande pour simuler le crash du server pulseaudio.
 \begin{minted}[breaklines]{console}
-$ pulseaudio --kill
+  $ pulseaudio --kill
 \end{minted}
 
 Le terminal retournait le message d'erreur suivant:
