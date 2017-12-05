@@ -1,5 +1,4 @@
 \documentclass[12pt]{report}
-
 %% Language and font encodings
 \usepackage[francais]{babel}
 \usepackage[utf8]{inputenc}
@@ -19,8 +18,15 @@
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 
+%% Syntax color for minted code blocks
+\usemintedstyle{tango}
+
 \title{Projet Licence ADSILLH 2017/2018\\Rapport}
-\author{Gautier DELACOUR\\Pierre-Antoine ROUBY\\David TABARIE} % PA: TODO add GNOME-Music
+\author{Groupe Games:\\ Pierre Antoine Rouby,\\ Gautier Delacour,\\
+  \vspace{0.8cm}
+  David Tabarie,\\ Groupe Music:\\ Kevine Carsoule,\\ Adrien Darfeuille}
+
+\date{Année 2017/2018}
 
 \begin{document}
 \maketitle
@@ -28,9 +34,13 @@
 \begin{abstract}
 Ce document présente les différentes contributions effectuées dans le cadre du projet sous licence libre de la licence ADSILLH.
 
+Le but est avant tout de nous accoutumer au développement
+collaboratif, et de nous apprendre à intéragir avec une communauté
+du logiciel libre.
 \end{abstract}
 
 \tableofcontents
+
 
 \chapter{Introduction}
 
@@ -63,6 +73,7 @@ collaboratif, et de nous apprendre à intéragir avec une communauté
 du logiciel libre.
 
 \chapter{Le projet GNOME}
+\section{Présentation}
 % from: https://fr.wikipedia.org/wiki/GNOME
 % Gautier : j'ai enlevé le terme ``environnement de bureau livre convivial'', ce n'est pas un terme objectif
 GNOME, acronyme de GNU Network Object Model Environment, est un
@@ -99,19 +110,18 @@ MPL\footnote{MPL: Mozilla Public License (source:
 GNOME a mis en place un \href{https://bugzilla.gnome.org}{bugzilla} pour 
 la gestion des bugs dans les différents projets.
 %% (figure~\ref{figure_bugzilla} page~\pageref{figure_bugzilla})
-\newline
-% from: https://bugzilla.gnome.org/page.cgi?id=points.html
 
-%% Gautier : je pense qu'on devrait enlever cette partie, elle m'a l'air superflue
-Bugzilla intègre aussi une fonctionnalité de "score"
-%% (figure~\ref{figure_bugzilla_score} page~\pageref{figure_bugzilla_score})
-, dont le but est a l'origine d'avoir une idée 
-aproximative de l'activité d'une personne  sur le bugzilla, et donc 
-des personnes qui sont le plus experimentées pour aider les autres 
-utilisateurs. Mais ce dispositif s'est revelé peu efficace. Le
-score est donc plus une fonctionnalite un peut fun qu'un vrai outils.
-A noter qu'il existe quand même un classement de la semaine, disponible 
-\href{https://bugzilla.gnome.org/page.cgi?id=weekly-bug-summary.html}{ici}.
+%% \newline
+%% % from: https://bugzilla.gnome.org/page.cgi?id=points.html
+%% Bugzilla intègre aussi une fonctionnalité de "score"
+%% %% (figure~\ref{figure_bugzilla_score} page~\pageref{figure_bugzilla_score})
+%% , dont le but est a l'origine d'avoir une idée 
+%% aproximative de l'activité d'une personne  sur le bugzilla, et donc 
+%% des personnes qui sont le plus experimenté pour aidée les autres 
+%% utilisateurs. Mais ce dispositif s'est revelé peu efficace. Le
+%% score est donc plus une fonctionnalite un peut fun qu'un vrai outils.
+%% A noter qu'il existe quand même un classement de la semaine, disponible 
+%% \href{https://bugzilla.gnome.org/page.cgi?id=weekly-bug-summary.html}{ici}.
 
 \subsection{Wiki}
 \label{wiki}
@@ -153,19 +163,127 @@ avec de nombreux channel, dont voici quelque examples :
 \item \#vala : Spécifique pour le language vala.
 \end{itemize}
 
+\subsection{Mailing lists}
+Des mailing lists sont aussi à notre disposition pour se tenir informer.
+% PA: TODO Useful ?
+
 \subsection{Newcomers}
-% PA: TODO /!\ Partie importante !
+Le projet GNOME met à disposition sur son site un guide pour les nouveaux
+arrivants souhaitant contribuer au projet.Cette section nous propose
+tout d'abord le chat irc dédié aux nouveaux contributeurs, ainsi que la
+mailling list qui leur ai réservée
+(\href{https://mail.gnome.org/mailman/listinfo/newscomers-list}).
+Quelques conseils sont aussi donnés: patience,respect des autres et prise
+d'initiatives sont des qualités nécessaires au bon fonctionnement du projet.
+
+Il est ensuite présenté Flatpack qui permet d'installer GNOME Builder.
+C'est un environnement de développement intégré qui permet de travailler
+sur les applications GNOME. Il permet de télécharger les sources d'un
+projet et de pouvoir travailler dessus et de le contruire grâce à une
+interface graphique simplifiée. Il permet en effet d'éditer des fichiers
+ou de compiler le projet avec un seul bouton, de gérer les dépendances
+et met à disposition un debogueur.
+
+On nous présente ensuite la documentation disponible sur
+\href{https://developper.gnome.org/search} ainsi que sur la page du
+projet concerné. On nous explique ensuite que chaque projet possède
+des bugs dédiés aux newcomers. Ce sont des bugs qui permettent aux
+nouveaux arrivants de se familiariser à la fois avec le code et
+avec la manière de corriger un bug grâce à des bugs pas trop
+complexe.
+
+Le guide aiguille ensuite le nouvel arrivant sur la facon de corriger
+un bug en comprenant ce qu'il se passe et en changeant le code de
+façon à le corriger. Enfin le guide nous montre comment créer un
+patch depuis le commit et le poster sur le bug report sur bugzilla.
+
 
 \newpage
 \chapter{GNOME-Music}
-%% TODO GNOME-Music %%
-% David: Fuck them !
+GNOME Music est une application permettant d'écouter de la musique, 
+son interface se veut particulièrement simple afin de permettre aux
+utilisateurs de gérer facilement leur musique, leur bibliothèques, 
+les recherches et la lecture de leur fichiers audio.
+Les sources du projet sont disponibles sur github :
+\href{https://github.com/GNOME/gnome-music}
+
+\section{Architecture du projet}
+% TODO 
+
+\section{Le language Python}
+% https://fr.wikipedia.org/wiki/Python_(langage)
+Le projet est écrit dans le langage Python. C'est un langage de
+programmation objet, multi-paradigme et multiplateformes. Il favorise la
+programmation impérative structurée, fonctionnelle et orientée objet. 
+Il est doté d'un typage dynamique fort, d'une gestion automatique de la 
+mémoire par ramasse-miettes et d'un système de gestion d'exceptions ; 
+il est ainsi similaire à Perl, Ruby, Scheme, Smalltalk et Tcl.
+
+Python est un langage qui peut s'utiliser dans de nombreux contextes 
+et s'adapter à tout type d'utilisation grâce à des bibliothèques 
+spécialisées. Il est cependant particulièrement utilisé comme 
+langage de script pour automatiser des tâches simples mais 
+fastidieuses, comme un script qui récupérerait la météo sur Internet 
+ou qui s'intégrerait dans un logiciel de conception assistée par 
+ordinateur afin d'automatiser certains enchaînements d'actions 
+répétitives (voir la section Adoption). On l'utilise également comme 
+langage de développement de prototype lorsqu'on a besoin d'une 
+application fonctionnelle avant de l'optimiser avec un langage 
+de plus bas niveau. Il est particulièrement répandu dans le monde 
+scientifique, et possède de nombreuses extensions destinées au 
+calcul numérique.
+
+Python a été conçu pour être un langage lisible. Il vise à être 
+visuellement épuré. Par exemple, il possède moins de constructions 
+syntaxiques que de nombreux langages structurés tels que C, 
+Perl, ou Pascal. Les commentaires sont indiqués par le caractère 
+croisillon (#).
+
+Les blocs sont identifiés par l'indentation, au lieu d'accolades 
+comme en C ou C++ ; ou de begin ... end comme en Pascal ou Ruby. 
+Une augmentation de l'indentation marque le début d'un bloc, et 
+une réduction de l'indentation marque la fin du bloc courant. 
+
+\section{Premiers pas avec le projet}
+\subsection{Compilation 1ere Partie}
+Lorsque nous avons voulu compiler le projet nous avons rencontré 
+beaucoup de problèmes notamment ceux liés aux dépendances nécessaires
+à la compilation. Ces dépendances là ne sont pas indiquées dans la
+documentation et nous devions alors les installer une par une à
+mesure ou nous ne pouvions nous rendre compte des dépendances 
+manquantes que lors de la compilation. 
+Nous avons ensuite eu un problème avec le paquet libtracker-sparql
+qui bien qu'étant installé n’était pas considéré comme tel.
+
+\subsection{GNOME Builder}
+Nous sommes ensuite passé sur GNOME Builder pour compiler le projet.
+En effet grâce à cet environnement de développement intégré les 
+dépendances sont gérées automatiquement. Cependant là aussi nous
+avons rencontré des problèmes tout d'abord car les téléchargements
+réalisés par GNOME Builder était trop gros pour nos VM puis nous 
+nous avons rencontré un bug lors de l’exécution de l'application.
+En effet lors de l'éxéctuion de celle-ci depuis le builder l'application
+ne s'affichait pas correctement, il n'y avait pas les boutons en haut
+et le répertoire de musique n'etait pas trouvé. Cela nous a mené à 
+faire notre premier rapport de bug(Voir ci-après).
+
+\subsection{Compilation 2eme Partie}
+Nous étions alors sur Ubuntu depuis le début du projet et nous avons
+décidé de passer sur debian sans utiliser GNOME Builder afin d'avoir 
+une compilation plus facile. Ce fut le cas grâce notamment à la 
+commande build-dep qui permet de récupérer toutes les dépendances d'un 
+projet. Nous avons donc pu commencer à travailler sur projet en 
+lui-même.
+
+\section{Bug reports}
+% TO DO
 
 \newpage
 \chapter{GNOME Games}
 GNOME Games est une application permettant la gestion d'une
 bibliothèque vidéoludique. Elle est capable de s'interfacer avec de
 nombreux émulateurs.
+<<<<<<< HEAD
 Au debut du projet, Games était disponible sur le git de GNOME, mais 
 depuis peu il a été migré sur le gitlab du projet GNOME.
 
@@ -180,44 +298,6 @@ permet la gestion des manettes.
 % TODO Verifier les info pour libmanette et retro-gtk 
 \end{itemize}
 
-% PA: On garde sa ?
-% David: What is it ?
-% TODO Sondage
-%          Oui | Non
-% David:     x | x
-% Gautier:     | X
-% PA:          | X
-%----------------------
-% result:   0  | 1
-\subsection{Les sources}
-Structure des sources du projet:
-\begin{itemize}
-\item data : contient toutes les données graphiques de l'application.
-\item flatpak : contient tous les fichiers nécessaires à l'exécution de Flatpack.
-\item plugins
-\begin{itemize}
-\item desktop : contient les fichiers s'occupant de la gestion du bureau.
-\item dreamcast, game-cube, playstation... :  contient les fichiers gérant l'émulation des différentes consoles.
-\end{itemize}
-\item po
-\item src
-\begin{itemize}
-\item command
-\item core
-\item database
-\item dummy
-\item event
-\item gameinfo
-\item gamepad
-\item generic
-\item grilo
-\item retro
-\item tracker
-\item ui : contient les fichiers qui gèrent l'interface graphique.
-\item utils
-\end{itemize}
-\item tools
-\end{itemize}
 
 \section{Le langage Vala}
 % from: https://fr.wikipedia.org/wiki/Vala_(langage)
@@ -289,12 +369,20 @@ lesquelles\footnote{Nous avons utilisé Debian Sid comme OS de dévellopement et
 \item libmanette
 \end{itemize}
 
-% Gautier : installation compliquée -> versionnage + aucun fichier d'installation
-% + problème d'affichage : les jeux sont chargés avec de mauvaises images
-% + problème configuration : on ne peut pas configurer les touches du clavier
-%   dans les jeux
-% + code pas commenté : possibilité de le commenter pour qu'il soit plus clair et
-%   plus accessible
+De plus, aucun fichier ne documentait la procédure d'installation,
+cela nous à particulièrement posé problème car nous ne nous
+connaissions pas le système de build 'Meson'.
+
+Nous avons aussi tenté d'utiliser l'IDE Gnome-Builder, qui possède une
+fonctionnalité permettant de télécharger automatiquement les
+dépendances.
+
+Cependant nous n'avons pas réussi à l'utiliser sur la branche master,
+car il ne pouvait pas trouver les bonnes librairies.
+
+Lors de l'utilisation de Games, nous avons rencontrés quelques
+problèmes, certais jeux étaient chargés avec de mauvaises jaquettes,
+et il était impossible de paramétrer les touches du clavier.
 
 \section{Les bug reports}
 % Gautier : système de statuts -> aucune explication
@@ -305,37 +393,77 @@ Un bug avec pulseaudio était declaré pour Games, en effet le programme crashai
 quand le server pulseaudio était éteint et que l'on tentait de lancer
 un jeu.
 
-Le terminal retournait le message d'erreur suivant:
-\begin{verbatim}
-Assertion 'p' failed at pulse/simple.c:273, function pa_simple_write(). 
-Aborting.
-\end{verbatim}
 Il a donc fallu reproduire le bug, pour cela nous avons personnalisés notre
 configuration pulseaudio pour qu'il ne se relance pas automatiquement.
-\begin{verbatim}
+\begin{minted}[breaklines]{console}
 /etc/pulse/client.conf:
    autospawn = no
-\end{verbatim}
+\end{minted}
+
 Nous avons aussi utilisés une commande pour simuler le crash du server pulseaudio.
-\begin{verbatim}
-$ pulseaudio --kill
-\end{verbatim}
+\begin{minted}[breaklines]{console}
+  $ pulseaudio --kill
+\end{minted}
+
+Le terminal retournait le message d'erreur suivant:
+\begin{minted}[breaklines]{console}
+Assertion 'p' failed at pulse/simple.c:273, function pa_simple_write(). Aborting.
+\end{minted}
+
 % David: correction pas finie
-A partir de là nous avons tracé le bug dans le code source. Le bug venait d'une
-fonction de la bibliothèque pusleaudio qui reservait une structure ``null'' en
-entrée et passait par un assert qui met donc fin au programme avec le message
-évoqué précédemment. Nous avons donc commencé à réflechir à une solution.
-La solution la plus simple était de contourner la fonction qui provoque le crash
+
+En vérifiant dans les sources de pulseaudio on retrouve bien l'``assert'' qui provoque
+l'arret prematuré du programme.
+\begin{minted}[breaklines]{c}
+  pa_assert(p);
+\end{minted}
+
+A partir de là nous avons tracé le bug dans le code source de gnome-games et retro-gtk.
+Pour cela nous avons commancer par utilisé la commande ``git grep'' pour retrouver
+la (ou les) fonction(s) suceptible d'appeler ``pa\_simple\_write ()''.
+\begin{minted}[breaklines]{console}
+$ git grep ``pa_simple_write''
+\end{minted}
+
+Aucune fonction n'a étais trouvé dans les sources de Games, par contre il y a bien
+une fonction qui fait apelle a ``pa\_simple\_write'' dans retro-gtk.
+Nous avons donc put determiné que la fonction
+``retro\_pa\_player\_on\_audio\_output'' (définie dans le fichier
+``retro\_pa\_player.c'' du projet ``retro-gtk'') appel la fonction de pulseaudio
+``pa\_simple\_write'' qui provique le crach.
+\begin{minted}[breaklines]{c}
+  if (self->simple == NULL || sample_rate != self->sample_rate)
+    retro_pa_player_prepare_for_sample_rate (self, sample_rate);
+
+  pa_simple_write (self->simple, data, sizeof (gint16) * lenght, NULL);
+\end{minted}
+
+Apres quelque test et une veriffication dans les sources nous somme avenue à montré
+que la fonction ``retro\_pa\_player\_prepare\_for\_sample\_rate'' retourne ``self''
+équale à ``NULL'' si pulseaudio n'est pas disponible.
+
+La solution la plus simple étais de contourné la fonction ``pa\_simple\_write''
 avec un test de la valeur de la structure et un ``return'' prématuré dans la fonction
-appelante si la valeur est ``null'' pour bypasser le crash. \newline
-Nous avons aussi pensé à afficher un message à l'utilisateur et lui demander
-s'il voulait lancer quand même le jeu mais sans le son. \newline
-La première solution nous a paru trop simple et pas suffisament fiable, et la
-seconde un peu trop compliqué à mettre en oeuvre sur un projet que l'on découvrait juste.
-Nous avons donc décidé de poster sur le rapport de bug notre analyse du problème.
-\newline
-Finalement le mainteneur a opté pour la première solution et a
-corrigé le bug.
+appellente si la valeur est ``NULL''. Nous avons aussi pencer a afficher un message a
+l'utilisateur et luis demandant si il voulais lancer quand même le jeux mais sans le son.
+
+La premiere solution nous a parut trop simple et pas suffisament fiable, et la
+second un trop compliquer à mettre en oeuvre sur un projet que l'on découvrais juste.
+Nous avons donc désider de poster sur le rapport de bug notre analise du problème, et
+d'attendre une désision du mainteneur.
+
+Finalement le mainteneur a opter pour la première solution et à ajouter un test, comme
+si desous:
+\begin{minted}[breaklines]{c}
+  if (self->simple == NULL || sample\_rate != self->sample\_rate)
+    retro\_pa\_player\_prepare\_for\_sample\_rate (self, sample\_rate);
+
+  if (self->simple == NULL)
+    return;
+
+  pa\_simple\_write (self->simple, data, sizeof (gint16) * lenght, NULL);
+\end{minted}
+% PA: add part of code, and cmd to find bug in sources
 
 \section{Nos patchs}
 % TODO PA: Cette partie a besion d'une relecture
@@ -380,9 +508,9 @@ dans le répertoire /src/ui et se nommait application-window.vala .
 Une fonction permettant de retourner à la collection existait déjà:
 
 \begin{minted}[breaklines]{vala}
-private void on_display_back () {
-  if (quit_game ())
-  ui_state = UiState.COLLECTION;
+private void on\_display\_back () {
+  if (quit\_game ())
+  ui\_state = UiState.COLLECTION;
 
   uninhibit (Gtk.ApplicationInhibitFlags.IDLE | Gtk.ApplicationInhibitFlags.LOGOUT);
 }
@@ -434,7 +562,7 @@ Voici le code correspondant à notre patch:
 
 \begin{minted}[breaklines]{vala}
   if (event.keyval == Gdk.Key.Left){			
-    on\_display_back ();
+    on\_display\_back ();
     
     return true;
   }
@@ -449,7 +577,7 @@ Par la suite, le mainteneur à décidé de réécrire le patch pour ajouter
 la vérification de la pression sur la touche Alt:
 
 \begin{minted}[breaklines]{vala}
-  if (((event.state & default_modifiers) == Gdk.ModifierType.MOD1_MASK) &&
+  if (((event.state & default\_modifiers) == Gdk.ModifierType.MOD1\_MASK) &&
   (((get\_direction () == Gtk.TextDirection.LTR) && event.keyval == Gdk.Key.Left) ||
   ((get\_direction () == Gtk.TextDirection.RTL) && event.keyval == Gdk.Key.Right))) {
     on\_display_back ();

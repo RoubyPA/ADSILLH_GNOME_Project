@@ -1,10 +1,11 @@
-all: rapport.pdf diapo.pdf
+all: rapport diapo
 
-rapport.pdf: rapport.tex
+rapport: rapport.tex
 	pdflatex -shell-escape rapport.tex
 
-diapo.pdf: presentation/diapo.tex
-	pdflatex -shell-escape presentation/diapo.tex	
+diapo: presentation/diapo.tex
+	make -C presentation -f diapo.makefile
 
 clean:
-	rm -v *.log *.out *.toc *.aux *.nav *.snm
+	rm -v *.log *.out *.toc *.aux 
+	make -C presentation -f diapo.makefile clean
