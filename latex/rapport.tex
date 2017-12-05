@@ -19,8 +19,12 @@
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 
-\title{Projet Licence ADSILLH 2017/2018\\Rapport}
-\author{Gautier DELACOUR\\Pierre-Antoine ROUBY\\David TABARIE} % PA: TODO add GNOME-Music
+\author{Groupe Games:\\ Pierre Antoine Rouby,\\ Gautier Delacour,\\
+  David Tabarie,\\
+  \vspace{0.8cm}
+  Groupe Music:\\ Kevine Carsoule,\\ Adrien Darfeuille}
+
+\date{Année 2017/2018}
 
 \begin{document}
 \maketitle
@@ -320,12 +324,20 @@ lesquelles\footnote{Nous avons utilisé Debian Sid comme OS de dévellopement et
 \item libmanette
 \end{itemize}
 
-% Gautier : installation compliquée -> versionnage + aucun fichier d'installation
-% + problème d'affichage : les jeux sont chargés avec de mauvaises images
-% + problème configuration : on ne peut pas configurer les touches du clavier
-%   dans les jeux
-% + code pas commenté : possibilité de le commenter pour qu'il soit plus clair et
-%   plus accessible
+De plus, aucun fichier ne documentait la procédure d'installation,
+cela nous à particulièrement posé problème car nous ne nous
+connaissions pas le système de build 'Meson'.
+
+Nous avons aussi tenté d'utiliser l'IDE Gnome-Builder, qui possède une
+fonctionnalité permettant de télécharger automatiquement les
+dépendances.
+
+Cependant nous n'avons pas réussi à l'utiliser sur la branche master,
+car il ne pouvait pas trouver les bonnes librairies.
+
+Lors de l'utilisation de Games, nous avons rencontrés quelques
+problèmes, certais jeux étaient chargés avec de mauvaises jaquettes,
+et il était impossible de paramétrer les touches du clavier.
 
 \section{Les bug reports}
 % Gautier : système de statuts -> aucune explication
@@ -348,7 +360,7 @@ configuration pulseaudio pour qu'il ne se relance pas automatiquement.
 \end{minted}
 Nous avons aussi utilisés une commande pour simuler le crash du server pulseaudio.
 \begin{minted}[breaklines]{console}
-$ pulseaudio --kill
+  $ pulseaudio --kill
 \end{minted}
 % David: correction pas finie
 A partir de là nous avons tracé le bug dans le code source. Le bug venait d'une
