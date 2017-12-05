@@ -1,5 +1,4 @@
 \documentclass[12pt]{report}
-
 %% Language and font encodings
 \usepackage[francais]{babel}
 \usepackage[utf8]{inputenc}
@@ -336,36 +335,75 @@ Un bug avec pulseaudio était declaré pour Games, en effet le programme crashai
 quand le server pulseaudio était éteint et que l'on tentait de lancer
 un jeu.
 
-Le terminal retournait le message d'erreur suivant:
-\begin{minted}[breaklines]{console}
-Assertion 'p' failed at pulse/simple.c:273, function pa_simple_write(). Aborting.
-\end{minted}
 Il a donc fallu reproduire le bug, pour cela nous avons personnalisés notre
 configuration pulseaudio pour qu'il ne se relance pas automatiquement.
 \begin{minted}[breaklines]{console}
 /etc/pulse/client.conf:
    autospawn = no
 \end{minted}
+
 Nous avons aussi utilisés une commande pour simuler le crash du server pulseaudio.
 \begin{minted}[breaklines]{console}
 $ pulseaudio --kill
 \end{minted}
+
+Le terminal retournait le message d'erreur suivant:
+\begin{minted}[breaklines]{console}
+Assertion 'p' failed at pulse/simple.c:273, function pa_simple_write(). Aborting.
+\end{minted}
+
 % David: correction pas finie
-A partir de là nous avons tracé le bug dans le code source. Le bug venait d'une
-fonction de la bibliotheque pusleaudio qui reservais une structure ``null'' en
-entrée et passait par un assert qui met donc fin au programme avec le message
-évoqué présédement. Nous avons donc commencer à réflechire a une solution.
-La solution la plus simple étais de contourné la fonction qui provoque le crash
+En vérifiant dans les sources de pulseaudio on retrouve bien l'``assert'' qui provoque
+l'arret prematuré du programme.
+\begin{minted}[breaklines]{c}
+  pa_assert(p);
+\end{minted}
+
+A partir de là nous avons tracé le bug dans le code source de gnome-games et retro-gtk.
+Pour cela nous avons commancer par utilisé la commande ``git grep'' pour retrouver
+la (ou les) fonction(s) suceptible d'appeler ``pa\_simple\_write ()''.
+\begin{minted}[breaklines]{console}
+$ git grep ``pa_simple_write''
+\end{minted}
+
+Aucune fonction n'a étais trouvé dans les sources de Games, par contre il y a bien
+une fonction qui fait apelle a ``pa\_simple\_write'' dans retro-gtk.
+Nous avons donc put determiné que la fonction
+``retro\_pa\_player\_on\_audio\_output'' (définie dans le fichier
+``retro\_pa\_player.c'' du projet ``retro-gtk'') appel la fonction de pulseaudio
+``pa\_simple\_write'' qui provique le crach.
+\begin{minted}[breaklines]{c}
+  if (self->simple == NULL || sample_rate != self->sample_rate)
+    retro_pa_player_prepare_for_sample_rate (self, sample_rate);
+
+  pa_simple_write (self->simple, data, sizeof (gint16) * lenght, NULL);
+\end{minted}
+
+Apres quelque test et une veriffication dans les sources nous somme avenue à montré
+que la fonction ``retro\_pa\_player\_prepare\_for\_sample\_rate'' retourne ``self''
+équale à ``NULL'' si pulseaudio n'est pas disponible.
+
+La solution la plus simple étais de contourné la fonction ``pa\_simple\_write''
 avec un test de la valeur de la structure et un ``return'' prématuré dans la fonction
-appellente si la valeur est ``null'' pour bypassé le crash. \newline
-Nous avons aussi pen!cer a afficher un message a l'utilisateur et luis demandant
-si il voulais lancer quand même le jeux mais sans le son. \newline
+appellente si la valeur est ``NULL''. Nous avons aussi pencer a afficher un message a
+l'utilisateur et luis demandant si il voulais lancer quand même le jeux mais sans le son.
+
 La premiere solution nous a parut trop simple et pas suffisament fiable, et la
-second un trop compliquer a mettre en oeuvre sur un projet que l'on découvrais juste.
-Nous avons donc désider de poster sur le rapport de bug notre analise du problème.
-\newline
-Finalement le mainteneur a opter pour la première solution et à
-corriger le bug.
+second un trop compliquer à mettre en oeuvre sur un projet que l'on découvrais juste.
+Nous avons donc désider de poster sur le rapport de bug notre analise du problème, et
+d'attendre une désision du mainteneur.
+
+Finalement le mainteneur a opter pour la première solution et à ajouter un test, comme
+si desous:
+\begin{minted}[breaklines]{c}
+  if (self->simple == NULL || sample_rate != self->sample_rate)
+    retro_pa_player_prepare_for_sample_rate (self, sample_rate);
+
+  if (self->simple == NULL)
+    return;
+
+  pa_simple_write (self->simple, data, sizeof (gint16) * lenght, NULL);
+\end{minted}
 % PA: add part of code, and cmd to find bug in sources
 
 \section{Nos patchs}
