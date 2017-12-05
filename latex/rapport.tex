@@ -41,7 +41,6 @@ du logiciel libre.
 
 \tableofcontents
 
-
 \chapter{Introduction}
 
 \section{La Licence ADSILLH}
@@ -393,8 +392,8 @@ Un bug avec PulseAudio était déclaré pour Games, en effet le programme crasha
 quand le serveur PulseAudio était éteint et que l'on tentait de lancer
 un jeu.
 
-Il a donc fallu reproduire le bug, pour cela nous avons personnalisés notre
-configuration PulseAudio pour qu'il ne se relance pas automatiquement.
+Il a donc fallu reproduire le bug, pour cela nous avons personnalisé notre
+configuration PulseAudio pour qu'elle ne se relance pas automatiquement.
 \begin{minted}[breaklines]{console}
 /etc/pulse/client.conf:
    autospawn = no
