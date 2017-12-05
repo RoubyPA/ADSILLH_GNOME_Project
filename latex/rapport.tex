@@ -424,12 +424,12 @@ la (ou les) fonction(s) suceptible d'appeler ``pa\_simple\_write ()''.
 $ git grep ``pa_simple_write''
 \end{minted}
 
-Aucune fonction n'a étais trouvé dans les sources de Games, par contre il y a bien
-une fonction qui fait apelle a ``pa\_simple\_write'' dans retro-gtk.
-Nous avons donc put determiné que la fonction
+Nous avons trouvé aucune fonction dans les sources de Games, par contre il y a bien
+une fonction qui fait apelle à ``pa\_simple\_write'' dans retro-gtk.
+Nous avons donc put déterminé que la fonction
 ``retro\_pa\_player\_on\_audio\_output'' (définie dans le fichier
-``retro\_pa\_player.c'' du projet ``retro-gtk'') appel la fonction de pulseaudio
-``pa\_simple\_write'' qui provique le crach.
+``retro\_pa\_player.c'' du projet ``retro-gtk'') appel la fonction ``pa\_simple\_write''
+de pulsaudio qui provique le crach.
 \begin{minted}[breaklines]{c}
   if (self->simple == NULL || sample_rate != self->sample_rate)
     retro_pa_player_prepare_for_sample_rate (self, sample_rate);
@@ -437,7 +437,7 @@ Nous avons donc put determiné que la fonction
   pa_simple_write (self->simple, data, sizeof (gint16) * lenght, NULL);
 \end{minted}
 
-Apres quelque test et une vérification dans les sources nous somme avenue à montré
+Après quelque test et une vérification dans les sources nous somme avenue à montré
 que la fonction ``retro\_pa\_player\_prepare\_for\_sample\_rate'' position ``self''
 à ``NULL'' si pulseaudio n'est pas disponible.
 
@@ -468,24 +468,27 @@ si desous:
 \subsection{Mise à jour du fichier HACKING}
 Le premier patch que nous avons envoyé est en réponse à un bug report
 (\href{http://bugzilla.gnome.org/show_bug.cgi?id=788692}{ici}), il ajoute une
-aide pour la compilation du projet. \newline
+aide pour la compilation du projet.
+
 Il n'y avait aucune aide ou information dans la documentation sur la compilation
 du projet. Étant nouveaux dans le projet GNOME nous n'avions pas connaissance de 
-GNOME-Builder qui permet assez simplement de construire le projet. Mais
-même avec cet outil la compilation s'est revélée ardue. En effet 
-le fonctionement de Builder a tendance à changer entre les versions et certaines
-actions comme un ``git pull'' peuvent poser problème.
-Nous avons donc modifié le fichier HACKING du projet pour y ajouter des 
-instruction de compilation. \newline
+Builder qui permet assez simplement de construire le projet. Mais même avec cet
+outil la compilation s'est revélée ardue. En effet le fonctionement de Builder a
+tendance à changer entre les versions et certaines actions comme un ``git pull''
+peuvent poser problème. Nous avons donc modifié le fichier HACKING du projet pour
+y ajouter des instruction de compilation.
+
 Le projet utilise pour le moment le système ``autotools'' pour sa configuration et 
 sa compilation, mais pour la version 2.30 il est prevu qu'il passe à un système
-avec le logiciel ``meson'' pour la configuration. \newline
+avec le logiciel ``meson'' pour la configuration.
+
 Nous avons donc nous-même rencontrés de nombreux problèmes de compilation,
 il nous a donc semblé important de donner des indications pour que les 
 prochaines personne qui voudraient contribuer ne soient pas freinées par un 
 problème comme celui-ci.
+
 Il y a eu de nombreux ajustements demandés par le mainteneur et le patch n'a 
-pas encore été aprouvé. \newline
+pas encore été aprouvé.
 
 \subsection{Mise à jour du fichier README.md}
 Le second patch (\href{http://bugzilla.gnome.org/show_bug.cgi?id=790454}{ici}) 
