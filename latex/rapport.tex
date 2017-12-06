@@ -22,14 +22,62 @@
 \usemintedstyle{tango}
 
 \title{Projet Licence ADSILLH 2017/2018\\Rapport}
-\author{Groupe Games:\\ Pierre Antoine Rouby,\\ Gautier Delacour,\\
-  \vspace{0.8cm}
-  David Tabarie,\\ Groupe Music:\\ Kevin Carsoule,\\ Florian Darfeuille}
+\author{\textbf{Groupe Games}: Pierre Antoine Rouby - Gautier Delacour - David Tabarie\\ \textbf{Groupe Music}: Kevine Carsoule - Florian Darfeuille\newline}
 
 \date{Année 2017/2018}
 
+%%\begin{document}
+%%  \begin{figure}
+%%    \includegraphics[scale=0.5]{images/logo_univ.jpg}
+%%  \end{figure}
+%%  \begin{center}
+%%    \textbf{Groupe Games}:\\ Pierre Antoine Rouby\\ Gautier Delacour\\David Tabarie\\ \textbf{Groupe Music}:\\ Kevine Carsoule\\ Adrien Darfeuille
+%%    \end{center}
+%%  \begin{figure}
+%%    \includegraphics[scale=0.5]{images/Gnomelogo_svg.jpg}
+%%  \end{figure}
+%%\maketitle
 \begin{document}
-\maketitle
+\makeatletter
+\begin{titlepage}
+  \centering
+  \begin{figure}
+    \centering
+    \vspace{1cm}
+    \textcolor{SteelBlue}{\fbox{\Huge{\emph{\textbf{Rapport de projet}}}}}\\
+    % FireBrick, DarkRed, Indigo.
+    \vspace{-5cm}
+  \end{figure}
+
+
+  \begin{figure}
+    \centering
+    \vspace{14cm}
+          % FireBrick, DarkRed, Indigo.
+          \vspace{2cm}
+          \includegraphics[scale=0.2]{images/Gnomelogo_svg.png}
+    \vspace{-15cm}
+  \end{figure}
+
+  
+  \begin{flushleft}
+    \large{\textbf{Projet GNOME}} :\\{\@author}\\ 
+    Licence ADSILLH\\
+    Session 2017
+  \end{flushleft}
+
+
+  \vspace{15cm}
+  %%\Large{Lycée Alfred Kastler}\\
+  %%\normalsize{\textcolor{Peru}{14 Avenue de l'Université\\33402 Talence}}
+
+
+  \vspace{-0.1cm}
+  \centering\includegraphics[scale=0.3]{images/logo_univ.jpg}
+  
+\end{titlepage}
+\makeatother
+
 
 % We can't place a logo on titlepage
 % \begin{titlepage}
@@ -345,7 +393,7 @@ nombreux émulateurs ainsi que les jeux natifs Linux. Au début du
 projet Games étais disponible sur le git de GNOME, mais depuis peut il
 a migré sur Gitlab.
 
-\section{Les projets associé}
+\section{Les projets associés}
 Le projet s'appuie sur plusieurs autre projets:
 \begin{itemize}
 \item retro-gtk : Développé initialement en Vala pour le projet Libretro, a
@@ -544,19 +592,19 @@ peuvent poser problème. Nous avons donc désidé de modifié le fichier HACKING
 projet pour y ajouter des instruction de compilation.
 
 Le projet utilise pour le moment le système ``autotools'' pour sa configuration et 
-sa compilation, mais pour la version 2.30 il est prevu qu'il passe à un système
+sa compilation, mais pour la version 2.30 il est prévu qu'il passe à un système
 avec le logiciel ``meson'' pour la configuration.
 
-Après des recherches et un peut d'aide, nous avont réussi à avoir un procédure
-complete pour la compilation du projet. L'une des difficultés que l'on peut
-rencontré pour la compilation de Games et qui est le sujet du bug report sur le
+Après des recherches et un peu d'aide, nous avont réussi à avoir une procédure
+complète pour la compilation du projet. L'une des difficultés que l'on peut
+rencontrer pour la compilation de Games et qui est le sujet du bug report sur le
 quelle nous avons répondu, est le fait que la version master de Games a besoin de
-la vertion master de ``retro-gtk'' et ``libmannette''. Cette spésifisité n'est
-indique nule par dans la documentation et les dependences de s'est deux
-bibliotheques ne sont pas à jour dans la liste de dependance d'autotools.
+la version master de ``retro-gtk'' et ``libmannette''. Cette spécificité n'est
+indiqué nulle part dans la documentation et les dépendances de ces deux
+bibliothèques ne sont pas à jour dans la liste de dépendances d'autotools.
 
 Nous avons nous-même rencontrés des problèmes de compilation, il nous a donc
-semblé important de donner des indications pour que les prochaines personne qui
+semblé important de donner des indications pour que les prochaines personnes qui
 voudraient contribuer ne soient pas freinées par un problème comme celui-ci.
 
 Il y a eu de nombreux ajustements demandés par le mainteneur, notament la demande
