@@ -399,7 +399,7 @@ configuration PulseAudio pour qu'elle ne se relance pas automatiquement.
    autospawn = no
 \end{minted}
 
-Nous avons aussi utilisés une commande pour simuler le crash du serveur PulseAudio.
+Nous avons aussi utilisé une commande pour simuler le crash du serveur PulseAudio.
 \begin{minted}[breaklines]{console}
   $ PulseAudio --kill
 \end{minted}
@@ -416,18 +416,18 @@ l’arrêt prématuré du programme.
 \end{minted}
 
 A partir de là nous avons tracé le bug dans le code source de gnome-games et retro-gtk.
-Pour cela nous avons commencer par utilisé la commande ``git grep'' pour retrouver
+Pour cela nous avons commencé par utiliser la commande ``git grep'' pour retrouver
 la (ou les) fonction(s) susceptible d'appeler ``pa\_simple\_write ()''.
 \begin{minted}[breaklines]{console}
 $ git grep ``pa_simple_write''
 \end{minted}
 
 Aucune fonction n'a été trouvée dans les sources de Games, par contre il y a bien
-une fonction qui fait apelle a ``pa\_simple\_write'' dans retro-gtk.
-Nous avons donc pu determiner que la fonction
+une fonction qui fait appel à ``pa\_simple\_write'' dans retro-gtk.
+Nous avons donc pu déterminer que la fonction
 ``retro\_pa\_player\_on\_audio\_output'' (définie dans le fichier
 ``retro\_pa\_player.c'' du projet ``retro-gtk'') appelle la fonction de PulseAudio
-``pa\_simple\_write'' qui provoque le crach.
+``pa\_simple\_write'' qui provoque le crash.
 \begin{minted}[breaklines]{c}
   if (self->simple == NULL || sample_rate != self->sample_rate)
     retro_pa_player_prepare_for_sample_rate (self, sample_rate);
@@ -435,18 +435,17 @@ Nous avons donc pu determiner que la fonction
   pa_simple_write (self->simple, data, sizeof (gint16) * lenght, NULL);
 \end{minted}
 
-% David: là par contre je me perd
 Après quelques test et une vérification dans les sources nous  avons compris
 que la fonction ``retro\_pa\_player\_prepare\_for\_sample\_rate'' retourne ``self''
 équale à ``NULL'' si PulseAudio n'est pas disponible.
 
 La solution la plus simple était de contourner la fonction ``pa\_simple\_write''
 avec un test de la valeur de la structure et un ``return'' prématuré dans la fonction
-appellente si la valeur est ``NULL''. Nous avons aussi pencer a afficher un message a
+appellante si la valeur est ``NULL''. Nous avons aussi pensé à afficher un message à
 l'utilisateur et luis demandant si il voulais lancer quand même le jeux mais sans le son.
 
 La premiere solution nous a parut trop simple et pas suffisament fiable, et la
-second un trop compliquer à mettre en oeuvre sur un projet que l'on découvrais juste.
+seconde un peu trop compliquée à mettre en oeuvre sur un projet que l'on découvrait juste.
 Nous avons donc décidés de poster sur le rapport de bug notre analyse du problème, et
 d'attendre une décision du mainteneur.
 
