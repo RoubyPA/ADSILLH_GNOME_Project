@@ -3,13 +3,7 @@
 * Newcomers: trucs en trop (ça répète), revoir les liens
 
 * GNOME-Games
-** Découverte du logiciel
-Games n'utilise pas encore Meson
-Ajouter lien vers le patch après "De plus,..."
-Mettre le pied de page ... pas en pied de page
-* Les bugs reports
 * Nos Patchs
-*** Ajouter des exemples de la syntaxe markdown
 ** Retour à la collection 
 Ajouter le mappage /data/ui/application-window.ui
 "pour trouver la référence correspondant à la touche Left"

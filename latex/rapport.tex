@@ -482,7 +482,7 @@ lesquelles :
 
 De plus, aucun fichier ne documentait la procédure d'installation,
 cela nous à particulièrement posé problème car nous ne nous
-connaissions pas le système de build 'Meson' (celui-ci est utilisé
+connaissions pas le système de build 'Meson
 pour retro-gtk).
 
 Nous avons aussi tenté d'utiliser l'IDE Builder, qui possède une
@@ -682,13 +682,13 @@ private void on_display_back () {
 }
 \end{minted}
 
-Une fonction qui liait l'appui de certaines touches à des événements
+Une fonction qui gère les événements de certaines touches à des événements
 était aussi déjà présente:
 
 \begin{minted}[breaklines]{vala}
   private bool handle_display_key_event (Gdk.EventKey event) {
     if (ui_state != UiState.DISPLAY)
-    return false;
+      return false;
 
     var default_modifiers = Gtk.accelerator_get_default_mod_mask ();
 
@@ -755,12 +755,9 @@ la vérification de la pression sur la touche Alt:
 \section{Conclusion}
 Ce projet nous permet de nous accoutumer au développement
 communautaire et ainsi de nous former à utiliser des outils
-spécifiques tels que git ainsi que des trackeurs de bugs.
-
-Nous avons du communiquer de manière directe avec la communauté GNOME
-par IRC.
-
-À ce jour, nous avons envoyés trois patch, dont un a été accepté.
+spécifiques tels que git ainsi que des trackeurs de bugs.  Nous avons
+du communiquer de manière directe avec la communauté GNOME par IRC.  À
+ce jour, nous avons envoyés trois patch, dont un a été accepté.
 
 Par la suite, nous comptons ajouter une fonction de retour à la
 collection par l'appui du bouton retour de la souris.
