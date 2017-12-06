@@ -105,16 +105,16 @@ Bugzilla est une solution de gestion de bugs, distribuée sous
 tri-licence\footnote{Tri-licence: Le concept de licence multiple
   est de proposer un travail non pas sous une licence unique, mais
   en offrant un choix restreint de licence, pour permettre une plus
-  grande flexibilité. (source:
-  \href{https://fr.wikipedia.org/wiki/Licence_multiple}{Wikipedia})}
-MPL\footnote{MPL: Mozilla Public License (source:
-  \href{https://www.mozilla.org/en-US/MPL/}{Mozilla})}
-/ GNU GPL\footnote{GNU GPL: GNU General Public License (source:
-  \href{https://www.gnu.org/licenses/gpl.html}{Gnu})}
-/ GNU LGPL\footnote{GNU LGPL: GNU Lesser General Public License (source:
-  \href{https://www.gnu.org/licenses/lgpl.html}{Gnu})}
+  grande flexibilité. 
+  (\url{https://fr.wikipedia.org/wiki/Licence_multiple})}
+MPL\footnote{MPL: Mozilla Public License 
+  (\url{https://www.mozilla.org/en-US/MPL/})}
+/ GNU GPL\footnote{GNU GPL: GNU General Public License 
+  (\url{https://www.gnu.org/licenses/gpl.html})}
+/ GNU LGPL\footnote{GNU LGPL: GNU Lesser General Public License 
+  (\url{https://www.gnu.org/licenses/lgpl.html})}
 , elle est développée et utilisée à l'origine par Mozilla.
-GNOME a mis en place un \href{https://bugzilla.gnome.org}{bugzilla} pour 
+GNOME a mis en place un bugzilla (\url{https://bugzilla.gnome.org}) pour 
 la gestion des bugs dans les différents projets.
 %% (figure~\ref{figure_bugzilla} page~\pageref{figure_bugzilla})
 
@@ -145,7 +145,7 @@ principale est basée sur le logiciel libre "cgit"
 %% (figure~\ref{figure_cgit} page~\pageref{figure_cgit})
 , on peut y retrouver la plupart des projets GNOME 
 (\href{https://git.gnome.org/}{git.gnome.org}). Pour créer un bug il faut
-passer par Bugzilla (section~\ref{bugzilla}).
+passer par Bugzilla (section~\ref{bugzilla} page~\pageref{bugzilla}).
 
 \label{gitlab}
 GNOME a aussi mis en place un GitLab (\href{https://gitlab.gnome.org/GNOME}
@@ -161,7 +161,7 @@ Il existe aussi un miroir des répertoires git des projets GNOME sur GitHub
 (\href{https://github.com/GNOME}{github.com/GNOME}).
 
 \subsection{IRC}
-Le projet GNOME dispose aussi d'un chat irc (\href{irc.gnome.org}{irc.gnome.org})
+Le projet GNOME dispose aussi d'un chat irc (\url{irc.gnome.org})
 avec de nombreux salons, dont voici quelque exemples :
 \begin{itemize}
 \item \#gnome-hacker : Pour les dicussions sur le développement de GNOME ;
@@ -213,7 +213,7 @@ son interface se veut particulièrement simple afin de permettre aux
 utilisateurs de gérer facilement leur musique, leur bibliothèques, 
 les recherches et la lecture de leur fichiers audio.
 Les sources du projet sont disponibles sur github 
-(\url{https://github.com/GNOME/gnome-music}{github.com/GNOME/gnome-music}).
+(\url{https://github.com/GNOME/gnome-music}).
 
 \section{Architecture du projet}
 % TODO 
@@ -384,7 +384,8 @@ fonctionnalité permettant de télécharger automatiquement les
 dépendances.
 
 Cependant nous n'avons pas réussi à l'utiliser sur la branche master,
-car il ne pouvait pas trouver les bonnes librairies.
+car il ne pouvait pas trouver les bonnes librairies (section~\ref{HACKING}
+page~\pageref{HACKING}).
 
 Lors de l'utilisation de Games, nous avons rencontrés quelques
 problèmes, certains jeux étaient chargés avec de mauvaises jaquettes,
@@ -395,6 +396,7 @@ et il était impossible de paramétrer les touches du clavier.
 % Gautier : lecture de différents bug reports, et réécriture plus simple dans un
 %           fichier partagé pour effectuer un premier tri
 \subsection{Bug PulseAudio}
+\label{PulseAudio}
 Un bug avec PulseAudio (\url{https://bugzilla.gnome.org/show_bug.cgi?id=781887})
 était déclaré pour Games, en effet le programme crashait quand le serveur
 PulseAudio était éteint et que l'on tentait de lancer un jeu.
@@ -472,6 +474,7 @@ ci-desous:
 \section{Nos patchs}
 % TODO PA: Cette partie a besion d'une relecture
 \subsection{Mise à jour du fichier HACKING}
+\label{HACKING}
 Le premier patch que nous avons envoyé est en réponse à un bug report
 (\url{http://bugzilla.gnome.org/show_bug.cgi?id=788692}), il ajoute une aide
 pour la compilation du projet.
@@ -509,6 +512,7 @@ Après plusieurs modifiactions et échanges avec le mainteneur le patch à étai
 accepté et commité.
 
 \subsection{Mise à jour du fichier README.md}
+\label{README}
 Le second patch (\url{http://bugzilla.gnome.org/show_bug.cgi?id=790454}) 
 que nous avons envoyés, est une mise à jour de la documentation de retro-gtk.
 En effet retro-gtk est passé d'un système de compilation 'autotools' à un
