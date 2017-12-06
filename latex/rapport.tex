@@ -215,10 +215,10 @@ Il existe aussi un miroir des répertoires git des projets GNOME sur GitHub
 Le projet GNOME dispose aussi d'un chat irc (\url{irc.gnome.org})
 avec de nombreux salons, dont voici quelque exemples :
 \begin{itemize}
-\item \#gnome-hacker : Pour les dicussions sur le développement de GNOME ;
+\item \#gnome-hacker : Pour les discussions sur le développement de GNOME ;
 \item \#newcomers : Pour les nouveaux contributeurs au projet ;
 \item \#gnome-games : Pour les discutions autour du projet Games ;
-\item \#vala : Spécifique pour le language vala.
+\item \#vala : Spécifique pour le langage vala.
 \end{itemize}
 
 \subsection{Mailing lists}
@@ -482,8 +482,8 @@ lesquelles :
 
 De plus, aucun fichier ne documentait la procédure d'installation,
 cela nous à particulièrement posé problème car nous ne nous
-connaissions pas le système de build 'Meson
-pour retro-gtk).
+connaissions pas le système de build Meson
+pour retro-gtk.
 
 Nous avons aussi tenté d'utiliser l'IDE Builder, qui possède une
 fonctionnalité permettant de télécharger automatiquement les
@@ -586,16 +586,16 @@ pour la compilation du projet.
 Il n'y avait aucune aide ou information dans la documentation sur la compilation
 du projet. Étant nouveaux dans le projet GNOME nous n'avions pas connaissance de 
 Builder qui permet assez simplement de construire le projet. Mais même avec cet
-outil, la compilation s'est revélée ardue. En effet le fonctionement de Builder a
+outil, la compilation s'est révélée ardue. En effet le fonctionnement de Builder a
 tendance à changer entre les versions et certaines actions comme un ``git pull''
-peuvent poser problème. Nous avons donc désidé de modifié le fichier HACKING du
+peuvent poser problème. Nous avons donc décidé de modifié le fichier HACKING du
 projet pour y ajouter des instruction de compilation.
 
 Le projet utilise pour le moment le système ``autotools'' pour sa configuration et 
 sa compilation, mais pour la version 2.30 il est prévu qu'il passe à un système
 avec le logiciel ``meson'' pour la configuration.
 
-Après des recherches et un peu d'aide, nous avont réussi à avoir une procédure
+Après des recherches et un peu d'aide, nous avons réussi à avoir une procédure
 complète pour la compilation du projet. L'une des difficultés que l'on peut
 rencontrer pour la compilation de Games et qui est le sujet du bug report sur le
 quelle nous avons répondu, est le fait que la version master de Games a besoin de
@@ -607,9 +607,9 @@ Nous avons nous-même rencontrés des problèmes de compilation, il nous a donc
 semblé important de donner des indications pour que les prochaines personnes qui
 voudraient contribuer ne soient pas freinées par un problème comme celui-ci.
 
-Il y a eu de nombreux ajustements demandés par le mainteneur, notament la demande
-d'utilisation de la syntax Markdown.
-Markdown est un langage de balisage léger fait pour etre facile a lire est a écrire.
+Il y a eu de nombreux ajustements demandés par le mainteneur, notamment la demande
+d'utilisation de la syntaxe Markdown.
+Markdown est un langage de balisage léger fait pour être facile a lire est a écrire.
 l'exemple ci-dessous permet d'écrire des ligne de commande shell :
 \begin{verbatim}
   ```shell
@@ -621,11 +621,11 @@ Ou encore ci-dessous un exemple de lien :
   [Builder](https://wiki.gnome.org/Apps/Builder "GNOME-Builder Wiki")
 \end{verbatim}
 
-D'autre part de notre patch original se sont revéler peut utiles ou pratiquement
-impossible à maintenir. Nous voulions par example faire une liste exhaustive des
-dependances du projet, cette idée à étais refuser par le mainteneur car très
+D'autre parties de notre patch original se sont revélées peut utiles ou pratiquement
+impossible à maintenir. Nous voulions par exemple faire une liste exhaustive des
+dépendances du projet, cette idée à étais refuser par le mainteneur car très
 difficile a maintenir d'une version a l'autre.
-Après plusieurs modifiactions et échanges avec le mainteneur le patch à étais
+Après plusieurs modifications et échanges avec le mainteneur le patch à étais
 accepté et commité.
 
 \subsection{Mise à jour du fichier README.md}
@@ -643,7 +643,7 @@ Le but de ce patch (\url{https://gitlab.gnome.org/GNOME/gnome-games/issues/3})
 est de lier un évent à une combinaison de touches (en l’occurrence Alt+Left).
 
 En cherchant dans les fichiers source, nous avons remarqués qu'un
-fichier XML référencait les events:
+fichier XML référençait les events:
 
 \begin{minted}[breaklines]{vala}
   <signal name="key-press-event" after="yes" handler="on_key_pressed"/>
