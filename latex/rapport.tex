@@ -321,10 +321,9 @@ des développeurs.
 \chapter{GNOME-Games} %% Change GNOME-Games to Games ?
 Games est une application permettant la gestion d'une
 bibliothèque vidéoludique. Elle est capable de s'interfacer avec de
-nombreux émulateurs ainsi que les jeux natifs Linux.
-
-Au début du projet Games étais disponible sur le git de GNOME, mais 
-depuis peut il a migré sur Gitlab.
+nombreux émulateurs ainsi que les jeux natifs Linux. Au début du
+projet Games étais disponible sur le git de GNOME, mais depuis peut il
+a migré sur Gitlab.
 
 \section{Les projets associé}
 Le projet s'appuie sur plusieurs autre projets:
@@ -401,13 +400,13 @@ plusieurs versions d'un même logiciel.
 Nous avons rencontrés de nombreux problèmes relatifs à la compilation,
 cela étant en grande partie dû à l'utilisation de bibliothèques encore en
 état de développement actif, ainsi qu'au système de configuration
-``Meson'' qui est un remplacement de ``./configure''.
+``Meson'' qui est un remplacement de ``./configure''.\\
 
 Ainsi il a été nécessaire de compiler certaines librairies, parmi
 lesquelles\footnote{Nous avons utilisé Debian Sid comme OS de développement et de test}:
 \begin{itemize}
 \item retro-gtk
-\item libmanette
+\item libmanette\\
 \end{itemize}
 
 De plus, aucun fichier ne documentait la procédure d'installation,
@@ -416,14 +415,12 @@ connaissions pas le système de build 'Meson'.
 
 Nous avons aussi tenté d'utiliser l'IDE Gnome-Builder, qui possède une
 fonctionnalité permettant de télécharger automatiquement les
-dépendances.
-
-Cependant nous n'avons pas réussi à l'utiliser sur la branche master,
+dépendances. Cependant nous n'avons pas réussi à l'utiliser sur la branche master,
 car il ne pouvait pas trouver les bonnes librairies (section~\ref{HACKING}
 page~\pageref{HACKING}).
 
-Lors de l'utilisation de Games, nous avons rencontrés quelques
-problèmes, certains jeux étaient chargés avec de mauvaises jaquettes,
+Lors de l'utilisation du logiciel, nous avons rencontrés quelques
+problèmes: certains jeux étaient chargés avec de mauvaises jaquettes,
 et il était impossible de paramétrer les touches du clavier.
 
 \section{Les bug reports}
@@ -644,41 +641,10 @@ la vérification de la pression sur la touche Alt:
   }
 \end{minted}
 
-%% % Annexe:
-%% \appendix
-%% \chapter{GNOME en images}
-
-%% \begin{figure}[p]
-%%   % from: https://bugzilla.gnome.org
-%%   \caption{\label{figure_bugzilla} Le bugzilla du projet GNOME}
-%%   \includegraphics[width=15cm]{images/bugzilla_gnome_org.png}
-%% \end{figure}
-
-%% \begin{figure}[p]
-%%   % from: https://bugzilla.gnome.org
-%%   \caption{\label{figure_bugzilla_score} Score sur bugzilla}
-%%   \includegraphics[width=5cm]{images/score.png}
-%% \end{figure}
-
-%% \begin{figure}[p]
-%%   % from: https://wiki.gnome.org
-%%   \caption{\label{figure_wiki} Le wiki du projet GNOME}
-%%   \includegraphics[width=15cm]{images/wiki_gnome_org.png}
-%% \end{figure}
-
-%% \begin{figure}[p]
-%%   % from: https://git.gnome.org
-%%   \caption{\label{figure_cgit} Interface git du projet GNOME}
-%%   \includegraphics[width=15cm]{images/git_gnome_org.png}
-%% \end{figure}
-
-%% \begin{figure}[p]
-%%   % from: https://gitlab.gnome.org
-%%   \caption{\label{figure_gitlab} Le gitlab du projet GNOME}
-%%   \includegraphics[width=15cm]{images/gitlab_gnome_org.png}
-%% \end{figure}
-
-%% \chapter{Patchs} 
-%% % PA: Utile ? 
+\section{Conclusion}
+Ce projet nous a permis de nous accoutumer au développement
+communautaire et ainsi de nous former à utiliser des outils
+spécifiques tels que git ainsi que des trackeurs de bugs.
+Nous avons du effectuer 
 
 \end{document}
