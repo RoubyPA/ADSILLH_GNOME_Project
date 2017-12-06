@@ -324,22 +324,18 @@ Une alternative existait déjà dans le code avec le raccourci Alt+Left. Dans ce
 Voici un aperçu de notre modification de code : 
 
 \begin{minted}[breaklines]{python}
+  self.button_press_event_id = self.connect('button_press_event', self.button_press)
 
-self.button_press_event_id = self.connect('button_press_event', self.button_press)
-
-def button_press(self,widget,event):
-        #Go Back from Album with mouse button 
-     	if (event.button == 8):
-         	if (self.toolbar._state != ToolbarState.MAIN):             				self.curr_view.set_visible_child(self.curr_view._grid)
-self.toolbar.set_state(ToolbarState.MAIN)
-
-}
+  def button_press(self,widget,event):
+    #Go Back from Album with mouse button 
+    if (event.button == 8):
+      if (self.toolbar._state != ToolbarState.MAIN):
+        self.curr_view.set_visible_child(self.curr_view._grid)
+        self.toolbar.set_state(ToolbarState.MAIN)
 \end{minted}
 
 Une fois que cela est fait , on compile et on créé un backbutton.patch qu'on envoie aux programmeur sur bugzilla . 
 Nous sommes actuellement en attente d'une réponse des développeurs gnome-music . 
-
-
 
 \newpage
 \chapter{GNOME-Games} %% Change GNOME-Games to Games ?
