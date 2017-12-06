@@ -241,7 +241,7 @@ sur les applications GNOME. Il permet de télécharger les sources d'un
 projet et de pouvoir travailler dessus et de le construire grâce à une
 interface graphique simplifiée. Il permet en effet d'éditer des fichiers
 ou de compiler le projet avec un seul bouton, de gérer les dépendances
-et met à disposition un débogueur
+et met à disposition un débogueur.
 
 On nous présente ensuite la documentation disponible sur
 \url{https://developper.gnome.org/search}
@@ -249,7 +249,7 @@ ainsi que sur la page du projet concerné. On nous explique ensuite que
 chaque projet possède des bugs dédiés aux newcomers. Ce sont des bugs
 qui permettent aux nouveaux arrivants de se familiariser à la fois avec
 le code et avec la manière de corriger un bug grâce à des bugs pas trop
-complexe.
+complexes.
 
 Le guide aiguille ensuite le nouvel arrivant sur la façon de corriger
 un bug en comprenant ce qu'il se passe et en changeant le code de
@@ -390,7 +390,7 @@ Nous sommes actuellement en attente d'une réponse des développeurs gnome-music
 Games est une application permettant la gestion d'une
 bibliothèque vidéoludique. Elle est capable de s'interfacer avec de
 nombreux émulateurs ainsi que les jeux natifs Linux. Au début du
-projet Games étais disponible sur le git de GNOME, mais depuis peut il
+projet Games étais disponible sur le git de GNOME, mais depuis peu il
 a migré sur Gitlab.
 
 \section{Les projets associés}
@@ -402,7 +402,7 @@ Le projet s'appuie sur plusieurs autre projets:
   \url{http://bytesgnomeschozo.blogspot.fr/2017/10/retro-gtk-future-marty.html}\\
   Il a ensuite prévu de porter le projet en langage Rust
   \footnote{Projet retro-gtk : \url{https://gitlab.gnome.org/GNOME/retro-gtk}}.
-\item libmanette : Libmannette et aussi développé pas le mainteneur de Games. Cette bibliothèque
+\item libmanette : Libmannette est aussi développé pas le mainteneur de Games. Cette bibliothèque
   permet la gestion des manettes
   \footnote{Projet libmanette : \url{https://gitlab.gnome.org/aplazas/libmanette}}.
 \end{itemize}
@@ -473,7 +473,7 @@ cela étant en grande partie dû à l'utilisation de bibliothèques encore en
 état de développement actif, ainsi qu'au système de configuration
 ``Meson'' qui est un remplacement de ``./configure''.\\
 
-Ainsi il a été nécessaire de compiler certaines librairies, parmi
+Ainsi il a été nécessaire de compiler certaines bibliothèques, parmi
 lesquelles :
 \begin{itemize}
 \item retro-gtk
@@ -488,10 +488,10 @@ pour retro-gtk.
 Nous avons aussi tenté d'utiliser l'IDE Builder, qui possède une
 fonctionnalité permettant de télécharger automatiquement les
 dépendances. Cependant nous n'avons pas réussi à l'utiliser sur la branche master,
-car il ne pouvait pas trouver les bonnes librairies (section~\ref{HACKING}
+car il ne pouvait pas trouver les bonnes bibliothèques (section~\ref{HACKING}
 page~\pageref{HACKING}).
 
-Lors de l'utilisation du logiciel, nous avons rencontrés quelques
+Lors de l'utilisation du logiciel, nous avons rencontré quelques
 problèmes: certains jeux étaient chargés avec de mauvaises jaquettes,
 et il était impossible de paramétrer les touches du clavier.
 
@@ -549,7 +549,7 @@ Nous avons donc pu déterminer que la fonction
   pa_simple_write (self->simple, data, sizeof (gint16) * lenght, NULL);
 \end{minted}
   
-Après quelques test et une vérification dans les sources nous  avons compris
+Après quelques tests et une vérification dans les sources nous  avons compris
 que la fonction ``retro\_pa\_player\_prepare\_for\_sample\_rate'' retourne ``self''
 équale à ``NULL'' si PulseAudio n'est pas disponible.
 
@@ -558,7 +558,7 @@ avec un test de la valeur de la structure et un ``return'' prématuré dans la f
 appellante si la valeur est ``NULL''. Nous avons aussi pensé à afficher un message à
 l'utilisateur et lui demandant si il voulais lancer quand même le jeux mais sans le son.
 
-La premiere solution nous a parut trop simple et pas suffisament fiable, et la
+La première solution nous a paru trop simple et pas suffisament fiable, et la
 seconde un peu trop compliquée à mettre en oeuvre sur un projet que l'on découvrait juste.
 Nous avons donc décidés de poster sur le rapport de bug notre analyse du problème, et
 d'attendre une décision du mainteneur.
@@ -721,7 +721,7 @@ Une fonction qui gère les événements de certaines touches à des événements
 
 C'est en prenant cet extrait pour exemple que nous avons ajouté une
 condition dédiée à Alt+Left, il nous a été nécessaire de chercher dans
-la documentation du langage Vala pour trouver la X (modifier key ?)
+la documentation du langage Vala pour trouver la touche
 correspondante.
 
 Voici le code correspondant à notre patch:
@@ -756,8 +756,8 @@ la vérification de la pression sur la touche Alt:
 Ce projet nous permet de nous accoutumer au développement
 communautaire et ainsi de nous former à utiliser des outils
 spécifiques tels que git ainsi que des trackeurs de bugs.  Nous avons
-du communiquer de manière directe avec la communauté GNOME par IRC.  À
-ce jour, nous avons envoyés trois patch, dont un a été accepté.
+dû communiquer de manière directe avec la communauté GNOME par IRC.  À
+ce jour, nous avons envoyé trois patch, dont un a été accepté.
 
 Par la suite, nous comptons ajouter une fonction de retour à la
 collection par l'appui du bouton retour de la souris.
