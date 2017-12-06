@@ -76,6 +76,7 @@ du logiciel libre.
 \section{Présentation}
 % from: https://fr.wikipedia.org/wiki/GNOME
 % Gautier : j'ai enlevé le terme ``environnement de bureau livre convivial'', ce n'est pas un terme objectif
+% PA: L'objectivité existe t'elle ?
 GNOME, acronyme de GNU Network Object Model Environment, est un
 environnement de bureau libre  dont l'objectif est de rendre
 accessible l'utilisation du système d'exploitation GNU au plus grand
@@ -87,6 +88,11 @@ GNOME est développé par The GNOME Project dont les participants sont
 bénévoles ou rémunérés par des entreprises externes au projet. La
 majorité du travail est fournie par les contributeurs professionnels,
 en premier lieu ceux travaillant pour Red Hat.
+
+Dans ce document nous n'utiliserons pas forcément les noms complets des
+projets, étant donné que nous somme dans le contexte de GNOME nous
+simplifieront les noms en supprimant le terme GNOME.
+Exemple: Gnome-Builder pourra être simplifié par Builder.
 
 \section{Les outils collaboratifs} 
 % TODO PA: Cette partie a besion d'une relecture ;)
@@ -157,10 +163,10 @@ Il existe aussi un miroir des répertoires git des projets
 Le projet GNOME dispose aussi d'un chat irc (\href{irc.gnome.org}{irc.gnome.org})
 avec de nombreux salons, dont voici quelque exemples :
 \begin{itemize}
-\item \#gnome-hacker : Pour les discutions sur le développement de GNOME
-\item \#newcomers : Fait pour les nouveaux contributeur au projet
-\item \#gnome-games : Pour les discutions autour du projet GNOME-Games
-\item \#vala : Spécifique pour le langage vala
+\item \#gnome-hacker : Pour les dicussions sur le développement de GNOME ;
+\item \#newcomers : Pour les nouveaux contributeurs au projet ;
+\item \#gnome-games : Pour les discutions autour du projet Games ;
+\item \#vala : Spécifique pour le language vala.
 \end{itemize}
 
 \subsection{Mailing lists}
@@ -172,11 +178,12 @@ Le projet GNOME met à disposition sur son site un guide pour les nouveaux
 arrivants souhaitant contribuer au projet.Cette section nous propose
 tout d'abord le chat irc dédié aux nouveaux contributeurs, ainsi que la
 mailing list qui leur ai réservée
-(\href{https://mail.gnome.org/mailman/listinfo/newscomers-list}).
+(\href{https://mail.gnome.org/mailman/listinfo/newscomers-list}{ici}).
+
 Quelques conseils sont aussi donnés: patience,respect des autres et prise
 d'initiatives sont des qualités nécessaires au bon fonctionnement du projet.
 
-Il est ensuite présenté Flatpack qui permet d'installer GNOME Builder.
+Il est ensuite présenté Flatpack qui permet d'installer Builder.
 C'est un environnement de développement intégré qui permet de travailler
 sur les applications GNOME. Il permet de télécharger les sources d'un
 projet et de pouvoir travailler dessus et de le construire grâce à une
@@ -280,7 +287,7 @@ lui-même.
 
 \newpage
 \chapter{GNOME Games}
-GNOME Games est une application permettant la gestion d'une
+Games est une application permettant la gestion d'une
 bibliothèque vidéoludique. Elle est capable de s'interfacer avec de
 nombreux émulateurs.
 
@@ -293,11 +300,9 @@ Le projet s'appuie sur plusieurs autre projets:
 \item retro-gtk : Développé pas le mainteneur de Games et utilisant les bibliothèques libretro,
 retro-gtk permet à Games de lancer les jeux retro.
 \item libmanette : Libmannette et aussi développé pas le mainteneur de Games. Cette bibliothèque
->>>>>>> david
 permet la gestion des manettes.
 % TODO Verifier les info pour libmanette et retro-gtk 
 \end{itemize}
-
 
 \section{Le langage Vala}
 % from: https://fr.wikipedia.org/wiki/Vala_(langage)
@@ -423,12 +428,12 @@ la (ou les) fonction(s) susceptible d'appeler ``pa\_simple\_write ()''.
 $ git grep ``pa_simple_write''
 \end{minted}
 
-Aucune fonction n'a été trouvée dans les sources de Games, par contre il y a bien
-une fonction qui fait apelle a ``pa\_simple\_write'' dans retro-gtk.
-Nous avons donc pu determiner que la fonction
+Nous avons trouvé aucune fonction dans les sources de Games, par contre il y a bien
+une fonction qui fait apelle à ``pa\_simple\_write'' dans retro-gtk.
+Nous avons donc put déterminer que la fonction
 ``retro\_pa\_player\_on\_audio\_output'' (définie dans le fichier
-``retro\_pa\_player.c'' du projet ``retro-gtk'') appelle la fonction de PulseAudio
-``pa\_simple\_write'' qui provoque le crach.
+``retro\_pa\_player.c'' du projet ``retro-gtk'') appel la fonction ``pa\_simple\_write''
+de pulsaudio qui provoque le crach.
 \begin{minted}[breaklines]{c}
   if (self->simple == NULL || sample_rate != self->sample_rate)
     retro_pa_player_prepare_for_sample_rate (self, sample_rate);
@@ -436,10 +441,9 @@ Nous avons donc pu determiner que la fonction
   pa_simple_write (self->simple, data, sizeof (gint16) * lenght, NULL);
 \end{minted}
 
-% David: là par contre je me perd
-Après quelques test et une vérification dans les sources nous  avons compris
-que la fonction ``retro\_pa\_player\_prepare\_for\_sample\_rate'' retourne ``self''
-équale à ``NULL'' si PulseAudio n'est pas disponible.
+Après quelque test et une vérification dans les sources nous avons compris
+que la fonction ``retro\_pa\_player\_prepare\_for\_sample\_rate'' position la
+structure ``self'' à ``NULL'' si pulseaudio n'est pas disponible.
 
 La solution la plus simple était de contourner la fonction ``pa\_simple\_write''
 avec un test de la valeur de la structure et un ``return'' prématuré dans la fonction
@@ -454,39 +458,41 @@ d'attendre une décision du mainteneur.
 Finalement le mainteneur a opté pour la première solution et a ajouté un test, comme
 ci-desous:
 \begin{minted}[breaklines]{c}
-  if (self->simple == NULL || sample\_rate != self->sample\_rate)
-    retro\_pa\_player\_prepare\_for\_sample\_rate (self, sample\_rate);
+  if (self->simple == NULL || sample_rate != self->sample_rate)
+    retro_pa_player_prepare_for_sample_rate (self, sample_rate);
 
   if (self->simple == NULL)
     return;
 
-  pa\_simple\_write (self->simple, data, sizeof (gint16) * lenght, NULL);
+  pa_simple_write (self->simple, data, sizeof (gint16) * lenght, NULL);
 \end{minted}
-% PA: add part of code, and cmd to find bug in sources
 
 \section{Nos patchs}
 % TODO PA: Cette partie a besion d'une relecture
 \subsection{Mise à jour du fichier HACKING}
 Le premier patch que nous avons envoyé est en réponse à un bug report
 (\href{http://bugzilla.gnome.org/show_bug.cgi?id=788692}{ici}), il ajoute une
-aide pour la compilation du projet. \newline
+aide pour la compilation du projet.
+
 Il n'y avait aucune aide ou information dans la documentation sur la compilation
 du projet. Étant nouveaux dans le projet GNOME nous n'avions pas connaissance de 
-GNOME-Builder qui permet assez simplement de construire le projet. Mais
-même avec cet outil la compilation s'est révélée ardue. En effet 
-le fonctionnement de Builder a tendance à changer entre les versions et certaines
-actions comme un ``git pull'' peuvent poser problème.
-Nous avons donc modifié le fichier HACKING du projet pour y ajouter des 
-instruction de compilation. \newline
+Builder qui permet assez simplement de construire le projet. Mais même avec cet
+outil la compilation s'est revélée ardue. En effet le fonctionement de Builder a
+tendance à changer entre les versions et certaines actions comme un ``git pull''
+peuvent poser problème. Nous avons donc modifié le fichier HACKING du projet pour
+y ajouter des instruction de compilation.
+
 Le projet utilise pour le moment le système ``autotools'' pour sa configuration et 
-sa compilation, mais pour la version 2.30 il est prévue qu'il passe à un système
-avec le logiciel ``meson'' pour la configuration. \newline
-Nous avons donc nous même rencontrés de nombreux problèmes de compilation,
+sa compilation, mais pour la version 2.30 il est prevu qu'il passe à un système
+avec le logiciel ``meson'' pour la configuration.
+
+Nous avons donc nous-même rencontrés de nombreux problèmes de compilation,
 il nous a donc semblé important de donner des indications pour que les 
 prochaines personne qui voudraient contribuer ne soient pas freinées par un 
 problème comme celui-ci.
+
 Il y a eu de nombreux ajustements demandés par le mainteneur et le patch n'a 
-pas encore été aprouvé. \newline
+pas encore été aprouvé.
 
 \subsection{Mise à jour du fichier README.md}
 Le second patch (\href{http://bugzilla.gnome.org/show_bug.cgi?id=790454}{ici}) 
@@ -495,7 +501,7 @@ En effet retro-gtk est passé d'un système de compilation 'autotools' à un
 système avec le logiciel 'meson' et le compilateur 'ninja'.
 Nous avons donc mis à jour le fichier README.md en respectant la syntaxe
 'Marckdown', utilisé par github et gitlab par exemple.
-Le patch n'a pas encore été approuvé \newline
+Le patch n'a pas encore été approuvé.
 
 \subsection{Retour à la collection avec les touches Alt+Left}
 Le but de ce patch est de lier un évent à une combinaison de touches
@@ -507,9 +513,9 @@ dans le répertoire /src/ui et se nommait application-window.vala .
 Une fonction permettant de retourner à la collection existait déjà:
 
 \begin{minted}[breaklines]{vala}
-private void on\_display\_back () {
-  if (quit\_game ())
-  ui\_state = UiState.COLLECTION;
+private void on_display_back () {
+  if (quit_game ())
+  ui_state = UiState.COLLECTION;
 
   uninhibit (Gtk.ApplicationInhibitFlags.IDLE | Gtk.ApplicationInhibitFlags.LOGOUT);
 }
@@ -519,31 +525,31 @@ Une fonction qui liait l'appui de certaines touches à des événements
 était aussi déjà présente:
 
 \begin{minted}[breaklines]{vala}
-  private bool handle\_display\_key\_event (Gdk.EventKey event) {
-    if (ui\_state != UiState.DISPLAY)
+  private bool handle_display_key_event (Gdk.EventKey event) {
+    if (ui_state != UiState.DISPLAY)
     return false;
 
-    var default\_modifiers = Gtk.accelerator\_get\_default\_mod\_mask ();
+    var default_modifiers = Gtk.accelerator_get_default_mod_mask ();
 
     if ((event.keyval == Gdk.Key.f || event.keyval == Gdk.Key.F) &&
-    (event.state & default\_modifiers) == Gdk.ModifierType.CONTROL\_MASK &&
-    display\_header\_bar.can\_fullscreen) {
-      is\_fullscreen = !is\_fullscreen;
-      settings.set\_boolean ("fullscreen", is\_fullscreen);
+    (event.state & default_modifiers) == Gdk.ModifierType.CONTROL_MASK &&
+    display_header_bar.can_fullscreen) {
+      is_fullscreen = !is_fullscreen;
+      settings.set_boolean ("fullscreen", is_fullscreen);
 
       return true;
     }
 
-    if (event.keyval == Gdk.Key.F11 && display\_header\_bar.can\_fullscreen) {
-      is\_fullscreen = !is\_fullscreen;
-      settings.set\_boolean ("fullscreen", is\_fullscreen);
+    if (event.keyval == Gdk.Key.F11 && display_header_bar.can_fullscreen) {
+      is_fullscreen = !is_fullscreen;
+      settings.set_boolean ("fullscreen", is_fullscreen);
 
       return true;
     }
 
-    if (event.keyval == Gdk.Key.Escape && display\_header\_bar.can\_fullscreen) {
-      is\_fullscreen = false;
-      settings.set\_boolean ("fullscreen", false);
+    if (event.keyval == Gdk.Key.Escape && display_header_bar.can_fullscreen) {
+      is_fullscreen = false;
+      settings.set_boolean ("fullscreen", false);
 
       return true;
     }
@@ -561,7 +567,7 @@ Voici le code correspondant à notre patch:
 
 \begin{minted}[breaklines]{vala}
   if (event.keyval == Gdk.Key.Left){			
-    on\_display\_back ();
+    on_display_back ();
     
     return true;
   }
@@ -576,20 +582,17 @@ Par la suite, le mainteneur à décidé de réécrire le patch pour ajouter
 la vérification de la pression sur la touche Alt:
 
 \begin{minted}[breaklines]{vala}
-  if (((event.state & default\_modifiers) == Gdk.ModifierType.MOD1\_MASK) &&
-  (((get\_direction () == Gtk.TextDirection.LTR) && event.keyval == Gdk.Key.Left) ||
-  ((get\_direction () == Gtk.TextDirection.RTL) && event.keyval == Gdk.Key.Right))) {
-    on\_display_back ();
+  if (((event.state & default_modifiers) == Gdk.ModifierType.MOD1_MASK) &&
+  (((get_direction () == Gtk.TextDirection.LTR) && event.keyval == Gdk.Key.Left) ||
+  ((get_direction () == Gtk.TextDirection.RTL) && event.keyval == Gdk.Key.Right))) {
+    on_display_back ();
 
     return true;
   }
 \end{minted}
 
-
-
-
-% Annexe:
-\appendix
+%% % Annexe:
+%% \appendix
 %% \chapter{GNOME en images}
 
 %% \begin{figure}[p]
@@ -622,7 +625,7 @@ la vérification de la pression sur la touche Alt:
 %%   \includegraphics[width=15cm]{images/gitlab_gnome_org.png}
 %% \end{figure}
 
-\chapter{Patchs} 
-% PA: Utile ? 
+%% \chapter{Patchs} 
+%% % PA: Utile ? 
 
 \end{document}
