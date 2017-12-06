@@ -31,13 +31,16 @@
 \begin{document}
 \maketitle
 
+% We can't place a logo on titlepage
+% \begin{titlepage}
+%   \includegraphics[scale=0.3]{images/logo_univ.jpg}
+% \end{titlepage}
+
 \begin{abstract}
 Ce document présente les différentes contributions effectuées dans le
-cadre du projet sous licence libre de la licence ADSILLH.
-
-Le but est avant tout de nous accoutumer au développement
-collaboratif, et de nous apprendre à interagir avec une communauté
-du logiciel libre.
+cadre du projet sous licence libre de la licence ADSILLH. Le but est
+avant tout de nous accoutumer au développement collaboratif, et de
+nous apprendre à interagir avec une communauté du logiciel libre.
 \end{abstract}
 
 \tableofcontents
@@ -171,7 +174,7 @@ avec de nombreux salons, dont voici quelque exemples :
 \end{itemize}
 
 \subsection{Mailing lists}
-Des mailing lists sont aussi à notre disposition pour se tenir informer.
+Des mailing lists sont aussi à notre disposition pour se tenir informé.
 % PA: TODO Useful ?
 
 \subsection{Newcomers}
@@ -290,7 +293,7 @@ lui-même.
 \chapter{GNOME-Games} %% Change GNOME-Games to Games ?
 Games est une application permettant la gestion d'une
 bibliothèque vidéoludique. Elle est capable de s'interfacer avec de
-nombreux émulateurs.
+nombreux émulateurs ainsi que les jeux natifs Linux.
 
 Au début du projet Games étais disponible sur le git de GNOME, mais 
 depuis peut il a migré sur Gitlab.
@@ -298,8 +301,11 @@ depuis peut il a migré sur Gitlab.
 \section{Les projets associé}
 Le projet s'appuie sur plusieurs autre projets:
 \begin{itemize}
-\item retro-gtk : Développé pas le mainteneur de Games et utilisant les bibliothèques libretro,
-retro-gtk permet à Games de lancer les jeux retro.
+\item retro-gtk : Développé initialement en Vala pour le projet Libretro, a
+  été repris par le mainteneur de Games où il a réimplémenté certaines
+  fonctions en C. De plus il a porté le système de build sous Meson.\\
+  \url{http://bytesgnomeschozo.blogspot.fr/2017/10/retro-gtk-future-marty.html}\\
+  Il a ensuite prévu de porter le projet en langage Rust. 
 \item libmanette : Libmannette et aussi développé pas le mainteneur de Games. Cette bibliothèque
 permet la gestion des manettes.
 % TODO Verifier les info pour libmanette et retro-gtk 
