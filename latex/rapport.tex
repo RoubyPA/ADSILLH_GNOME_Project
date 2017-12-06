@@ -285,7 +285,7 @@ lui-même.
 % TO DO
 
 \newpage
-\chapter{GNOME Games}
+\chapter{GNOME-Games} %% Change GNOME-Games to Games ?
 Games est une application permettant la gestion d'une
 bibliothèque vidéoludique. Elle est capable de s'interfacer avec de
 nombreux émulateurs.
@@ -439,7 +439,8 @@ Nous avons donc pu déterminer que la fonction
     retro_pa_player_prepare_for_sample_rate (self, sample_rate);
 
   pa_simple_write (self->simple, data, sizeof (gint16) * lenght, NULL);
-
+\end{minted}
+  
 Après quelques test et une vérification dans les sources nous  avons compris
 que la fonction ``retro\_pa\_player\_prepare\_for\_sample\_rate'' retourne ``self''
 équale à ``NULL'' si PulseAudio n'est pas disponible.
@@ -476,22 +477,34 @@ aide pour la compilation du projet.
 Il n'y avait aucune aide ou information dans la documentation sur la compilation
 du projet. Étant nouveaux dans le projet GNOME nous n'avions pas connaissance de 
 Builder qui permet assez simplement de construire le projet. Mais même avec cet
-outil la compilation s'est revélée ardue. En effet le fonctionement de Builder a
+outil, la compilation s'est revélée ardue. En effet le fonctionement de Builder a
 tendance à changer entre les versions et certaines actions comme un ``git pull''
-peuvent poser problème. Nous avons donc modifié le fichier HACKING du projet pour
-y ajouter des instruction de compilation.
+peuvent poser problème. Nous avons donc désidé de modifié le fichier HACKING du
+projet pour y ajouter des instruction de compilation.
 
 Le projet utilise pour le moment le système ``autotools'' pour sa configuration et 
 sa compilation, mais pour la version 2.30 il est prevu qu'il passe à un système
 avec le logiciel ``meson'' pour la configuration.
 
-Nous avons donc nous-même rencontrés de nombreux problèmes de compilation,
-il nous a donc semblé important de donner des indications pour que les 
-prochaines personne qui voudraient contribuer ne soient pas freinées par un 
-problème comme celui-ci.
+Après des recherches et un peut d'aide, nous avont réussi à avoir un procédure
+complete pour la compilation du projet. L'une des difficultés que l'on peut
+rencontré pour la compilation de Games et qui est le sujet du bug report sur le
+quelle nous avons répondu, est le fait que la version master de Games a besoin de
+la vertion master de ``retro-gtk'' et ``libmannette''. Cette spésifisité n'est
+indique nule par dans la documentation et les dependences de s'est deux
+bibliotheques ne sont pas à jour dans la liste de dependance d'autotools.
 
-Il y a eu de nombreux ajustements demandés par le mainteneur et le patch n'a 
-pas encore été aprouvé.
+Nous avons nous-même rencontrés des problèmes de compilation, il nous a donc
+semblé important de donner des indications pour que les prochaines personne qui
+voudraient contribuer ne soient pas freinées par un problème comme celui-ci.
+
+Il y a eu de nombreux ajustements demandés par le mainteneur, notament la demande
+d'utilisation de la syntax Markdown. D'autre part de notre patch original se sont
+revéler peut utiles ou pratiquement impossible à maintenir. Nous voulions par
+example faire une liste exhaustive des dependances du projet, cette idée à étais
+refuser par le mainteneur car très difficile a maintenir d'une version a l'autre.
+Après plusieurs modifiactions et échanges avec le mainteneur le patch à étais
+accepté et commité.
 
 \subsection{Mise à jour du fichier README.md}
 Le second patch (\href{http://bugzilla.gnome.org/show_bug.cgi?id=790454}{ici}) 
@@ -500,7 +513,7 @@ En effet retro-gtk est passé d'un système de compilation 'autotools' à un
 système avec le logiciel 'meson' et le compilateur 'ninja'.
 Nous avons donc mis à jour le fichier README.md en respectant la syntaxe
 'Marckdown', utilisé par github et gitlab par exemple.
-Le patch n'a pas encore été approuvé.
+Le patch n'a pas encore été accepté.
 
 \subsection{Retour à la collection avec les touches Alt+Left}
 Le but de ce patch est de lier un évent à une combinaison de touches
