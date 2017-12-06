@@ -634,13 +634,13 @@ private void on_display_back () {
 }
 \end{minted}
 
-Une fonction qui liait l'appui de certaines touches à des événements
+Une fonction qui gère les événements de certaines touches à des événements
 était aussi déjà présente:
 
 \begin{minted}[breaklines]{vala}
   private bool handle_display_key_event (Gdk.EventKey event) {
     if (ui_state != UiState.DISPLAY)
-    return false;
+      return false;
 
     var default_modifiers = Gtk.accelerator_get_default_mod_mask ();
 
