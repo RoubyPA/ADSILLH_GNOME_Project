@@ -1,34 +1,15 @@
-* ajouter logos univ et gnome
-
 * mettre les références quand on copié collé
 
 * Newcomers: trucs en trop (ça répète), revoir les liens
 
 * GNOME-Games
-Ajouter dans l'intro que Games gère les jeux natifs Linux
-** Les projets associés
-vérifier les infos
-** Le langage Vala
-Ajouter les soures et/ou reformuler
-** Le format Flatpak
-Idem
 ** Découverte du logiciel
-Trop de retour à la ligne
 Games n'utilise pas encore Meson
 Ajouter lien vers le patch après "De plus,..."
-Mettre Builder au lieu de Gnome-Builder*
 Mettre le pied de page ... pas en pied de page
 * Les bugs reports
-** Bug PulseAudio
-luis ==> lui
 * Nos Patchs
-** Mise à jour du fichier HACKING
-désidé ==> décidés
-un peut ==> un peu
-(pleins d'autre fautes)
 *** Ajouter des exemples de la syntaxe markdown
-** Mise à jour du fichier README
-Reformuler une phrase
 ** Retour à la collection 
 Ajouter le mappage /data/ui/application-window.ui
 "pour trouver la référence correspondant à la touche Left"

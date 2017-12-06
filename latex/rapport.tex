@@ -341,10 +341,9 @@ Nous sommes actuellement en attente d'une réponse des développeurs gnome-music
 \chapter{GNOME-Games} %% Change GNOME-Games to Games ?
 Games est une application permettant la gestion d'une
 bibliothèque vidéoludique. Elle est capable de s'interfacer avec de
-nombreux émulateurs ainsi que les jeux natifs Linux.
-
-Au début du projet Games étais disponible sur le git de GNOME, mais 
-depuis peut il a migré sur Gitlab.
+nombreux émulateurs ainsi que les jeux natifs Linux. Au début du
+projet Games étais disponible sur le git de GNOME, mais depuis peut il
+a migré sur Gitlab.
 
 \section{Les projets associé}
 Le projet s'appuie sur plusieurs autre projets:
@@ -424,29 +423,28 @@ Nous avons utilisé Debian Sid comme OS de développement et de test,
 et nous avons rencontrés de nombreux problèmes relatifs à la compilation,
 cela étant en grande partie dû à l'utilisation de bibliothèques encore en
 état de développement actif, ainsi qu'au système de configuration
-``Meson'' qui est un remplacement de ``./configure''.
+``Meson'' qui est un remplacement de ``./configure''.\\
 
 Ainsi il a été nécessaire de compiler certaines librairies, parmi
 lesquelles :
 \begin{itemize}
 \item retro-gtk
-\item libmanette
+\item libmanette\\
 \end{itemize}
 
 De plus, aucun fichier ne documentait la procédure d'installation,
 cela nous à particulièrement posé problème car nous ne nous
-connaissions pas le système de build 'Meson'.
+connaissions pas le système de build 'Meson' (celui-ci est utilisé
+pour retro-gtk).
 
-Nous avons aussi tenté d'utiliser l'IDE Gnome-Builder, qui possède une
+Nous avons aussi tenté d'utiliser l'IDE Builder, qui possède une
 fonctionnalité permettant de télécharger automatiquement les
-dépendances.
-
-Cependant nous n'avons pas réussi à l'utiliser sur la branche master,
+dépendances. Cependant nous n'avons pas réussi à l'utiliser sur la branche master,
 car il ne pouvait pas trouver les bonnes librairies (section~\ref{HACKING}
 page~\pageref{HACKING}).
 
-Lors de l'utilisation de Games, nous avons rencontrés quelques
-problèmes, certains jeux étaient chargés avec de mauvaises jaquettes,
+Lors de l'utilisation du logiciel, nous avons rencontrés quelques
+problèmes: certains jeux étaient chargés avec de mauvaises jaquettes,
 et il était impossible de paramétrer les touches du clavier.
 
 \section{Les bug reports}
@@ -510,7 +508,7 @@ que la fonction ``retro\_pa\_player\_prepare\_for\_sample\_rate'' retourne ``sel
 La solution la plus simple était de contourner la fonction ``pa\_simple\_write''
 avec un test de la valeur de la structure et un ``return'' prématuré dans la fonction
 appellante si la valeur est ``NULL''. Nous avons aussi pensé à afficher un message à
-l'utilisateur et luis demandant si il voulais lancer quand même le jeux mais sans le son.
+l'utilisateur et lui demandant si il voulais lancer quand même le jeux mais sans le son.
 
 La premiere solution nous a parut trop simple et pas suffisament fiable, et la
 seconde un peu trop compliquée à mettre en oeuvre sur un projet que l'on découvrait juste.
@@ -596,8 +594,34 @@ Le patch n'a pas encore été accepté.
 Le but de ce patch (\url{https://gitlab.gnome.org/GNOME/gnome-games/issues/3})
 est de lier un évent à une combinaison de touches (en l’occurrence Alt+Left).
 
-La modification a consisté à modifier un fichier, celui-ci se trouvait
-dans le répertoire /src/ui et se nommait application-window.vala .
+En cherchant dans les fichiers source, nous avons remarqués qu'un
+fichier XML référencait les events:
+
+\begin{minted}[breaklines]{vala}
+  <signal name="key-press-event" after="yes" handler="on_key_pressed"/>
+\end{minted}
+
+La fonction ``on_key_pressed'' se trouve dans le fichier
+application-window.vala qui se trouve dans le répertoire src/ui .
+
+\begin{minted}[breaklines]{vala}
+  [GtkCallback]
+  public bool on_key_pressed (Gdk.EventKey event) {
+    var default_modifiers = Gtk.accelerator_get_default_mod_mask ();
+
+    if ((event.keyval == Gdk.Key.q || event.keyval == Gdk.Key.Q) &&
+    (event.state & default_modifiers) == Gdk.ModifierType.CONTROL_MASK) {
+      if (!quit_game ())
+      return false;
+
+      destroy ();
+
+      return true;
+    }
+
+    return handle_collection_key_event (event) || handle_display_key_event (event);
+  }
+\end{minted}
 
 Une fonction permettant de retourner à la collection existait déjà:
 
@@ -680,41 +704,16 @@ la vérification de la pression sur la touche Alt:
   }
 \end{minted}
 
-%% % Annexe:
-%% \appendix
-%% \chapter{GNOME en images}
+\section{Conclusion}
+Ce projet nous permet de nous accoutumer au développement
+communautaire et ainsi de nous former à utiliser des outils
+spécifiques tels que git ainsi que des trackeurs de bugs.
 
-%% \begin{figure}[p]
-%%   % from: https://bugzilla.gnome.org
-%%   \caption{\label{figure_bugzilla} Le bugzilla du projet GNOME}
-%%   \includegraphics[width=15cm]{images/bugzilla_gnome_org.png}
-%% \end{figure}
+Nous avons du communiquer de manière directe avec la communauté GNOME
+par IRC.
 
-%% \begin{figure}[p]
-%%   % from: https://bugzilla.gnome.org
-%%   \caption{\label{figure_bugzilla_score} Score sur bugzilla}
-%%   \includegraphics[width=5cm]{images/score.png}
-%% \end{figure}
+À ce jour, nous avons envoyés trois patch, dont un a été accepté.
 
-%% \begin{figure}[p]
-%%   % from: https://wiki.gnome.org
-%%   \caption{\label{figure_wiki} Le wiki du projet GNOME}
-%%   \includegraphics[width=15cm]{images/wiki_gnome_org.png}
-%% \end{figure}
-
-%% \begin{figure}[p]
-%%   % from: https://git.gnome.org
-%%   \caption{\label{figure_cgit} Interface git du projet GNOME}
-%%   \includegraphics[width=15cm]{images/git_gnome_org.png}
-%% \end{figure}
-
-%% \begin{figure}[p]
-%%   % from: https://gitlab.gnome.org
-%%   \caption{\label{figure_gitlab} Le gitlab du projet GNOME}
-%%   \includegraphics[width=15cm]{images/gitlab_gnome_org.png}
-%% \end{figure}
-
-%% \chapter{Patchs} 
-%% % PA: Utile ? 
-
+Par la suite, nous comptons ajouter une fonction de retour à la
+collection par l'appui du bouton retour de la souris.
 \end{document}
