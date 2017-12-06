@@ -24,7 +24,7 @@
 \title{Projet Licence ADSILLH 2017/2018\\Rapport}
 \author{Groupe Games:\\ Pierre Antoine Rouby,\\ Gautier Delacour,\\
   \vspace{0.8cm}
-  David Tabarie,\\ Groupe Music:\\ Kevine Carsoule,\\ Adrien Darfeuille}
+  David Tabarie,\\ Groupe Music:\\ Kevin Carsoule,\\ Florian Darfeuille}
 
 \date{Année 2017/2018}
 
@@ -316,6 +316,30 @@ que lorsque nous nous occupions d'une erreur celle ci soit entièrement
 réglée. Nous avons donc posté un patch réglant les erreurs: E203, E712,
 E111, E201, E202, E302 et E711 sur bugzilla et nous attendons un réponse 
 des développeurs.
+
+\subsection{Retour arrière avec la souris}
+Un autre patch consistait à faire un retour arrière avec le bouton "back" de la souris . Plus précisément, il s'agit d'un retour vers la playlist depuis le menu album.
+Une alternative existait déjà dans le code avec le raccourci Alt+Left. Dans ce projet , les événements sont gérés par le fichier "window.py" et par la libraire GTK . Néanmoins , seul les événements de clavier ont été implémentés. Il a donc fallu qu'on connecte la reconnaissance des clics avec un ".connect" . Une fois le "event.button" bien reconnu par la librairie GTK , nous avons pu faire une boucle qui reconnaît le clic du bouton back (event==8) et revient vers la playlist ( si et seulement si on se trouve dans Album ).
+
+Voici un aperçu de notre modification de code : 
+
+\begin{minted}[breaklines]{python}
+
+self.button_press_event_id = self.connect('button_press_event', self.button_press)
+
+def button_press(self,widget,event):
+        #Go Back from Album with mouse button 
+     	if (event.button == 8):
+         	if (self.toolbar._state != ToolbarState.MAIN):             				self.curr_view.set_visible_child(self.curr_view._grid)
+self.toolbar.set_state(ToolbarState.MAIN)
+
+}
+\end{minted}
+
+Une fois que cela est fait , on compile et on créé un backbutton.patch qu'on envoie aux programmeur sur bugzilla . 
+Nous sommes actuellement en attente d'une réponse des développeurs gnome-music . 
+
+
 
 \newpage
 \chapter{GNOME-Games} %% Change GNOME-Games to Games ?
