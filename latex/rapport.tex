@@ -215,9 +215,6 @@ les recherches et la lecture de leur fichiers audio.
 Les sources du projet sont disponibles sur github :
 \href{https://github.com/GNOME/gnome-music}{ici}
 
-\section{Architecture du projet}
-% TODO 
-
 \section{Le langage Python}
 % https://fr.wikipedia.org/wiki/Python_(langage)
 Le projet est écrit dans le langage Python. C'est un langage de
@@ -284,7 +281,38 @@ projet. Nous avons donc pu commencer à travailler sur projet en
 lui-même.
 
 \section{Bug reports}
-% TO DO
+\subsection{Bug Report sur GNOME Builder}
+Suite au bug constaté lors de l’exécution du logiciel depuis le Builder
+nous avons réalisé un rapportde bug disponible sur 
+\href{https://bugzilla.gnome.org/show_bug.cgi?id=790067}, où nous 
+expliquions que lors du lancement du logiciel avec le Builder nous 
+n'avions aucun bouton disponibles. Un contributeur nous a répondu que
+le problème venait de la variable XDG_MUSIC_DIR qui n’était pas définie 
+lors du lancement avec flatpack, cela empêchait l'application de trouver
+l'emplacement du dossier où se trouvait la musique et donc aucun bouton
+ne s'affichait sur la fenêtre. Une autre personne nous à répondu en 
+ayant le même problème et en sachant pas comment changer cette variable.
+Nous n'avons pour l'instant pas trouvé comment changer cette variable.
+
+\section{Nos différents patchs}
+\subsection{Pep8}
+Le projet de GNOME-Music est un projet qui cherche à respecter la 
+convention Pep8. C'est une convention qui a pour but de standardiser 
+la syntaxe des code sources en  python. L'objectif est d’homogénéiser 
+et de rendre plus lisibles les codes en langage python. Afin de tester 
+si le code respectait bien la convention Pep8 nous avons utilisé l'outil
+pycodestyle à qui on passe en paramètre les différents fichiers sources
+et qui nous donne des erreurs là où la syntaxe ne respecte pas la 
+convention pep8. Nous nous sommes rendu compte qu'il y a plusieurs erreurs
+présentes dans les sources dont certaines de nombreuses fois comme le
+cas des lignes trop longues. Dans un premier temps on à corriger des
+erreurs dans différents fichiers mais ce n’était pas efficace car on 
+ne corrigé pas un type d'erreurs dans tous les fichiers. Nous avons donc 
+décider de nous concentrer sur les erreurs les moins fréquentes mais 
+que lorsque nous nous occupions d'une erreur celle ci soit entièrement 
+réglée. Nous avons donc posté un patch réglant les erreurs: E203, E712,
+E111, E201, E202, E302 et E711 sur bugzilla et nous attendons un réponse 
+des développeurs.
 
 \newpage
 \chapter{GNOME-Games} %% Change GNOME-Games to Games ?
