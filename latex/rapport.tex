@@ -411,9 +411,10 @@ lesquelles\footnote{Nous avons utilisé Debian Sid comme OS de développement et
 
 De plus, aucun fichier ne documentait la procédure d'installation,
 cela nous à particulièrement posé problème car nous ne nous
-connaissions pas le système de build 'Meson'.
+connaissions pas le système de build 'Meson' (celui-ci est utilisé
+pour retro-gtk).
 
-Nous avons aussi tenté d'utiliser l'IDE Gnome-Builder, qui possède une
+Nous avons aussi tenté d'utiliser l'IDE Builder, qui possède une
 fonctionnalité permettant de télécharger automatiquement les
 dépendances. Cependant nous n'avons pas réussi à l'utiliser sur la branche master,
 car il ne pouvait pas trouver les bonnes librairies (section~\ref{HACKING}
@@ -557,8 +558,34 @@ Le patch n'a pas encore été accepté.
 Le but de ce patch (\url{https://gitlab.gnome.org/GNOME/gnome-games/issues/3})
 est de lier un évent à une combinaison de touches (en l’occurrence Alt+Left).
 
-La modification a consisté à modifier un fichier, celui-ci se trouvait
-dans le répertoire /src/ui et se nommait application-window.vala .
+En cherchant dans les fichiers source, nous avons remarqués qu'un
+fichier XML référencait les events:
+
+\begin{minted}[breaklines]{vala}
+  <signal name="key-press-event" after="yes" handler="on_key_pressed"/>
+\end{minted}
+
+La fonction ``on_key_pressed'' se trouve dans le fichier
+application-window.vala qui se trouve dans le répertoire src/ui .
+
+\begin{minted}[breaklines]{vala}
+  [GtkCallback]
+  public bool on_key_pressed (Gdk.EventKey event) {
+    var default_modifiers = Gtk.accelerator_get_default_mod_mask ();
+
+    if ((event.keyval == Gdk.Key.q || event.keyval == Gdk.Key.Q) &&
+    (event.state & default_modifiers) == Gdk.ModifierType.CONTROL_MASK) {
+      if (!quit_game ())
+      return false;
+
+      destroy ();
+
+      return true;
+    }
+
+    return handle_collection_key_event (event) || handle_display_key_event (event);
+  }
+\end{minted}
 
 Une fonction permettant de retourner à la collection existait déjà:
 
@@ -642,9 +669,15 @@ la vérification de la pression sur la touche Alt:
 \end{minted}
 
 \section{Conclusion}
-Ce projet nous a permis de nous accoutumer au développement
+Ce projet nous permet de nous accoutumer au développement
 communautaire et ainsi de nous former à utiliser des outils
 spécifiques tels que git ainsi que des trackeurs de bugs.
-Nous avons du effectuer 
 
+Nous avons du communiquer de manière directe avec la communauté GNOME
+par IRC.
+
+À ce jour, nous avons envoyés trois patch, dont un a été accepté.
+
+Par la suite, nous comptons ajouter une fonction de retour à la
+collection par l'appui du bouton retour de la souris.
 \end{document}
