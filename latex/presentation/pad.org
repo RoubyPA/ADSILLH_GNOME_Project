@@ -24,13 +24,13 @@ Présentation des outils que nous avons utilisé.
 	1. Bugzilla [GautGaut]
 		2. Tracker de bug
 	1. Wiki [GautGaut]
-		2. Trouvé des infos sur le projet
+		2. Trouver des infos sur le projet
 	1. Git [Kevin]
 		2. Git
 		2. GitLab
 		2. GitHub
 	1. IRC [David]
-		2. Discutions avec la communauté (Pas de reponce)
+		2. Discutions avec la communauté (Pas de réponse)
 	1. Newcomers [Florian]
 
 ** Diapo Games (~ 2 min)
