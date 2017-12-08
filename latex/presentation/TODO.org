@@ -1,6 +1,6 @@
 * TODO diapo
 - [X] Ajuster la taille des images 
-- [ ] Corriger l'othographe
+- [X] Corriger l'othographe
 - [ ] Imprimer le pad ?
 - [ ] Imprimer un exemplaire du rapport ?
 - [X] Ajouter une frame Gnome pour présenter le projet
