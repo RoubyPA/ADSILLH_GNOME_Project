@@ -753,6 +753,70 @@ la vérification de la pression sur la touche Alt:
   }
 \end{minted}
 
+\subsection{Retour à la collection avec la touch presedent de la souries}
+L'ajouts de cette fonctionnalité nous à posser beaucoups de problème, non pas
+pour la difficulté en terme de programation, mais pour des problèmes lié à la
+documentation et a notre environement de développement.
+
+Le premiers problème qui nous à fait perdre beaucoup de temps venez de notre
+environement de developpement qui se trouve sur une VM (Virtual Machine).
+Nous avons pris un moment avans de nous rendre compte que la souris n'étais
+pas bien géré par \textit{Qemu}, il nous a donc falut lié le fichier de
+la sourie \texttt{/dev/bus/usb/00x/00x} à notre VM affint quelle soit reconnus
+nativement par l'OS de la VM.
+
+De plus nous avons cherche pendant longtemps dans la documentation du langage
+\textit{vala} la contante corespondant à la touche de la sourie que nous
+voulions utilisé, mais nous n'avons rien trouvé, nous avons aussi demander
+de l'aide sur le channel \textit{vala} de l'\texttt{irc} GNOME, mais nous
+n'avons pas trouvé d'aide.
+
+Au final nous avons ajouté un bout de code pour capter tous les evenements et
+les affichers, ansi nous avons réussi à déterminé que le code de l'évenement
+et le \texttt{8}.
+
+Nous avons donc ajouté une ligne pour définire une fonction de callback pour
+les appuis de bouton de la sourie.
+\begin{minted}[breaklines]{xml}
+<signal name="button-press-event" after="yes" handler="on_button_pressed"/>
+\end{minted}
+
+Nous avons aussi créer la fonction corespondante dont le but et de capté tous
+les évenements corespondant au appuis sur les boutons de la sourie, si le
+bouton appuié et le bouton de retour, executer la fonction préexistente
+\texttt{on\_display\_back()} et retourner \texttt{true}.
+Sinon retourné \texttt{false} pour propagé l'evenements et qu'il puisse être
+traité comme par defaut.
+
+Nous avons encore rencontré un ou deux petit problème, notament une erreur
+dans la fonction que nous avions écrite, nous avons échenger le \texttt{true}
+et le \texttt{false} pour le return, se qui veut dire que nous ne dissusont
+l'evenement.
+Résultat seuls notre evenement marche mais les autres sont détruit et jamais
+traité.
+
+Il nous à aussi étais demander d'ajouté un commentaire avant la valeur
+\texttt{8} affins de gardé un code lisible. Le mainteneur a d'ailleur étais
+surpris qu'il n'y ai pas de constant définie dans \textit{vala} ou dans
+\textit{gdk} pour la touche présedente de la sourie, mais il n'a pas trouvé
+de constante dans la documentation non plus. \\
+\\
+Voila la fonction tel qu'elle à étais intégré au projet :
+\begin{minted}[breaklines]{vala}
+[GtkCallback]
+public bool on_button_pressed (Gdk.EventButton event) {
+  // Mouse button 8 is the navigation previous button
+  if (event.button == 8) {
+    if (ui_state != UiState.DISPLAY)
+      return false;
+
+    on_display_back ();
+    return true;
+  }
+
+  return false;
+}
+\end{minted}
 
 \subsection{Bug configuration manette XBox360 et XBoxOne}
 Un utilisateur de Games a déclaré un bug sur la fenettre de la configuration
@@ -767,7 +831,7 @@ Il c'est avéré que dans le problème venais du type de bouton et des evenement
 lié à ces boutons. En effet contrairement à d'autre modèle les mannettes de
 Xbox on des boutons qui ne sont pas simplement apuiler et relacher, mais
 on une plage de valeur possible et peuveut prendre plusieur sur un axe unique.
-%% ADD ILLUSTRATION
+%% ADD ILLUSTRATION ?
 
 Nous avons posté les informations que nous avons trouvé puis nous avons
 commencer a réflechire une solution de corrigé le problème. Entre temps un
