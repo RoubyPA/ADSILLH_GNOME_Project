@@ -1,0 +1,113 @@
+* Presentation GNOME Script (~ 10 min)
+	
+- GautGaut (~ 2min 30)
+- David (~ 2 min)
+- PA (~ 1 min)
+- Florian (~ ? min)
+- Kevin (~ ? min)
+	
+** Diapo Titre (~ 5 sec) [GautGaut]
+	1. Presentation du projet ADSILLH
+
+** Diapo Sommaire (~ 30 sec) [GautGaut]
+	1. Présentation du plan
+
+** Diapo Projet GNOME (~ 1 min) [GautGaut]
+** Screen shot OK*
+*** Presentation de GNOME
+-> un des 6 environnements de bureau DEBIAN
+->V3
+-> Environnement de bureaux + collection de logiciel de bureaux...
+
+*** Diapo Outils colaboratifs (~ 2 min)
+Présentation des outils que nous avons utilisé.
+	1. Bugzilla [GautGaut]
+		2. Tracker de bug
+	1. Wiki [GautGaut]
+		2. Trouver des infos sur le projet
+	1. Git [Kevin]
+		2. Git
+		2. GitLab
+		2. GitHub
+	1. IRC [David]
+		2. Discutions avec la communauté (Pas de réponse)
+	1. Newcomers [Florian]
+
+** Diapo Games (~ 2 min)
+	1. Là on présente le logiciel [GautGaut]
+		2. A quoi sert Games
+	1. Le projet [???]
+		2. Adrien Plaza (Orthographe ?)
+		2. Projet assosié
+			3. Retro-gtk
+			3. Libmanette
+	1. et tout et tout (?)
+
+** Diapo Games Contributions (~ 2 min)
+	1. Tracage du bug avec PuslAudio [PA]
+	1. Patch 1: HACKING [PA]
+	1. Patch 2: README.md [PA]
+	1. Patch 3: Retour à la collection avec Alt+Left [David]
+
+** Diapo Games Conclusion [David]
+Un bilan de ce qu'on a fait et des contributions futures.
+- ajout du retour à la collection par le 'retour' souris
+- refaire la doc après le passage à Meson
+
+
+
+** Diapo Music (~ 3 min) [Florian / Kevin]
+** Diapo Music Conclusion
+** Diapo Question
+Question ?
+
+
+
+* Le mail de Samuel
+Pour info :
+		
+		Bonjour,
+		
+		Vendredi 8 décembre, nous nous retrouvons à 13h30 en salle 203:
+		
+		- de 13h30 à 14h, François Pellegrini vous fera passer un QCM de droit
+		
+		- à partir de 14h, nous ferons des petites soutenances de projet,
+		cela sera très court, 10 minutes d'exposé typiquement, et nous prendrons
+		du temps pour des questions.
+		
+		En résumé, la soutenance a un objectif plutôt de vulgarisation, alors
+		que le rapport a un objectif plutôt de bilan technique: la soutenance
+		est à destination de vos collègues et des différents encadrants, qui
+		ne connaissent pas forcément le logiciel, alors que le rapport est
+		destiné à votre encadrant, qui a fait le suivi et donc a déjà une
+		assez bonne idée du logiciel.
+		
+		Pour la soutenance, il faudra donc présenter, en vulgarisant (en gros,
+		visez à expliquer à vos collègue de l'autre groupe), le logiciel:
+		ce qu'il fait, comment il est organisé, comment sa communauté est
+		organisée (listes/git/svn/bugtracker/irc/rencontres physiques/...), et
+		bien sûr vos contributions: ce qu'elles apportent, où cela se situe
+		dans l'organisation du projet, les difficultés rencontrées.
+		
+		Pour le rapport, il s'agit plutôt de faire un résumé technique, comme
+		un rapport à votre chef supérieur direct, qui n'a donc pas besoin
+		de vulgarisation car il sait bien sur quoi vous travaillez, mais qui
+		a besoin des précisions techniques, pour pouvoir par exemple confier
+		la suite du projet à quelqu'un d'autre. L'ensemble des contributions
+		doit donc être précisé, dans quelles parties du projet elles ont eu
+		lieu, quelles discussions elles ont généré avec la communauté: quels
+		problèmes les contributions ont éventuellement posé, comment cela
+		a été résolu. Il ne s'agit pas de raconter le code lui-même (ça
+		il suffit de le lire, s'il est bien commenté il n'y a pas besoin de
+		rapport), mais de décrire brièvement ce qui a été fait et comment
+		les problèmes ont été résolus.
+		
+		Pas besoin de faire long: 5-10 pages peuvent suffire. Envoyez-le nous au
+		plus tard le mercredi 6 à la fois à Cyril (en copie) et moi pour que
+		l'on ait le temps de les lire.
+		
+		Samuel
+
+
+

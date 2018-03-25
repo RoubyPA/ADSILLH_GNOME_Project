@@ -1,65 +1,225 @@
- \documentclass{beamer}
+\documentclass{beamer}
 
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
-\usetheme{Boadilla} % Beamer theme
+\usetheme{Berkeley} 
+\usecolortheme{default}
+\setbeamertemplate{footline}[frame number]
 
+%% Title frame info
 \title{Licence Pro ADSILLH}
- 
 \subtitle{GNOME-Games / GNOME-Music}
- 
-\author{Groupe Games:\\ Pierre Antoine Rouby,\\ Gautier Delacour,\\
-  David Tabarie,\\
-  \vspace{0.8cm}
-  Groupe Music:\\ Kevine Carsoule,\\ Adrien Darfeuille}
-
+%% \institute{ADSILLH}
+\author{Pierre-Antoine Rouby\\Gautier Delacour\\
+  David Tabarie\\Kevin Carsoule\\Florian Darfeuille}
 \date{Année 2017/2018}
+\logo{\includegraphics[width=1.5cm]{../images/logo_univ.jpg}}
 
 % ce code permet d'afficher le sommaire à chaque section,
 % en mettant en valeur la section courante (utile ?)
-\AtBeginSection[]
-{
-  \begin{frame}
-    \frametitle{Sommaire}
-    \tableofcontents[currentsection]
-  \end{frame}
-}
+% \AtBeginSection[]
+% {
+%   \begin{frame}
+%     \frametitle{Sommaire}
+%     \tableofcontents[currentsection]
+%   \end{frame}
+% }
 
 \begin{document}
 \frame{\titlepage}
 
-\section{Présentation des projets}
-
 \begin{frame}
-  \frametitle{GNOME Games}
-  \includegraphics[scale=0.3]{images/screen-games.png}
+  \frametitle{Sommaire}
+  \tableofcontents
 \end{frame}
 
+\section{Le projet GNOME}
 \begin{frame}
-  \frametitle{GNOME Music}
-  % add a screenshot
+  \frametitle{Le projet GNOME}
+  \includegraphics[scale=0.2]{images/GnomeScreen.png}
 \end{frame}
 
-\section{Travaux effectués sur GNOME Games}
+\subsection{Présentation}
 \begin{frame}
-  \frametitle{Travaux effectués}
+  \frametitle{Présentation}
   \begin{itemize}
-    \item Traçage d'un bug Pulseaudio
-    \item Patch 1: Modifications du fichier 'HACKING'
-    \item Patch 2: Modifications du fichier README.md
-    \item Patch 3: Ajout d'un event 'retour au menu'
+  \item Environnement de bureaux \pause
+    \begin{itemize}
+    \item Gestionnaire de fenêtres (Window Manager)
+    \item Nombreux logiciels
+      \begin{itemize} % CHECK
+      \item Lecteur vidéo
+      \item Visionneur d'image
+      \item Navigateur de fichier
+      \item etc. \pause
+      \end{itemize}
+    \end{itemize}
+  \item Utilisé dans de nombres système Linux
+    \begin{itemize}
+    \item Debian (Ubuntu)
+    \item Fedora (Red Hat)
+    \end{itemize}
+  \item Actuellement en version 3
   \end{itemize}
 \end{frame}
 
-\section{Travaux effectués sur GNOME Music}
-\subsection{Ce que vous avez fait}
+\subsection{Les outils collaboratifs}
 \begin{frame}
-  \frametitle{}
+  \frametitle{Les outils collaboratifs}
+  
+  %% Solution 1
+  \begin{columns}
+    \column{0.5\textwidth}
+    \begin{itemize}
+    \item Bugzilla
+    \item Wiki GNOME
+    \item Git
+    \item irc
+    \end{itemize}
+    \column{0.5\textwidth}
+    \begin{figure}
+      \includegraphics[scale=0.1]{images/bugzilla-logo.png} \\
+      \includegraphics[scale=0.04]{images/gnome-logo.png} \\
+      \includegraphics[scale=0.03]{images/git-logo.png} \\
+      \includegraphics[scale=0.07]{images/irc-logo.png}
+    \end{figure}
+  \end{columns}
+
+  %% %% Solution 2
+  %% \begin{itemize}
+  %% \item Bugzilla
+  %% \item Wiki GNOME
+  %% \item Git
+  %% \item irc
+  %% \end{itemize}
+  %% \begin{figure}
+  %%   \includegraphics[scale=0.1]{images/bugzilla-logo.png} \hspace{1cm}
+  %%   \includegraphics[scale=0.04]{images/gnome-logo.png} \hspace{1cm}
+  %%   \includegraphics[scale=0.03]{images/git-logo.png} \hspace{1cm}
+  %%   \includegraphics[scale=0.07]{images/irc-logo.png}
+  %% \end{figure}
+
+  %% %% Solution 3
+  %% \begin{itemize}
+  %% \item Bugzilla
+  %%   \includegraphics[scale=0.1]{images/bugzilla-logo.png}
+  %% \item GnomeWiki
+  %%   \includegraphics[scale=0.04]{images/gnome-logo.png}
+  %% \item Git
+  %%   \includegraphics[scale=0.03]{images/git-logo.png}
+  %% \item IRC
+  %%   \includegraphics[scale=0.07]{images/irc-logo.png}
+  %% \end{itemize}
 \end{frame}
 
-\section{Conclusion}
+\subsection{Newcomers}
 \begin{frame}
-  \frametitle{Conclusion}
+  \frametitle{Newcomers}
+  \begin{itemize}
+  \item Outils pour les nouveaux contributeurs
+    \begin{itemize}
+    \item Builder
+    \item Liste de projets
+    \item Liste de bug simples \pause
+    \end{itemize}
+  \item Canal de communication dédié
+    \begin{itemize}
+    \item Channel irc (\#newcomers)
+    \item Mailing list
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\section{GNOME-Games}
+\begin{frame}
+  \frametitle{GNOME-Games}
+  \includegraphics[scale=0.25]{images/screen-games.png}
+\end{frame}
+
+\subsection{Présentation}
+\begin{frame}
+  \frametitle{Présentation}
+  \begin{itemize}
+  \item Collection de jeux
+    \begin{itemize}
+    \item Jeux retro
+    \item Natif Linux \pause
+    \end{itemize}
+  \item Basé sur plusieurs bibliothèques
+    \begin{itemize}
+    \item libmanette
+    \item retro-gtk
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\subsection{Contributions}
+\begin{frame}
+  \frametitle{Contributions à Games}
+  \begin{itemize}
+  \item Traçage d'un bug PulseAudio \pause
+    \begin{itemize}
+      \item Problème complexe en apparence \pause
+    \end{itemize}
+  \item Patch : Modifications du fichier 'HACKING'
+    \begin{itemize}
+    \item Utilisation de la syntaxe markdown
+    \item Modifications demandé par le mainteneur
+    \item Accepté \pause
+    \end{itemize}
+  \item Patch : Modifications du fichier 'README.md'
+    \begin{itemize}
+    \item Contribution à ``retro-gtk''
+    \item Utilisation de la syntaxe markdown
+    \item Pas encore accepté \pause
+    \end{itemize}
+  \item Patch : Ajout d'un event 'retour au menu'
+  \end{itemize}
+\end{frame}
+
+\subsection{Conclusion}
+\begin{frame}
+  \frametitle{Conclusion Games}
+  \begin{itemize}
+  \item Les outils collaboratifs
+    \begin{itemize}
+    \item Git 
+    \item irc 
+    \item Tracker de bug \pause
+    \end{itemize}
+  \item Les prochaines contributions
+  \end{itemize}
+\end{frame}
+
+\section{GNOME-Music}
+\begin{frame}
+  \frametitle{Le projet Gnome Music}
+  \includegraphics[scale=0.325]{images/gnome-music-app.png}
+\end{frame}
+
+\subsection{Contributions effectuées sur GNOME Music}
+\begin{frame}
+  \frametitle{Contributions effectuées}
+  \begin{itemize}
+  \item Rapport de bug sur le Builder
+  \item Patch Pep8
+  \item Patch Bouton retour arrière
+  \end{itemize}
+\end{frame}
+
+\subsection{Conclusion Music}
+\begin{frame}
+  \frametitle{Conclusion Music}
+  \begin{itemize}
+  \item Le travail collaboratif
+  \item La suite
+  \end{itemize}
+\end{frame}
+
+\section{Questions}
+\begin{frame}
+  \frametitle{Questions ?}
+  %% Merci ?
 \end{frame}
 
 \end{document}

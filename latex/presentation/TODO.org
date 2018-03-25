@@ -1,0 +1,8 @@
+* TODO diapo
+- [X] Ajuster la taille des images 
+- [X] Corriger l'othographe
+- [ ] Imprimer le pad ?
+- [ ] Imprimer un exemplaire du rapport ?
+- [X] Ajouter une frame Gnome pour présenter le projet
+- [X] Ajouter une sous-liste dans Newcomers
+- [X] Contributions effectués => Contributions
