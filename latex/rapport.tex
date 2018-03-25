@@ -61,6 +61,7 @@
 
   
   \begin{flushleft}
+    \centering
     \large{\textbf{Projet GNOME}} :\\{\@author}\\ 
     Licence ADSILLH\\
     Session 2017
@@ -751,6 +752,42 @@ la vérification de la pression sur la touche Alt:
     return true;
   }
 \end{minted}
+
+
+\subsection{Bug configuration manette XBox360 et XBoxOne}
+Un utilisateur de Games a déclaré un bug sur la fenettre de la configuration
+des manette pour Games. Les appuis sur les touch TR2 et TL2 n'étais pas
+reconues par le code de configuration.
+
+Nous possédont un controleur Xbox360, nous avons donc chercher la source du
+problème, mais sans message d'erreur, warning ou autre information, il à
+étais un peut long de trouvé la source du problème.
+
+Il c'est avéré que dans le problème venais du type de bouton et des evenements
+lié à ces boutons. En effet contrairement à d'autre modèle les mannettes de
+Xbox on des boutons qui ne sont pas simplement apuiler et relacher, mais
+on une plage de valeur possible et peuveut prendre plusieur sur un axe unique.
+%% ADD ILLUSTRATION
+
+Nous avons posté les informations que nous avons trouvé puis nous avons
+commencer a réflechire une solution de corrigé le problème. Entre temps un
+autre contributeur à envoyer un patch très proche de la solution que nous
+avions imaginé. Nous avons donc désidé de laisser faire le contributeur qui
+fesai sa première contribution au projet.
+
+Une parti du patch à étais acepté par le mainteneur, pour le reste il à
+demandé des modiffications mais le contributeur na pas encore tous corrigé.
+
+A l'heure ou nous ecrivons c'est quelque ligne (3 mois après la déclaration
+du bug) le patch et le bug sont toujours en attente des modifications du
+contributeur.
+
+\subsection{Correction de warning retro-gtk}
+Lors d'une recompilation de la bibliothèque \textit{retro-gtk} nous avons
+vous qu'il y avais des warrnings dans la sortie de la compilation, nous
+avons donc fait un patch pour les corrigés. L'utilité de se patch est limité
+car les warnings que nous avons corrigé ne resqué pratiquement pas de cosé un
+crash, mais sa permet d'avoir une compilation plus propre.
 
 \newpage
 \section{Conclusion}
