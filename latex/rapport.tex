@@ -858,20 +858,20 @@ bouton appuié et le bouton de retour, executer la fonction préexistente
 Sinon retourné \texttt{false} pour propagé l'evenements et qu'il puisse être
 traité comme par defaut.
 
-Nous avons encore rencontré un ou deux petit problème, notament une erreur
-dans la fonction que nous avions écrite, nous avons échenger le \texttt{true}
+Nous avons encore rencontré un ou deux petit problèmes, notament une erreur
+dans la fonction que nous avions écrite, nous avions échenger le \texttt{true}
 et le \texttt{false} pour le return, se qui veut dire que nous ne dissusont
 l'evenement.
 Résultat seuls notre evenement marche mais les autres sont détruit et jamais
 traité.
 
-Il nous à aussi étais demander d'ajouté un commentaire avant la valeur
-\texttt{8} affins de gardé un code lisible. Le mainteneur a d'ailleur étais
-surpris qu'il n'y ai pas de constant définie dans \textit{vala} ou dans
-\textit{gdk} pour la touche présedente de la sourie, mais il n'a pas trouvé
+Il nous a aussi été demandé d'ajouter un commentaire avant la valeur
+\texttt{8} afin de garder un code lisible. Le mainteneur a d'ailleur été
+surpris qu'il n'y ai pas de constante définie dans \textit{vala} ou dans
+\textit{gdk} pour la touche précédente de la souris, mais il n'a pas trouvé
 de constante dans la documentation non plus. \\
 \\
-Voila la fonction tel qu'elle à étais intégré au projet :
+Voila la fonction telle qu'elle a été intégrée au projet :
 \begin{minted}[breaklines]{vala}
 [GtkCallback]
 public bool on_button_pressed (Gdk.EventButton event) {
