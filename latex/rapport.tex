@@ -364,6 +364,62 @@ Voici un aperçu de notre modification de code :
         self.toolbar.set_state(ToolbarState.MAIN)
 \end{minted}
 
+\section{Deuxieme Semestre}
+\subsection{Suite Pep8 et tox.ini}
+Lors de ce second semestre nous nous sommes dans un premier temps concentré sur la poursuite des contributions que nous avions auparavant effectuées, notamment la contribution qui concernait le respect syntaxique du code par rapport à Pep8 avec un patch qui avait notamment corrigé plusieurs erreurs dans le code source du projet. Nous avons donc choisit de poursuivre sur ce chemin avec notamment d’un plus gros patch qui réglerait toutes les erreurs avec Pep8 ainsi que la création d’un fichier tox.ini qui serait utilisé pour faire une vérification automatique du respect de la syntaxe Pep8.
+
+Pour la création du patch Pep8 nous avons du corriger de nouvelles erreurs et surtout des surtout des erreurs qui étaient présentes en grand nombre. Nous avons donc créé plusieurs patchs différents afin de corriger les différentes erreurs et de permettre au développeurs de choisir quels patchs accepter en fonction des erreurs qu’ils voulaient ou non corriger. Nous nous sommes inspiré d’autres fichier tox.ini présent dans différents projets afin d’en créer un pour Gnome-Music, ce fichier permet ensuite de faire une vérification automatique du respect dans les fichier de la syntaxe Pep8 et donc tous les ajouts ensuite effectuées dans le code source devront respectés la syntaxe Pep8 afin de pouvoir être acceptés.
+
+Malheureusement les patchs pour Pep8 et le tox.ini n’ont pas étaient acceptés, en effet pour le patch Pep8 le mainteneur nous a expliqué que les erreurs déjà présentes étaient des erreurs qui demandaient une refonte avec une review complet du code afin de les corriger dans les meilleures conditions. De plus le tox.ini n’était pas applicable au projet Gnome-Music, en effet un fichier setup.py est nécessaire afin de pouvoir utiliser tox.ini et celui-ci n’est pas disponible sur ce projet. De plus les patchs mis en place pour Gnome-music sont désormais testé par rapport à Pep8 et sont donc refusés si ils ne respectent pas celui-ci.
+
+\subsection{Proposition Aide Wiki}
+Le projet Gnome-Music est en plein changement avec notamment la migration de github vers gitlab et cela a entraîné une obsolescence de la wiki de Gnome-music, en effet celui-ci contenait une section avec des liens de bug report qui renvoyaient vers bugzilla, hors les suivis de bug étaient passés sur gitlab et donc les liens étaient obsolètes. On pouvait aussi retrouver des mentions de github ou autre dans la wiki ce qui n’était alors plus d’actualité. Nous nous sommes donc renseigné auprès du mainteneur du projet afin de leur proposer notre aide afin de mettre la wiki de gnome-music à jour. Cependant il nous a répondu que ce travail était déjà en cours mais que nous pouvions contribuer sur des corrections de bugs:
+« Salut Kevin, notre migration vers gitlab a pratiquement été faite, mais merci d'offrir votre aide. Quel est le rapport entre gnome-music et vos études ? 
+
+Nous avons beaucoup de tâches, que ce soit le codage ou la documentation (user docs / wiki / etc.) Ou juste PR en général . 
+
+La meilleure façon d'entrer en contact est de nous rejoindre sur IRC ( gnome-music sur freenode) et de travailler à partir de là ou de trouver un problème sur gitlab.
+
+J'espère avoir de vos nouvelles bientôt,
+Marinus (admin sur IRC) »
+
+
+
+De plus un changement notable dans la compilation est survenu courant Janvier. En effet, la structure du projet à entièrement été revisitée avec meson. Il en découle que le makefile et tout ses composants ont été supprimés et la compilation se fait maintenant via les commandes suivantes :
+
+meson_build 		création du dossier _build pour la compilation
+
+ninja 			compilation 
+ou 
+ninja reconfigure 	pour forcer la compilation 
+
+\subsection{Dernier Patch}
+En fin de semestre, nous nous sommes consacré à un patch qui concernait un problème du domaine « privé » . En effet lors de l'ouverture de gnome-music, celui-ci télécharge les couvertures des album automatiquement (via un compte spotify ou LastFM) sans demandé l'avis à l'utilisateur. Le but de notre travail était de trouvé un moyen de supprimer dans un premier temps le téléchargement sans demande à l'utilisateur (dans albumartcache.py)  puis ensuite lui donner la possibilité d'accepter ou non ce téléchargement. 
+
+Pour cela il a fallu modifier le « schéma » dans le fichier org.gnome.Music.gschema qui gère toutes les structures du projet appelées « key » :
+
+\begin{minted}[breaklines]{python}
+<key type="b" name="album-cover">
+        	<default>false</default>
+        	<summary>No downloading cover</summary>
+        	<description>Enables or disables album art downloading</description>
+
+</key>
+\end{minted}
+
+Ensuite on a cherché l'endroit où été géré le téléchargement. Il se trouve que le fichier albumartcache.py contienne la ligne suivante :
+
+\begin{minted}[breaklines]{python}
+grilo.get_album_art_for_item(media, self._remote_album_art)
+\end{minted}
+
+Cette ligne permet d'utiliser le grilo (gestion téléchargement à distance) pour récupéré la couverture.
+Il suffisait de créer une nouvelle conditions via Gio.settings avec une boucle if pour faire appel à la key utilisée dans le schéma qui demande si le résultat est True ou False. Ainsi, à ce stade du patch l'utilisateur peut désactiver les téléchargement seulement via le gschema.
+
+Malheureusement par faute de temps nous n'avons pas pu proposer une interface graphique à ce téléchargement. Néanmoins nous avions réfléchi à la manière dont nous allions implémenter cela via une boîte de dialogue gérer par Gtk.windows. Nous aurions voulu qu'au clic un signal soit reconnu par notre boucle if et que si c'est oui ou non, le téléchargement se fasse ou pas. 
+Le seul problème rencontré est que nous savions pas où positionner notre code de boîte de dialogue. 
+Cependant nous pensons tout même proposer ce patch dans les semaines a venir en tant que projet « perso » et non dans le cadre de l'UE. 
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -894,7 +950,7 @@ que se soit dans notre vie professionnelle ou personnelle.
 
 \newpage
 \section{Conclusion Gnome Music}
-
+Pour conclure nous pouvons dire que nous n’avons pu malheureusement terminer le dernier patch sur lequel nous avions travailler en fin d’année par manque de temps. Cependant nous sommes quand même satisfait d’avoir pu contribuer aux projets avec un rapport de bugs ainsi que 2 patchs qui ont été acceptés avec Pep8 et le bouton-arriere. Les difficultés rencontrées lors de la compilation nous ont aussi apporté de l’autonomie et des connaissances notamment avec le dépendances nécessaires à celle-ci. Nous avons pu développer des compétences en programmation avec le langage python, car même si toutes nos contributions n’ont pas été acceptées cela nous a quand même permis de coder et de travailler sur ces problématiques. Le dernier patch que nous n’avons pu terminer nous lui aussi permis de développer nos compétences notamment dans la recherche de bugs.
 \chapter{Conclusion Générale}
 %% Conclusion commun entre Music et Games
 
