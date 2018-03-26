@@ -384,7 +384,20 @@ Voici un aperçu de notre modification de code :
 \end{minted}
 
 Une fois que cela est fait , on compile et on créé un backbutton.patch qu'on envoie aux programmeur sur bugzilla . 
-Nous sommes actuellement en attente d'une réponse des développeurs gnome-music . 
+Les deux patchs ont par la suite été accepté par les mainteneurs du projet et ont donc été intégré dans des commits qui ont suivis.
+
+\section{Deuxieme Semestre}
+\subsection{Suite Pep8 et tox.ini}
+Lors de ce second semestre nous nous sommes dans un premier temps concentré sur la poursuite des contributions que nous avions auparavant effectuées, notamment la contribution qui concernait le respect syntaxique du code par rapport à Pep8 avec un patch qui avait notamment corrigé plusieurs erreurs dans le code source du projet. Nous avons donc choisit de poursuivre sur ce chemin avec notamment d’un plus gros patch qui réglerait toutes les erreurs avec Pep8 ainsi que la création d’un fichier tox.ini qui serait utilisé pour faire une vérification automatique du respect de la syntaxe Pep8.
+
+Pour la création du patch Pep8 nous avons du corriger de nouvelles erreurs et surtout des surtout des erreurs qui étaient présentes en grand nombre. Nous avons donc créé plusieurs patchs différents afin de corriger les différentes erreurs et de permettre au développeurs de choisir quels patchs accepter en fonction des erreurs qu’ils voulaient ou non corriger. Nous nous sommes inspiré d’autres fichier tox.ini présent dans différents projets afin d’en créer un pour Gnome-Music, ce fichier permet ensuite de faire une vérification automatique du respect dans les fichier de la syntaxe Pep8 et donc tous les ajouts ensuite effectuées dans le code source devront respectés la syntaxe Pep8 afin de pouvoir être acceptés.
+
+Malheureusement les patchs pour Pep8 et le tox.ini n’ont pas étaient acceptés, en effet pour le patch Pep8 le mainteneur nous a expliqué que les erreurs déjà présentes étaient des erreurs qui demandaient une refonte avec une review complet du code afin de les corriger dans les meilleures conditions. De plus le tox.ini n’était pas applicable au projet Gnome-Music, en effet un fichier setup.py est nécessaire afin de pouvoir utiliser tox.ini et celui-ci n’est pas disponible sur ce projet. De plus les patchs mis en place pour Gnome-music sont désormais testé par rapport à Pep8 et sont donc refusés si ils ne respectent pas celui-ci.
+
+\subsection{Proposition Aide Wiki}
+Le projet Gnome-Music est en plein changement avec notamment la migration de github vers gitlab et cela a entraîné une obsolescence de la wiki de Gnome-music, en effet celui-ci contenait une section avec des liens de bug report qui renvoyaient vers bugzilla, hors les suivis de bug étaient passés sur gitlab et donc les liens étaient obsolètes. On pouvait aussi retrouver des mentions de github ou autre dans la wiki ce qui n’était alors plus d’actualité. Nous nous sommes donc renseigné auprès du mainteneur du projet afin de leur proposer notre aide afin de mettre la wiki de gnome-music à jour. Cependant il nous a répondu que ce travail était déjà en cours mais que nous pouvions contribuer sur des corrections de bugs.
+
+\subsection{Dernier Patch}
 
 \newpage
 \chapter{GNOME-Games} %% Change GNOME-Games to Games ?
