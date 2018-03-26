@@ -828,21 +828,21 @@ L’ajout de cette fonctionnalité nous a posé beaucoup de problèmes, non pas
 pour la difficulté en terme de programmation, mais pour des problèmes liés à la
 documentation et a notre environnement de développement.
 
-Le premier problème qui nous à fait perdre beaucoup de temps venait de notre
+Le premier problème qui nous a fait perdre beaucoup de temps venait de notre
 environnement de enveloppement qui se trouve sur une VM (Virtual Machine).
 Nous avons pris un moment avant de nous rendre compte que la souris n'étais
-pas bien gérée par \textit{Qemu}, il nous a donc fallut lié le fichier de
-la sourie \texttt{/dev/bus/usb/00x/00x} à notre VM afin quelle soit reconnus
+pas bien gérée par \textit{Qemu}, il nous a donc fallut lier le fichier de
+la souris \texttt{/dev/bus/usb/00x/00x} à notre VM afin quelle soit reconnue
 nativement par l'OS de la VM.
 
 De plus nous avons cherchés pendant longtemps dans la documentation du langage
 \textit{vala} la constante correspondant à la touche de la souris que nous
-voulions utilisé, mais nous n'avons rien trouvé, nous avons aussi demander
-de l'aide sur le Chanel \textit{vala} de l'\texttt{irc} GNOME, mais nous
+voulions utiliser, mais nous n'avons rien trouvé, nous avons aussi demandé
+de l'aide sur le Channel \textit{vala} de l'\texttt{irc} GNOME, mais nous
 n'avons pas trouvé d'aide.
 
 Au final nous avons ajouté un bout de code pour capter tous les événements et
-les afficher, ainsi nous avons réussi à déterminé que le code de l’événement
+les afficher, ainsi nous avons réussi à déterminer que le code de l’événement
 et le \texttt{8}.
 
 Nous avons donc ajouté une ligne pour définir une fonction de callback pour
