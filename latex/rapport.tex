@@ -95,37 +95,6 @@ nous apprendre à interagir avec une communauté du logiciel libre.
 
 \tableofcontents
 
-%% % Useless
-%% \chapter{Introduction}
-
-%% \section{La Licence ADSILLH}
-%% % from: http://dept-info.labri.fr/ENSEIGNEMENT/adsillh/contenu.html
-%% L'objectif est de former des techniciens en informatique de haut
-%% niveau en administration des systèmes d'information, polyvalents et
-%% aptes à effectuer l'intégration de composants logiciels libres
-%% appartenant à de nombreux domaines fonctionnels:
-%% \begin{itemize}
-%% \item systèmes d'exploitation
-%% \item bases de données
-%% \item serveurs web
-%% \item téléphonie logicielle
-%% \end{itemize}
-
-%% alliant ainsi de solides compétences d'administration à des capacités
-%% de développement, en partant des couches les plus basses jusqu'aux
-%% plus hautes, et l'aptitude à intégrer ces développements au sein des
-%% communautés libres. Ce profil est explicitement recherché par les
-%% entreprises et fait l'unicité de la formation. Il est couramment
-%% appelé « DevOps Engineer ».
-
-%% La formation apporte également des aspects organisationnels en droit
-%% et en économie des logiciels libres.
-
-%% \section{Le projet}
-%% Le but du projet est avant tout de nous accoutumer au développement
-%% collaboratif, et de nous apprendre à intéragir avec une communauté
-%% du logiciel libre.
-
 \chapter{Le projet GNOME}
 \section{Présentation}
 % from: https://fr.wikipedia.org/wiki/GNOME
@@ -370,8 +339,17 @@ E111, E201, E202, E302 et E711 sur bugzilla et nous attendons un réponse
 des développeurs.
 
 \subsection{Retour arrière avec la souris}
-Un autre patch consistait à faire un retour arrière avec le bouton "back" de la souris . Plus précisément, il s'agit d'un retour vers la playlist depuis le menu album.
-Une alternative existait déjà dans le code avec le raccourci Alt+Left. Dans ce projet , les événements sont gérés par le fichier "window.py" et par la libraire GTK . Néanmoins , seul les événements de clavier ont été implémentés. Il a donc fallu qu'on connecte la reconnaissance des clics avec un ".connect" . Une fois le "event.button" bien reconnu par la librairie GTK , nous avons pu faire une boucle qui reconnaît le clic du bouton back (event==8) et revient vers la playlist ( si et seulement si on se trouve dans Album ).
+Un autre patch consistait à faire un retour arrière avec le bouton
+"back" de la souris . Plus précisément, il s'agit d'un retour vers la
+playlist depuis le menu album.  Une alternative existait déjà dans le
+code avec le raccourci Alt+Left. Dans ce projet , les événements sont
+gérés par le fichier "window.py" et par la libraire GTK . Néanmoins ,
+seul les événements de clavier ont été implémentés. Il a donc fallu
+qu'on connecte la reconnaissance des clics avec un ".connect" . Une
+fois le "event.button" bien reconnu par la librairie GTK , nous avons
+pu faire une boucle qui reconnaît le clic du bouton back (event==8) et
+revient vers la playlist ( si et seulement si on se trouve dans Album
+).
 
 Voici un aperçu de notre modification de code : 
 
@@ -386,8 +364,9 @@ Voici un aperçu de notre modification de code :
         self.toolbar.set_state(ToolbarState.MAIN)
 \end{minted}
 
-Une fois que cela est fait , on compile et on créé un backbutton.patch qu'on envoie aux programmeur sur bugzilla . 
-Nous sommes actuellement en attente d'une réponse des développeurs gnome-music . 
+Une fois que cela est fait , on compile et on créé un backbutton.patch
+qu'on envoie aux programmeur sur bugzilla .  Nous sommes actuellement
+en attente d'une réponse des développeurs gnome-music .
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% GNOME-Games
@@ -833,31 +812,34 @@ Nous possédont un controleur Xbox360, nous avons donc chercher la source du
 problème, mais sans message d'erreur, warning ou autre information, il à
 étais un peut long de trouvé la source du problème.
 
-Il c'est avéré que dans le problème venais du type de bouton et des evenements
-lié à ces boutons. En effet contrairement à d'autre modèle les mannettes de
-Xbox on des boutons qui ne sont pas simplement apuiler et relacher, mais
-on une plage de valeur possible et peuveut prendre plusieur sur un axe unique.
+Il s'est avéré que  le problème venait du type de bouton et des événements
+liés à ces boutons. En effet, contrairement à d'autre modèles, les mannettes de
+Xbox ont des boutons qui ne sont pas simplement appuyés et relachés, mais
+ont une plage de valeurs possiblent et peuveut prendre plusieur sur un
+axe unique.
 %% ADD ILLUSTRATION ?
+% David: terminer reformulation
 
-Nous avons posté les informations que nous avons trouvé puis nous avons
-commencer a réflechire une solution de corrigé le problème. Entre temps un
-autre contributeur à envoyer un patch très proche de la solution que nous
-avions imaginé. Nous avons donc désidé de laisser faire le contributeur qui
-fesai sa première contribution au projet.
+Nous avons postés les informations que nous avons trouvé puis nous avons
+commencés à réflechir à une solution pour corriger le problème. Entre temps un
+autre contributeur a envoyé un patch très proche de la solution que nous
+avions imaginés. Nous avons donc décidés de laisser faire le contributeur qui
+fesait sa première contribution au projet. % <== LOL
 
-Une parti du patch à étais acepté par le mainteneur, pour le reste il à
-demandé des modiffications mais le contributeur na pas encore tous corrigé.
+Une partie du patch a été aceptée par le mainteneur, pour le reste il a
+demandé des modifications mais le contributeur n'a pas encore tout corrigé.
 
-A l'heure ou nous ecrivons c'est quelque ligne (3 mois après la déclaration
-du bug) le patch et le bug sont toujours en attente des modifications du
+A l'heure ou nous écrivons ces quelque ligne (3 mois après la déclaration
+du bug), le patch et le bug sont toujours en attente des modifications du
 contributeur.
 
 \subsection{Correction de warning retro-gtk}
 Lors d'une recompilation de la bibliothèque \textit{retro-gtk} nous avons
-vous qu'il y avais des warrnings dans la sortie de la compilation, nous
-avons donc fait un patch pour les corrigés. L'utilité de se patch est limité
-car les warnings que nous avons corrigé ne resqué pratiquement pas de cosé un
-crash, mais sa permet d'avoir une compilation plus propre.
+vu qu'il y avait des warnings dans la sortie de la compilation, nous
+avons donc fait un patch pour les corriger. L'utilité de ce patch est limitée
+dans le sens où les warnings que nous avons corrigés ne risquaient
+pratiquement pas de causer un crash, mais cela permet toutefois d'avoir une
+compilation plus propre.
 
 \newpage
 \section{Conclusion}
