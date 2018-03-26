@@ -823,50 +823,50 @@ la vérification de la pression sur la touche Alt:
   }
 \end{minted}
 
-\subsection{Retour à la collection avec la touch presedent de la souries}
-L'ajouts de cette fonctionnalité nous à posser beaucoups de problème, non pas
-pour la difficulté en terme de programation, mais pour des problèmes lié à la
-documentation et a notre environement de développement.
+\subsection{Retour à la collection avec la touche précèdante de la souris}
+L’ajout de cette fonctionnalité nous a posé beaucoup de problèmes, non pas
+pour la difficulté en terme de programmation, mais pour des problèmes liés à la
+documentation et a notre environnement de développement.
 
-Le premiers problème qui nous à fait perdre beaucoup de temps venez de notre
-environement de developpement qui se trouve sur une VM (Virtual Machine).
-Nous avons pris un moment avans de nous rendre compte que la souris n'étais
-pas bien géré par \textit{Qemu}, il nous a donc falut lié le fichier de
-la sourie \texttt{/dev/bus/usb/00x/00x} à notre VM affint quelle soit reconnus
+Le premier problème qui nous à fait perdre beaucoup de temps venait de notre
+environnement de enveloppement qui se trouve sur une VM (Virtual Machine).
+Nous avons pris un moment avant de nous rendre compte que la souris n'étais
+pas bien gérée par \textit{Qemu}, il nous a donc fallut lié le fichier de
+la sourie \texttt{/dev/bus/usb/00x/00x} à notre VM afin quelle soit reconnus
 nativement par l'OS de la VM.
 
-De plus nous avons cherche pendant longtemps dans la documentation du langage
-\textit{vala} la contante corespondant à la touche de la sourie que nous
+De plus nous avons cherchés pendant longtemps dans la documentation du langage
+\textit{vala} la constante correspondant à la touche de la souris que nous
 voulions utilisé, mais nous n'avons rien trouvé, nous avons aussi demander
-de l'aide sur le channel \textit{vala} de l'\texttt{irc} GNOME, mais nous
+de l'aide sur le Chanel \textit{vala} de l'\texttt{irc} GNOME, mais nous
 n'avons pas trouvé d'aide.
 
-Au final nous avons ajouté un bout de code pour capter tous les evenements et
-les affichers, ansi nous avons réussi à déterminé que le code de l'évenement
+Au final nous avons ajouté un bout de code pour capter tous les événements et
+les afficher, ainsi nous avons réussi à déterminé que le code de l’événement
 et le \texttt{8}.
 
-Nous avons donc ajouté une ligne pour définire une fonction de callback pour
+Nous avons donc ajouté une ligne pour définir une fonction de callback pour
 les appuis de bouton de la sourie.
 \begin{minted}[breaklines]{xml}
 <signal name="button-press-event" after="yes" handler="on_button_pressed"/>
 \end{minted}
 
-Nous avons aussi créer la fonction corespondante dont le but et de capté tous
-les évenements corespondant au appuis sur les boutons de la sourie, si le
-bouton appuié et le bouton de retour, executer la fonction préexistente
+Nous avons aussi créer la fonction correspondante dont le but et de capté tous
+les événements correspondant au appuis sur les boutons de la sourie, si le
+bouton appuyé et le bouton de retour, exécuter la fonction préexistante
 \texttt{on\_display\_back()} et retourner \texttt{true}.
-Sinon retourné \texttt{false} pour propagé l'evenements et qu'il puisse être
-traité comme par defaut.
+Sinon retourné \texttt{false} pour propagé l’événement et qu'il puisse être
+traité comme par défaut
 
-Nous avons encore rencontré un ou deux petit problèmes, notament une erreur
-dans la fonction que nous avions écrite, nous avions échenger le \texttt{true}
+Nous avons encore rencontré un ou deux petit problèmes, notamment une erreur
+dans la fonction que nous avions écrite, nous avions échanger le \texttt{true}
 et le \texttt{false} pour le return, se qui veut dire que nous ne dissusont
-l'evenement.
-Résultat seuls notre evenement marche mais les autres sont détruit et jamais
+l’événement
+Résultat seuls notre événement marche mais les autres sont détruit et jamais
 traité.
 
 Il nous a aussi été demandé d'ajouter un commentaire avant la valeur
-\texttt{8} afin de garder un code lisible. Le mainteneur a d'ailleur été
+\texttt{8} afin de garder un code lisible. Le mainteneur a d’ailleurs été
 surpris qu'il n'y ai pas de constante définie dans \textit{vala} ou dans
 \textit{gdk} pour la touche précédente de la souris, mais il n'a pas trouvé
 de constante dans la documentation non plus. \\
@@ -889,29 +889,29 @@ public bool on_button_pressed (Gdk.EventButton event) {
 \end{minted}
 
 \subsection{Bug configuration manette XBox360 et XBoxOne}
-Un utilisateur de Games a déclaré un bug sur la fenettre de la configuration
-des manette pour Games. Les appuis sur les touch TR2 et TL2 n'étais pas
-reconues par le code de configuration.
+Un utilisateur de Games a déclaré un bug sur la fenêtre de la configuration
+des manette pour Games. Les appuis sur les touches TR2 et TL2 n'étais pas
+reconnues par le code de configuration.
 
-Nous possédont un controleur Xbox360, nous avons donc chercher la source du
+Nous possédons un contrôleur Xbox360, nous avons donc chercher la source du
 problème, mais sans message d'erreur, warning ou autre information, il à
 étais un peut long de trouvé la source du problème.
 
 Il s'est avéré que  le problème venait du type de bouton et des événements
-liés à ces boutons. En effet, contrairement à d'autre modèles, les mannettes de
-Xbox ont des boutons qui ne sont pas simplement appuyés et relachés, mais
-ont une plage de valeurs possiblent et peuveut prendre plusieur sur un
+liés à ces boutons. En effet, contrairement à d'autre modèles, les manettes de
+Xbox ont des boutons qui ne sont pas simplement appuyés et relâchés, mais
+ont une plage de valeurs possiblement et peuvent prendre plusieurs sur un
 axe unique.
 %% ADD ILLUSTRATION ?
 % David: terminer reformulation
 
 Nous avons postés les informations que nous avons trouvé puis nous avons
-commencés à réflechir à une solution pour corriger le problème. Entre temps un
+commencés à réfléchir à une solution pour corriger le problème. Entre temps un
 autre contributeur a envoyé un patch très proche de la solution que nous
 avions imaginés. Nous avons donc décidés de laisser faire le contributeur qui
-fesait sa première contribution au projet. % <== LOL
+faisait sa première contribution au projet. % <== LOL
 
-Une partie du patch a été aceptée par le mainteneur, pour le reste il a
+Une partie du patch a été acceptée par le mainteneur, pour le reste il a
 demandé des modifications mais le contributeur n'a pas encore tout corrigé.
 
 A l'heure ou nous écrivons ces quelque ligne (3 mois après la déclaration
