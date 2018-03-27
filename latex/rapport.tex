@@ -451,6 +451,25 @@ nous savions pas où positionner notre code de boîte de dialogue.
 Cependant nous pensons tout même proposer ce patch dans les semaines a
 venir en tant que projet « perso » et non dans le cadre de l'UE.
 
+\newpage
+\section{Conclusion Gnome Music}
+Pour conclure nous pouvons dire que nous n’avons pu malheureusement
+terminer le dernier patch sur lequel nous avions travailler en fin
+d’année par manque de temps. Cependant nous sommes quand même
+satisfait d’avoir pu contribuer aux projets avec un rapport de bugs
+ainsi que 2 patchs qui ont été acceptés avec Pep8 et le
+bouton-arriere.
+
+Les difficultés rencontrées lors de la compilation nous ont aussi
+apporté de l’autonomie et des connaissances notamment avec le
+dépendances nécessaires à celle-ci. Nous avons pu développer des
+compétences en programmation avec le langage python, car même si
+toutes nos contributions n’ont pas été acceptées cela nous a quand
+même permis de coder et de travailler sur ces problématiques. Le
+dernier patch que nous n’avons pu terminer nous lui aussi permis de
+développer nos compétences notamment dans la recherche de bugs.
+
+Cependant nous avons rencontré des difficultés lors du second semestre dans la gestion du temps entre les différents projets des autres UE et celui-ci,ce qui nous a malheureusement empêcher d'avoir assez de temps afin de terminer les contributions que nous voulions effectuer au second semestre. Mais cela fait aussi parti de l'apprentissage avec notamment la gestion de son temps de travail.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -843,27 +862,25 @@ n'avons pas trouvé d'aide.
 
 Au final nous avons ajouté un bout de code pour capter tous les événements et
 les afficher, ainsi nous avons réussi à déterminer que le code de l’événement
-et le \texttt{8}.
+est le \texttt{8}.
 
-Nous avons donc ajouté une ligne pour définir une fonction de callback pour
-les appuis de bouton de la sourie.
+Nous avons donc ajoutés une ligne pour définir une fonction de callback pour
+les appuis de bouton de la souris.
 \begin{minted}[breaklines]{xml}
 <signal name="button-press-event" after="yes" handler="on_button_pressed"/>
 \end{minted}
 
-Nous avons aussi créer la fonction correspondante dont le but et de capté tous
-les événements correspondant au appuis sur les boutons de la sourie, si le
-bouton appuyé et le bouton de retour, exécuter la fonction préexistante
+Nous avons aussi créer la fonction correspondante dont le but et de capter tous
+les événements correspondants aux appuis sur les boutons de la souris, si le
+bouton appuyé est le bouton de retour, exécuter la fonction préexistante
 \texttt{on\_display\_back()} et retourner \texttt{true}.
-Sinon retourné \texttt{false} pour propagé l’événement et qu'il puisse être
-traité comme par défaut
+Sinon retourner \texttt{false} pour propager l’événement et qu'il puisse être
+traité comme par défaut.
 
 Nous avons encore rencontré un ou deux petit problèmes, notamment une erreur
-dans la fonction que nous avions écrite, nous avions échanger le \texttt{true}
-et le \texttt{false} pour le return, se qui veut dire que nous ne dissusont
-l’événement
-Résultat seuls notre événement marche mais les autres sont détruit et jamais
-traité.
+dans la fonction que nous avions écrite, nous avions échangés le \texttt{true}
+et le \texttt{false} pour le return; résultat seuls notre événement
+marche mais les autres sont détruits et jamais traités.
 
 Il nous a aussi été demandé d'ajouter un commentaire avant la valeur
 \texttt{8} afin de garder un code lisible. Le mainteneur a d’ailleurs été
@@ -890,18 +907,18 @@ public bool on_button_pressed (Gdk.EventButton event) {
 
 \subsection{Bug configuration manette XBox360 et XBoxOne}
 Un utilisateur de Games a déclaré un bug sur la fenêtre de la configuration
-des manette pour Games. Les appuis sur les touches TR2 et TL2 n'étais pas
+des manette pour Games. Les appuis sur les touches TR2 et TL2 n'étaient pas
 reconnues par le code de configuration.
 
 Nous possédons un contrôleur Xbox360, nous avons donc chercher la source du
-problème, mais sans message d'erreur, warning ou autre information, il à
-étais un peut long de trouvé la source du problème.
+problème, mais sans message d'erreur, warning ou autre information, il a
+été un peut long de trouver la source du problème.
 
 Il s'est avéré que  le problème venait du type de bouton et des événements
 liés à ces boutons. En effet, contrairement à d'autre modèles, les manettes de
 Xbox ont des boutons qui ne sont pas simplement appuyés et relâchés, mais
-ont une plage de valeurs possiblement et peuvent prendre plusieurs sur un
-axe unique.
+ont une plage de valeurs et peuvent en prendre plusieurs sur un axe
+unique.
 %% ADD ILLUSTRATION ?
 % David: terminer reformulation
 
@@ -949,9 +966,8 @@ Cela s'est vu amplifié par le fait que nous avons tous des niveaux techniques
 assez disparates (cette remarque s'étend à la promotion), et que ce qui peut
 être fait en deux heures pour l'un peut nécessiter deux jours pour
 l'autre.
-Il nous a été difficile de nous organiser et les heures de projet ont parfois
-du être utilisées pour nous permettre de travailler sur les projets des
-autres UE.
+Ainsi des heures de projet ont parfois du être utilisées pour nous
+permettre de travailler sur les projets des autres UE.
 
 Et il est encore plus difficile pour les élèves alternant de concilier projet,
 cours et travail dans l'entreprise.
@@ -962,28 +978,8 @@ pour compiler correctement le projet, pour chercher des bugs à notre portée,
 etc), chose qui nous a manquée lors de ce second semestre.
 
 C'est notamment pour ces raisons que nous avons moins avancés que ce
-que prévu lors du second semestre. Nous avions plusieurs projets de
+que prévu lors du second semestre. Nous avions plusieurs pistes de
 contribution, que nous n'avons pas pu réaliser par manque de temps.
-
-\newpage
-\section{Conclusion Gnome Music}
-Pour conclure nous pouvons dire que nous n’avons pu malheureusement
-terminer le dernier patch sur lequel nous avions travailler en fin
-d’année par manque de temps. Cependant nous sommes quand même
-satisfait d’avoir pu contribuer aux projets avec un rapport de bugs
-ainsi que 2 patchs qui ont été acceptés avec Pep8 et le
-bouton-arriere.
-
-Les difficultés rencontrées lors de la compilation nous ont aussi
-apporté de l’autonomie et des connaissances notamment avec le
-dépendances nécessaires à celle-ci. Nous avons pu développer des
-compétences en programmation avec le langage python, car même si
-toutes nos contributions n’ont pas été acceptées cela nous a quand
-même permis de coder et de travailler sur ces problématiques. Le
-dernier patch que nous n’avons pu terminer nous lui aussi permis de
-développer nos compétences notamment dans la recherche de bugs.
-
-Cependant nous avons rencontré des difficultés lors du second semestre dans la gestion du temps entre les différents projets des autres UE et celui-ci,ce qui nous a malheureusement empêcher d'avoir assez de temps afin de terminer les contributions que nous voulions effectuer au second semestre. Mais cela fait aussi parti de l'apprentissage avec notamment la gestion de son temps de travail.
 
 \chapter{Conclusion Générale}
 D'une manière plus générale, cette expérience fut très enrichissante car elle
